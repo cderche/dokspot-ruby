@@ -1,5 +1,9 @@
 - Sign in with valid credentials
 - Sign in with invalid credentials
 
-- Invite with valid credentials
-- Invite with invalid credentials
+- Invite colleague with valid credentials
+- Invite colleague with invalid credentials
+- Invite colleague already in the system
+- Colleague accepts invite with valid credentials
+- Colleague accepts invite with invalid credentials
+

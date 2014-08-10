@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @company.name
+%p
+  %b Symbol:
+  = @company.symbol
+%p
+  %b Website:
+  = @company.website
+%p
+  %b Contact:
+  = @company.contact
+%p
+  %b Order email:
+  = @company.order_email
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path
