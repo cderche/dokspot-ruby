@@ -39,3 +39,13 @@ def invite
 	fill_in 'user[email]', with: @colleague[:email]
 	click_button 'Send an invitation'
 end
+
+def set_role role
+  @user.role = role
+  @user.save
+end
+
+def set_user_company
+  @user.company = @company
+  @user.save
+end

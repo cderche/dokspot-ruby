@@ -24,4 +24,6 @@ en:
   companies:
     success: "Company was successfully created."
     updated: "Company was successfully updated."
-    destroy: "Company was successfully destroyed."
+    destroy:
+      success: "Company was successfully destroyed."
+      warning: "WARNING: By agreeing to destroy this company you will destroy all data related to this company. Examples: products, documents, users, etc. THIS DECISION IS NON-REVERSIBLE."

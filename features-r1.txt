@@ -15,3 +15,12 @@
 - View company details - DONE
 - Edit company - DONE
 - Destroy company - DONE
+
+- Create a new product with valid data
+- Create a new product with invalid data
+- Create product already in the system
+- Create a new product with incomplete data
+- View all products for a certain company
+- View product details
+- Edit product
+- Destroy product

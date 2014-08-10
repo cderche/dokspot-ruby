@@ -1,9 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  #after_action :verify_authorized
 
   # GET /companies
   # GET /companies.json
   def index
+    authorize Company
     @companies = Company.all
   end
 
@@ -25,7 +27,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
+    authorize @company
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: I18n.t('companies.success') }
@@ -56,7 +58,7 @@ class CompaniesController < ApplicationController
   def destroy
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_url, notice: I18n.t('companies.destroy') }
+      format.html { redirect_to companies_url, notice: I18n.t('companies.destroy.success') }
       format.json { head :no_content }
     end
   end
@@ -65,6 +67,7 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+      authorize @company
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

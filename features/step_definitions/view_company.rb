@@ -17,6 +17,15 @@ When(/^I visit a company$/) do
   visit company_path(@company)
 end
 
+Given(/^I have a company$/) do
+  create_company
+  set_user_company
+end
+
+When(/^I visit my company$/) do
+  visit company_path(@company)
+end
+
 Then(/^I should see the company details$/) do
   expect(page).to have_content @company.name
   expect(page).to have_content @company.symbol
