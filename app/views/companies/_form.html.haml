@@ -5,8 +5,8 @@
     = f.input :name
     = f.input :symbol
     = f.input :website
-    = f.input :contact
-    = f.input :order_email
+    = f.input :contact, as: :email
+    = f.input :order_email, as: :email
 
   .form-actions
     = f.button :submit

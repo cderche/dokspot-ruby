@@ -1,9 +1,17 @@
-- Sign in with valid credentials
-- Sign in with invalid credentials
+- Sign in with valid credentials - DONE
+- Sign in with invalid credentials - DONE
 
-- Invite colleague with valid credentials
-- Invite colleague with invalid credentials
-- Invite colleague already in the system
+- Invite colleague with valid credentials - DONE
+- Invite colleague with invalid credentials - DONE
+- Invite colleague already in the system - DONE
 - Colleague accepts invite with valid credentials
 - Colleague accepts invite with invalid credentials
 
+- Create a new company with valid data - DONE
+- Create a new company with invalid data
+- Create company already in the system - DONE
+- Create a new company with incomplete data - DONE
+- View all companies - DONE
+- View company details - DONE
+- Edit company - DONE
+- Destroy company - DONE

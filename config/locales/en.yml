@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  companies:
+    success: "Company was successfully created."
+    updated: "Company was successfully updated."
+    destroy: "Company was successfully destroyed."
