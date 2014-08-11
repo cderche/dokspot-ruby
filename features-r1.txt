@@ -16,11 +16,17 @@
 - Edit company - DONE
 - Destroy company - DONE
 
-- Create a new product with valid data
-- Create a new product with invalid data
-- Create product already in the system
-- Create a new product with incomplete data
-- View all products for a certain company
-- View product details
-- Edit product
-- Destroy product
+- Create a new product with valid data - DONE
+- Create product already in the system - DONE
+- Create a new product with incomplete data - DONE
+- View all products for a certain company - DONE
+- View product details - DONE
+- Edit product - DONE
+- Destroy product - DONE
+
+- Create a new instruction with valid data
+- Create a new instruction with incomplete data
+- View all instructions for a product
+- View instruction details
+- Edit instruction
+- Destroy instruction

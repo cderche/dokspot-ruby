@@ -1,0 +1,11 @@
+= simple_form_for(@product) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :uuid, readonly: true if action_name == :edit
+    = f.input :published if action_name == :edit
+    = f.association :company if current_user.admin?
+
+  .form-actions
+    = f.button :submit

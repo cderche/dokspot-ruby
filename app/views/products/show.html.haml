@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Uuid:
+  = @product.uuid
+%p
+  %b Published:
+  = @product.published
+%p
+  %b Company:
+  = @product.company.name
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Destroy', @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') }
+\|
+= link_to 'Back', products_path

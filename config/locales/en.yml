@@ -27,3 +27,19 @@ en:
     destroy:
       success: "Company was successfully destroyed."
       warning: "WARNING: By agreeing to destroy this company you will destroy all data related to this company. Examples: products, documents, users, etc. THIS DECISION IS NON-REVERSIBLE."
+  products:
+    create:
+      success: "Product was successfully created."
+    update:
+      success: "Product was successfully updated."
+    destroy:
+      success: "Product was successfully destroyed."
+      warning: "WARNING: By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
+  instruction:
+    create:
+      success: "Instruction was successfully created."
+    update:
+      success: "Instruction was successfully updated."
+    destroy:
+      success: "Instruction was successfully destroyed."
+      warning: "WARNING: By agreeing to destroy this instructions you will destroy all documents associated with it. These will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."

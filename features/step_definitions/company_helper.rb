@@ -14,7 +14,7 @@ def create_company
   @company = FactoryGirl.create(:company, @new_company)
 end
 
-def fill_in_company_form
+def company_form
   visit new_company_path
   fill_in 'company[name]'       , with: @new_company[:name]
   fill_in 'company[symbol]'     , with: @new_company[:symbol]

@@ -21,3 +21,5 @@
 = link_to 'Destroy', @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }
 \|
 = link_to 'Back', companies_path
+
+= render partial: "products/list", locals: { company: @company }
