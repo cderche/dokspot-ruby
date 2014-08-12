@@ -1,0 +1,21 @@
+%h1 Listing instructions
+
+%table
+  %tr
+    %th Product
+    %th Language
+    %th
+    %th
+    %th
+
+  - @product.instructions.each do |instruction|
+    %tr
+      %td= instruction.product.name
+      %td= instruction.language.name
+      %td= link_to 'Show', instruction
+      %td= link_to 'Edit', edit_instruction_path(instruction)
+      %td= link_to 'Destroy', instruction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Instruction', new_product_instruction_path(@product) if policy(@product.instructions.build).new?

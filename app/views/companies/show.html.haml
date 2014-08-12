@@ -16,10 +16,11 @@
   %b Order email:
   = @company.order_email
 
-= link_to 'Edit', edit_company_path(@company)
+= link_to 'Edit Company', edit_company_path(@company) if policy(@company).edit?
 \|
-= link_to 'Destroy', @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }
+= link_to 'Destroy Company', @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') } if policy(@company).destroy?
 \|
 = link_to 'Back', companies_path
 
-= render partial: "products/list", locals: { company: @company }
+= render partial: "products/company_list",  locals: { company: @company }
+= render partial: "users/company_list",     locals: { company: @company }

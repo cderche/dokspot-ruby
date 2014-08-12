@@ -11,7 +11,8 @@ class CompanyPolicy
   end
 
   def show?
-    @current_user.admin? or @current_user.company == @company
+    return true if @current_user.admin?
+    @current_user.company == @company
   end
   
   def new?
@@ -27,7 +28,8 @@ class CompanyPolicy
   end
 
   def update?
-    @current_user.admin?
+    return true if @current_user.admin?
+    @current_user.company == @company and @current_user.manager?
   end
 
   def destroy?

@@ -49,3 +49,7 @@ def set_user_company
   @user.company = @company
   @user.save
 end
+
+def sign_out
+  page.driver.submit :delete, destroy_user_session_path, {}
+end

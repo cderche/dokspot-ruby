@@ -1,0 +1,8 @@
+= simple_form_for [@product, @instruction] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :language
+
+  .form-actions
+    = f.button :submit

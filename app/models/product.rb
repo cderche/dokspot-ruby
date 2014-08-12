@@ -4,7 +4,8 @@ class Product < ActiveRecord::Base
   
   scope :published, -> { where(published: true) }
   
-  belongs_to :company
+  belongs_to  :company
+  has_many    :instructions
   
   def set_default_published
     self.published ||= false

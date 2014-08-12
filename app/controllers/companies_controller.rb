@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  #after_action :verify_authorized
+  after_action :verify_authorized
 
   # GET /companies
   # GET /companies.json
@@ -12,22 +12,25 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    authorize @company
   end
 
   # GET /companies/new
   def new
+    authorize Company
     @company = Company.new
   end
 
   # GET /companies/1/edit
   def edit
+    authorize @company
   end
 
   # POST /companies
   # POST /companies.json
   def create
+    authorize Company
     @company = Company.new(company_params)
-    authorize @company
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: I18n.t('companies.success') }
@@ -42,6 +45,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
+    authorize @company
     respond_to do |format|
       if @company.update(company_params)
         format.html { redirect_to @company, notice: I18n.t('companies.updated') }
@@ -56,6 +60,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
+    authorize @company
     @company.destroy
     respond_to do |format|
       format.html { redirect_to companies_url, notice: I18n.t('companies.destroy.success') }

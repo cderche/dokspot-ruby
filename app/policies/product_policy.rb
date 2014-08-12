@@ -1,18 +1,15 @@
 class ProductPolicy
   
-  attr_reader :current_user, :product
+  attr_reader :current_user, :product, :pr
   
   def initialize(current_user, product)
     @current_user = current_user
     @product = product
   end
-  
-  def index?
-    @current_user.admin?
-  end
 
   def show?
-    #@current_user.admin? or @current_user.company == @company
+    return @product.published? if @current_user.nil?
+    @current_user.admin? or @current_user.company == @product.company
   end
   
   def new?
@@ -24,14 +21,18 @@ class ProductPolicy
   end
   
   def create?
-    @current_user.admin? or @current_user.company == @product.company
+    return true if @current_user.company == @product.company
+    @current_user.admin?
   end
 
   def update?
-    @current_user.admin? or @current_user.company == @product.company
+    return false if @current_user.nil?
+    return true if @current_user.company == @product.company
+    @current_user.admin?
   end
 
   def destroy?
+    return false if @current_user.nil?
     return true if @current_user.company == @product.company
     @current_user.admin?
   end

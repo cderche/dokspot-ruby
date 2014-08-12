@@ -6,9 +6,9 @@ class UserPolicy
     @user = model
   end
 
-  def index?
-    @current_user.admin?
-  end
+  #def index?
+  #  @current_user.admin?
+  #end
 
   def show?
     @current_user.admin? or @current_user == @user

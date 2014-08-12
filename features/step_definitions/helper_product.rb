@@ -30,6 +30,7 @@ def remove_product_name
   @new_product = @new_product.merge(name: "")
 end
 
+
 def create_company_product_set
   (1..5).each do |i|
     tmp ||= {
@@ -40,15 +41,19 @@ def create_company_product_set
   end
 end
 
-def create_company_and_product
-  create_company
+def create_product_for company
   new_product
   @new_product = @new_product.merge(company: @company)
   delete_product
   @product = FactoryGirl.create(:product, @new_product)
 end
 
-def create_product_for_company
-  create_product
-  @company.products << @product
+def create_instruction_set_for_product
+  Language.all.each do |language|
+    instruction = {
+      language: language,
+      product: @product
+    }
+    FactoryGirl.create(:instruction, instruction)
+  end
 end

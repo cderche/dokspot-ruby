@@ -1,4 +1,4 @@
-= link_to 'New Company', new_company_path
+%h1 Listing companies
 
 %table
   %tr
@@ -9,7 +9,7 @@
     %th Order email
     %th
     %th
-    %th
+    //%th
 
   - @companies.each do |company|
     %tr
@@ -20,4 +20,6 @@
       %td= company.order_email
       %td= link_to 'Show', company
       %td= link_to 'Edit', edit_company_path(company)
-      %td= link_to 'Destroy', company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }
+      //%td= link_to 'Destroy', company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }
+      
+= link_to 'New Company', new_company_path

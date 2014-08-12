@@ -24,9 +24,8 @@
 - Edit product - DONE
 - Destroy product - DONE
 
-- Create a new instruction with valid data
-- Create a new instruction with incomplete data
-- View all instructions for a product
+- Create a new instruction with valid data - DONE
+- View all instructions for a product - DONE
 - View instruction details
 - Edit instruction
 - Destroy instruction
