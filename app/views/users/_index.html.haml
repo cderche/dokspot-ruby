@@ -1,0 +1,11 @@
+%h1 Listing users
+
+%table
+  %tbody
+    - @company.users.each do |user|
+      %tr
+        = render user
+        
+%br
+
+= link_to "New User", new_user_invitation_path

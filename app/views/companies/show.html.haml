@@ -20,7 +20,7 @@
 \|
 = link_to 'Destroy Company', @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') } if policy(@company).destroy?
 \|
-= link_to 'Back', companies_path
+= link_to 'Back', companies_path if policy(Company).index?
 
-= render partial: "products/company_list",  locals: { company: @company }
-= render partial: "users/company_list",     locals: { company: @company }
+= render partial: "products/index",  locals: { company: @company }
+= render partial: "users/index",     locals: { company: @company }

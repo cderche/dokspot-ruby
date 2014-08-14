@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811074920) do
+ActiveRecord::Schema.define(version: 20140813183318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20140811074920) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notifications", force: true do |t|
+    t.string   "content"
+    t.string   "category"
+    t.integer  "product_id"
+    t.date     "expiration"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["product_id"], name: "index_notifications_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"

@@ -1,19 +1,5 @@
 Feature: Company Authentication and Authorization
 
-### INDEX ###
-
-  Scenario Outline: User tries to visit companies index page
-    Given I am a <role>
-    And a set of companies exist
-    When I visit the companies index page
-    Then I should see <response>
-    
-  Examples:
-    | role      | response                                            |
-    | admin     | the set of companies                                |
-    | manager   | "Access denied."                                    |
-    | operator  | "Access denied."                                    |
-    | visitor   | "You need to sign in or sign up before continuing." |
 
 ### SHOW ###
     

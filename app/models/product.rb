@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   
   belongs_to  :company
   has_many    :instructions
+  has_many    :notifications
   
   def set_default_published
     self.published ||= false

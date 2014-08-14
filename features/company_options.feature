@@ -93,3 +93,16 @@ Feature: Company options
     | manager   | "Access denied."                                    |
     | operator  | "Access denied."                                    |
     | visitor   | "You need to sign in or sign up before continuing." |
+  
+  Scenario Outline: Should see company names
+    Given I am a <role>
+    And a set of companies exist
+    When I visit the companies index page
+    Then I should see <response>
+    
+  Examples:
+    | role      | response                                            |
+    | admin     | the company names and links                         |
+    | manager   | "Access denied."                                    |
+    | operator  | "Access denied."                                    |
+    | visitor   | "You need to sign in or sign up before continuing." |

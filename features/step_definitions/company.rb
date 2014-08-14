@@ -98,3 +98,29 @@ Then(/^I should not see the company product names$/) do
     expect(page).to_not have_content product.name
   end
 end
+
+Then(/^I should see the company information and links$/) do
+  Company.all.each do |company|
+    expect(page).to have_content company.name
+    expect(page).to have_content company.symbol
+    expect(page).to have_link company.website, href: company.website
+    expect(page).to have_link "Show", href: company_path(company)
+  end
+end
+
+Then(/^I should see the company product list$/) do
+  @company.products.each do |product|
+    expect(page).to have_content product.name
+    expect(page).to have_content product.uuid
+    expect(page).to have_link "Show", href: product_path(product)
+  end
+end
+
+Then(/^I should see the company user list$/) do
+  save_and_open_page
+  @company.users.each do |user|
+    expect(page).to have_content user.email
+    expect(page).to have_link I18n.t('show'),   href: user_path(user)
+    expect(page).to have_link I18n.t('delete'), href: user_path(user) if !@user.operator? or @user != user
+  end
+end

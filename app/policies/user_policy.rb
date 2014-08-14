@@ -11,7 +11,7 @@ class UserPolicy
   #end
 
   def show?
-    @current_user.admin? or @current_user == @user
+    @current_user.admin? or @current_user.company == @user.company
   end
 
   def update?
@@ -20,6 +20,7 @@ class UserPolicy
 
   def destroy?
     return false if @current_user == @user
+    return true if @current_user.manager? and @current_user.company == @user.company
     @current_user.admin?
   end
 

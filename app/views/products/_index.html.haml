@@ -1,0 +1,21 @@
+%h1 Listing products
+
+%table
+  %tr
+    %th Name
+    %th Uuid
+    %th Published
+    %th
+
+  - @company.products.each do |product|
+    %tr
+      %td= product.name
+      %td= product.uuid
+      %td= product.published
+      %td= link_to 'Show', product if policy(product).show?
+      //%td= link_to 'Edit Product', edit_product_path(product)# if policy(product).edit?
+      //%td= link_to 'Destroy Product', product, :method => :delete, :data => { :confirm => 'Are you sure?' } #if policy(product).destroy?
+
+%br
+
+= link_to 'New Product', new_company_product_path(@company) if policy(@company.products.build).new?

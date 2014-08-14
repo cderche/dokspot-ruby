@@ -1,6 +1,6 @@
 class ProductPolicy
   
-  attr_reader :current_user, :product, :pr
+  attr_reader :current_user, :product
   
   def initialize(current_user, product)
     @current_user = current_user

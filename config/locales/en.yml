@@ -20,7 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  new:  "New"
+  edit: "Edit"
+  show: "Show"
+  delete: "Delete"
   companies:
     success: "Company was successfully created."
     updated: "Company was successfully updated."

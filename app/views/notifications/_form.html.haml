@@ -1,0 +1,12 @@
+= simple_form_for [@product, @notification] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :content
+    = f.input :category
+    //= f.association :product
+    = f.input :expiration
+    = f.input :published
+
+  .form-actions
+    = f.button :submit

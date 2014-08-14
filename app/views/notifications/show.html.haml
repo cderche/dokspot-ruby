@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @notification.content
+%p
+  %b Category:
+  = @notification.category
+%p
+  %b Product:
+  = @notification.product
+%p
+  %b Expiration:
+  = @notification.expiration
+%p
+  %b Published:
+  = @notification.published
+
+= link_to t('Edit'), edit_notification_path(@notification)
+\|
+= link_to t('Back'), @notification.product

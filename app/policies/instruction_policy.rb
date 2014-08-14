@@ -7,9 +7,10 @@ class InstructionPolicy
     @instruction = instruction
   end
   
-  #def index?
-  #  @current_user.admin?
-  #end
+  def index?
+    return true if @current_user.nil?
+    @current_user.admin? or @current_user.company == @instruction.product.company
+  end
 
   def show?
     #@current_user.admin? or @current_user.company == @company

@@ -1,5 +1,7 @@
 %p#notice= notice
 
+= render partial: 'notifications/display', locals: { product: @product }
+
 %p
   %b Name:
   = @product.name
@@ -19,4 +21,5 @@
 \|
 = link_to 'Back', products_path
 
-= render "instructions/list"
+= render partial: "instructions/index", locals: { product: @product } if policy(Instruction).index?
+= render partial: "notifications/index", locals: { product: @product } if policy(Notification).index?

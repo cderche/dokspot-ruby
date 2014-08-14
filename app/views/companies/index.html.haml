@@ -1,3 +1,18 @@
 %h1 Listing companies
 
-= render 'companies/list'
+%table
+  %tr
+    %th Name
+    %th Symbol
+    %th Website
+    %th
+    %th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.name
+      %td= company.symbol
+      %td= link_to company.website, company.website
+      %td= link_to t('show'), company if policy(company).show?
+      
+= link_to t('new'), new_company_path if policy(Company).new?
