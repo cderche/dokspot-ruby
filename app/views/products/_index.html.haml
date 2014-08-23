@@ -18,4 +18,4 @@
 
 %br
 
-= link_to 'New Product', new_company_product_path(@company) if policy(@company.products.build).new?
+= link_to t('new.product'), new_company_product_path(@company) if policy(@company.products.build).new?

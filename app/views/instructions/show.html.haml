@@ -2,11 +2,13 @@
 
 %p
   %b Product:
-  = @instruction.product
+  = @instruction.product.name
 %p
   %b Language:
-  = @instruction.language
+  = @instruction.language.name
 
-= link_to 'Edit', [:edit, @instruction]#edit_instruction_path(@instruction)
+= link_to t('edit.instruction'), [:edit, @instruction]#edit_instruction_path(@instruction)
 \|
-= link_to 'Back', product_instructions_path(@product)
+= link_to t('delete.instruction'), @instruction, method: :delete, data: { confirm: I18n.t('instructions.destroy.warning') } if policy(@instruction).destroy?
+
+= render partial: "documents/index", locals: { instruction: @instruction } if policy(Document.new(instruction: @instruction)).index?

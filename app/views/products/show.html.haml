@@ -15,11 +15,11 @@
   %b Company:
   = @product.company.name
 
-= link_to 'Edit Product', edit_product_path(@product) if policy(@product).edit?
+= link_to t('edit.product'), edit_product_path(@product) if policy(@product).edit?
 \|
-= link_to 'Destroy Product', @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') } if policy(@product).destroy?
+= link_to t('delete.product'), @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') } if policy(@product).destroy?
 \|
-= link_to 'Back', products_path
+/= link_to 'Back', products_path
 
-= render partial: "instructions/index", locals: { product: @product } if policy(Instruction).index?
-= render partial: "notifications/index", locals: { product: @product } if policy(Notification).index?
+= render partial: "instructions/index", locals: { product: @product } if policy(Instruction.new(product: @product)).index?
+= render partial: "notifications/index", locals: { product: @product }

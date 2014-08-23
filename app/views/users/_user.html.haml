@@ -3,6 +3,4 @@
 %td
   = user.role
 %td
-  = link_to t('show'), user if policy(user).show?
-%td
   = link_to t('delete'), user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: 'button-xs' if policy(user).destroy?

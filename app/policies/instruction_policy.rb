@@ -9,16 +9,17 @@ class InstructionPolicy
   
   def index?
     return true if @current_user.nil?
-    @current_user.admin? or @current_user.company == @instruction.product.company
+    @current_user.admin? or current_user.company == @instruction.product.company
   end
 
   def show?
-    #@current_user.admin? or @current_user.company == @company
+    return (@instruction.published? and @instruction.product.published?) if @current_user.nil?
+    @current_user.admin? or @current_user.company == @instruction.product.company
   end
   
   def new?
-    #@current_user.nil?
-    create?
+    return false if @current_user.nil?
+    @current_user.admin? or @current_user.manager? or current_user.operator?
   end
   
   def edit?
@@ -35,6 +36,7 @@ class InstructionPolicy
   end
 
   def destroy?
+    return false if @current_user.nil?
     return true if @current_user.company == @instruction.product.company
     @current_user.admin?
   end

@@ -5,23 +5,20 @@ class UserPolicy
     @current_user = current_user
     @user = model
   end
-
-  #def index?
-  #  @current_user.admin?
-  #end
-
-  def show?
-    @current_user.admin? or @current_user.company == @user.company
+  
+  def edit?
+    @current_user == @user
   end
 
   def update?
-    @current_user.admin?
+    return true if @current_user.admin?
+    @current_user.manager? and @user.operator? and @user.company == @current_user.company
   end
 
   def destroy?
-    return false if @current_user == @user
-    return true if @current_user.manager? and @current_user.company == @user.company
-    @current_user.admin?
+    return false  if @current_user == @user
+    return true   if @current_user.admin?
+    @current_user.manager? and @user.operator? and @user.company == @current_user.company
   end
 
 end

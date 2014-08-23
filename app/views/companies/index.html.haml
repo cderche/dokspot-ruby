@@ -13,6 +13,6 @@
       %td= company.name
       %td= company.symbol
       %td= link_to company.website, company.website
-      %td= link_to t('show'), company if policy(company).show?
+      %td= link_to t('show.company'), company if policy(company).show?
       
-= link_to t('new'), new_company_path if policy(Company).new?
+= link_to t('new.company'), new_company_path if policy(Company).new?

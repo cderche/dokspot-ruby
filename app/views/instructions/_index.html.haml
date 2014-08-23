@@ -2,20 +2,26 @@
 
 %table
   %tr
-    %th Product
     %th Language
     %th
     %th
     %th
 
-  - product.instructions.each do |instruction|
-    %tr
-      %td= instruction.product.name
-      %td= instruction.language.name
-      %td= link_to t('show'), instruction
-      %td= link_to t('edit'), edit_instruction_path(instruction)
-      %td= link_to t('delete'), instruction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - if user_signed_in?
+    - product.instructions.each do |instruction|
+      %tr
+        %td= instruction.language.name
+        %td= link_to t('instructions.primary'), instruction_primary_path(instruction)
+        %td= link_to t('instructions.history'), instruction_path(instruction)
+        %td= link_to t('edit'), edit_instruction_path(instruction)
+        %td= link_to t('delete'), instruction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - else
+    - product.instructions.published.each do |instruction|
+      %tr
+        %td= instruction.language.name
+        %td= link_to t('instructions.primary'), instruction_primary_path(instruction)
+        %td= link_to t('instructions.history'), instruction_path(instruction)
 
 %br
 
-= link_to t('new'), new_product_instruction_path(product) if policy(product.instructions.build).new?
+= link_to t('new'), new_product_instruction_path(product) if policy(Instruction).new?

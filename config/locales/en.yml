@@ -20,15 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  new:  "New"
-  edit: "Edit"
-  show: "Show"
-  delete: "Delete"
+  new:
+    company: "New Company"
+    product: "New Product"
+  edit:
+    company: "Edit Company"
+    product: "Edit Product"
+    instruction:  "Edit Instruction"
+  show:
+    product: "Show"
+    company: "Show"
+  delete:
+    company: "Delete Company"
+    product: "Delete Product"
+    instruction: "Delete Instruction"
   companies:
     success: "Company was successfully created."
     updated: "Company was successfully updated."
     destroy:
-      success: "Company was successfully destroyed."
+      success: "Company was successfully deleted."
       warning: "WARNING: By agreeing to destroy this company you will destroy all data related to this company. Examples: products, documents, users, etc. THIS DECISION IS NON-REVERSIBLE."
   products:
     create:
@@ -39,6 +49,8 @@ en:
       success: "Product was successfully destroyed."
       warning: "WARNING: By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
   instructions:
+    primary: "View Primary"
+    history: "History"
     create:
       success: "Instruction was successfully created."
     update:

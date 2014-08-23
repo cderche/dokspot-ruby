@@ -1,0 +1,10 @@
+= simple_form_for [@instruction, @document] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :comment
+    = f.file_field :file
+    = f.input :version
+
+  .form-actions
+    = f.button :submit

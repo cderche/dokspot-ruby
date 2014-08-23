@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Comment:
+  = @document.comment
+%p
+  %b File:
+  = @document.file
+%p
+  %b Version:
+  = @document.version
+
+= link_to 'Edit', edit_document_path(@document)
+\|
+= link_to 'Back', instruction_documents_path(@document.instruction)

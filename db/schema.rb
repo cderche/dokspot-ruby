@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813183318) do
+ActiveRecord::Schema.define(version: 20140820124117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,23 @@ ActiveRecord::Schema.define(version: 20140813183318) do
     t.boolean  "published"
   end
 
+  create_table "documents", force: true do |t|
+    t.string   "comment"
+    t.string   "file"
+    t.string   "version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "instruction_id"
+  end
+
+  add_index "documents", ["instruction_id"], name: "index_documents_on_instruction_id", using: :btree
+
   create_table "instructions", force: true do |t|
     t.integer  "product_id"
     t.integer  "language_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published"
   end
 
   add_index "instructions", ["language_id"], name: "index_instructions_on_language_id", using: :btree

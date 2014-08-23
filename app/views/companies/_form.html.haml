@@ -2,8 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :symbol
+    = f.input :name  if current_user.admin?
+    = f.input :symbol if current_user.admin?
     = f.input :website
     = f.input :contact, as: :email
     = f.input :order_email, as: :email

@@ -1,0 +1,47 @@
+sign_in                 -- COMPLETE
+sign_out                -- COMPLETE
+user_edit               -- 
+invite                  -- 
+users_show              -- COMPLETE
+
+companies_show          -- COMPLETE
+company_show            -- COMPLETE
+company_edit            -- COMPLETE
+company_delete          -- COMPLETE
+company_new             -- COMPLETE
+
+products_show           -- COMPLETE
+product_show            -- COMPLETE
+product_edit            -- COMPLETE
+product_delete          -- COMPLETE
+product_new             -- COMPLETE
+
+instructions_show       -- COMPLETE
+instruction_show        -- COMPLETE
+instruction_edit
+instruction_delete
+instruction_new
+
+documents_show -- in instruction page
+document_show -- include 'view latest'
+download
+document_delete
+document_new
+
+qr_show -- in product page
+qr_edit
+qr_delete
+qr_new
+
+orders_show -- in company page
+order_show
+order_edit
+order_delete
+order_new
+
+search
+
+----
+
+1. What happens if I lose my dokspot code?
+  - Phone number on the website?

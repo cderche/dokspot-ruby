@@ -1,6 +1,9 @@
 class InstructionsController < ApplicationController
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:new, :create, :index]
+  after_action :verify_authorized
+
+  skip_before_filter :authenticate_user!, only: :show
 
   # GET /instructions/1
   # GET /instructions/1.json
@@ -18,6 +21,7 @@ class InstructionsController < ApplicationController
 
   # GET /instructions/1/edit
   def edit
+    authorize @instruction
   end
 
   # POST /instructions
@@ -25,6 +29,7 @@ class InstructionsController < ApplicationController
   def create
     #@instruction = Instruction.new(instruction_params)
     @instruction = @product.instructions.build(instruction_params)
+    authorize @instruction
 
     respond_to do |format|
       if @instruction.save
@@ -40,6 +45,7 @@ class InstructionsController < ApplicationController
   # PATCH/PUT /instructions/1
   # PATCH/PUT /instructions/1.json
   def update
+    authorize @instruction
     respond_to do |format|
       if @instruction.update(instruction_params)
         format.html { redirect_to @instruction, notice: I18n.t('instructions.update.success') }
@@ -59,6 +65,13 @@ class InstructionsController < ApplicationController
       format.html { redirect_to instructions_url, notice: I18n.t('instructions.destroy.success') }
       format.json { head :no_content }
     end
+  end
+  
+  def primary_document
+    @document = @instruction.primary
+    authorize @document
+    data = open(@document.file.url)
+    send_data data.read, filename: fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
   end
 
   private

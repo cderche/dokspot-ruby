@@ -8,7 +8,7 @@
   = @company.symbol
 %p
   %b Website:
-  = @company.website
+  = link_to @company.website, @company.website
 %p
   %b Contact:
   = @company.contact
@@ -16,9 +16,9 @@
   %b Order email:
   = @company.order_email
 
-= link_to 'Edit Company', edit_company_path(@company) if policy(@company).edit?
+= link_to t('edit.company'), edit_company_path(@company) if policy(@company).edit?
 \|
-= link_to 'Destroy Company', @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') } if policy(@company).destroy?
+= link_to t('delete.company'), @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') } if policy(@company).destroy?
 \|
 = link_to 'Back', companies_path if policy(Company).index?
 
