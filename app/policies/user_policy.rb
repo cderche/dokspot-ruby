@@ -6,6 +6,10 @@ class UserPolicy
     @user = model
   end
   
+  def show?
+    return true
+  end
+  
   def edit?
     @current_user == @user
   end

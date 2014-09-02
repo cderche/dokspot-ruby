@@ -4,7 +4,13 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def show
+    puts "HEELO WOOOORLD"
     authorize @user
+    if current_user.admin?
+      redirect_to companies_path
+    else
+      redirect_to current_user.company
+    end
   end
   
   def edit

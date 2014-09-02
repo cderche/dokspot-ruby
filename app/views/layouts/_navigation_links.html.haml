@@ -1,12 +1,14 @@
 -# add navigation links to this file
 - if user_signed_in?
   -	if current_user.admin?
-    %li= link_to 'Companies', :companies
+    %li
+      = link_to :companies do
+        %span.glyphicon.glyphicon-th
   - else
     %li
       - if policy(current_user.company).show?
         = link_to current_user.company do
-          %span.glyphicon.glyphicon-home
+          %span.glyphicon.glyphicon-th
   
   %li
     = link_to :destroy_user_session, method: :delete do

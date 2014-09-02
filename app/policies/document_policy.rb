@@ -40,14 +40,15 @@ class DocumentPolicy
     @current_user.admin? and !@document.primary?
   end
   
-  def primary?
-    download?
-  end
-  
   def download?
+    return false if @document.nil?
     return true if @current_user.nil? and (@document.instruction.published? and @document.instruction.product.published?)
     return true if @current_user.company == @document.instruction.product.company
     @current_user.admin?
+  end
+  
+  def primary?
+    download?
   end
   
   def make_primary?
