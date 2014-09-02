@@ -149,6 +149,22 @@ When(/^I EDIT the instruction$/) do
   click_button 'Update Instruction'
 end
 
+When(/^I click on the DELETE instruction button$/) do
+  click_link I18n.t('delete.instruction'), href: instruction_path(@instruction)
+end
+
+When(/^I click on the NEW instruction button$/) do
+  visit product_path(@product)
+  click_link I18n.t('new.instruction'), href: new_product_instruction_path(@product)
+end
+
+When(/^I create a instruction$/) do
+  language = FactoryGirl.create(:language, { name: "English" })
+  visit new_product_instruction_path(@product)
+  select "English", from: 'instruction_language_id'
+  click_button 'Create Instruction'
+end
+
 ### THEN ###
 
 Then(/^I should see ALL instructions$/) do
@@ -197,4 +213,17 @@ end
 
 Then(/^I should see a instruction successfully edited message$/) do
   expect(page).to have_content I18n.t('instructions.update.success')
+end
+
+Then(/^I should see the instruction successfully deleted message$/) do
+  expect(page).to have_content I18n.t('instructions.destroy.success')
+end
+
+Then(/^I should see the NEW instruction page$/) do
+  expect(page).to have_content 'New instruction'
+  find_field 'instruction_language_id'
+end
+
+Then(/^I should see a instruction successfully created message$/) do
+  expect(page).to have_content I18n.t('instructions.create.success')
 end

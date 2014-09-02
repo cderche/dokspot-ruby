@@ -1,25 +1,43 @@
-%p#notice= notice
+= render 'breadcrumbs'
 
 = render partial: 'notifications/display', locals: { product: @product }
 
-%p
-  %b Name:
-  = @product.name
-%p
-  %b Uuid:
-  = @product.uuid
-%p
-  %b Published:
-  = @product.published
-%p
-  %b Company:
-  = @product.company.name
+.page-header
+  %h1
+    = @product.name
+    - if user_signed_in?
+      - if @product.published?
+        %span.glyphicon.glyphicon-ok.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Published"}
+      - else
+        %span.glyphicon.glyphicon-remove.text-danger{data:{toggle:"tooltip",placement:"right"}, title:"Not Published"}
+    %br
+    %small
+      = @product.uuid
+  %h4
+    - if user_signed_in?  
+      = link_to @product.company.name, @product.company if policy(@product.company).show?
+    - else
+      = @product.company.name
 
-= link_to t('edit.product'), edit_product_path(@product) if policy(@product).edit?
-\|
-= link_to t('delete.product'), @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') } if policy(@product).destroy?
-\|
-/= link_to 'Back', products_path
+.text-right
+  .btn-group.btn-group-sm
+    = link_to t('edit.product'), edit_product_path(@product), class: 'btn btn-warning' if policy(@product).edit?
+    = link_to t('delete.product'), @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') }, class: 'btn btn-danger' if policy(@product).destroy?
+      
+%br
 
-= render partial: "instructions/index", locals: { product: @product } if policy(Instruction.new(product: @product)).index?
-= render partial: "notifications/index", locals: { product: @product }
+/ NAV TABS
+%ul.nav.nav-tabs{role: 'tablist'}
+  %li.active
+    = link_to t('keywords.instructions'), '#instructions', role: 'tab', data: {toggle: 'tab'}
+  - if user_signed_in?
+    %li
+      = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}
+    
+/ TAB PANES
+%div.tab-content
+  %div.tab-pane.active#instructions
+    = render partial: "instructions/index",  locals: { product: @product } if policy(Instruction.new(product: @product)).index?
+  - if user_signed_in?
+    %div.tab-pane#notifications
+      = render partial: "notifications/index",  locals: { product: @product }

@@ -20,5 +20,14 @@ class UserPolicy
     return true   if @current_user.admin?
     @current_user.manager? and @user.operator? and @user.company == @current_user.company
   end
+  
+  def promote?
+    return true if @current_user.admin? and @user.operator?
+    @current_user.manager? and @user.operator? and @user.company == @current_user.company
+  end
+  
+  def demote?
+    return true if @current_user.admin? and @user.manager?
+  end
 
 end

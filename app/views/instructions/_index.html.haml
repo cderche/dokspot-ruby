@@ -1,27 +1,30 @@
-%h1 Listing instructions
+%br
+.text-right
+  = link_to t('new.instruction'), new_product_instruction_path(product), class: 'btn btn-success btn-sm' if policy(Instruction.new(product: product)).new?
+%br
 
-%table
+%table.table.table-hover
   %tr
     %th Language
     %th
     %th
     %th
+    - if user_signed_in?
+      %th
 
   - if user_signed_in?
     - product.instructions.each do |instruction|
       %tr
         %td= instruction.language.name
-        %td= link_to t('instructions.primary'), instruction_primary_path(instruction)
-        %td= link_to t('instructions.history'), instruction_path(instruction)
-        %td= link_to t('edit'), edit_instruction_path(instruction)
-        %td= link_to t('delete'), instruction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).primary?
+        %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
+        %td= link_to t('keywords.edit'), edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' if policy(instruction).edit?
+        %td= link_to t('keywords.delete'), instruction, :method => :delete, :data => { confirm: t('instructions.destroy.warning') }, class: 'btn btn-danger btn-xs' if policy(instruction).destroy?
   - else
     - product.instructions.published.each do |instruction|
       %tr
         %td= instruction.language.name
-        %td= link_to t('instructions.primary'), instruction_primary_path(instruction)
-        %td= link_to t('instructions.history'), instruction_path(instruction)
+        %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).show?
+        %td= link_to t('instructions.history'), instruction_path(instruction), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
 
 %br
-
-= link_to t('new'), new_product_instruction_path(product) if policy(Instruction).new?

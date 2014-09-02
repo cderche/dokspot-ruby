@@ -20,9 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  keywords:
+    new:        "New"
+    edit:       "Edit"
+    companies:  "Companies"
+    company:    "Company"
+    promote: "Promote"
+    demote: "Demote"
   new:
     company: "New Company"
     product: "New Product"
+    instruction: "New Instruction"
+    document: "Add Version"
+    notification: "New Notification"
   edit:
     company: "Edit Company"
     product: "Edit Product"
@@ -34,7 +44,9 @@ en:
     company: "Delete Company"
     product: "Delete Product"
     instruction: "Delete Instruction"
+    document: "Delete"
   companies:
+    plural: "Companies"
     success: "Company was successfully created."
     updated: "Company was successfully updated."
     destroy:
@@ -58,3 +70,9 @@ en:
     destroy:
       success: "Instruction was successfully destroyed."
       warning: "WARNING: By agreeing to destroy this instructions you will destroy all documents associated with it. These will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
+  documents:
+    download: "Download"
+    destroy:
+      success: "Document was successfully destroyed."
+    create:
+      success: "Document was successfully created."

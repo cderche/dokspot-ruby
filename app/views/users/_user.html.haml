@@ -3,4 +3,7 @@
 %td
   = user.role
 %td
-  = link_to t('delete'), user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: 'button-xs' if policy(user).destroy?
+  = link_to t('keywords.promote'), user_promote_path(user), class: 'btn btn-warning btn-xs' if policy(user).promote?
+  = link_to t('keywords.demote'), user_demote_path(user), class: 'btn btn-warning btn-xs' if policy(user).demote?
+%td
+  = link_to t('keywords.delete'), user_path(user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-xs' if policy(user).destroy?

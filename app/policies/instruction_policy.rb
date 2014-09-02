@@ -32,6 +32,7 @@ class InstructionPolicy
   end
 
   def update?
+    return false if @current_user.nil?
     @current_user.admin? or @current_user.company == @instruction.product.company
   end
 
@@ -39,6 +40,10 @@ class InstructionPolicy
     return false if @current_user.nil?
     return true if @current_user.company == @instruction.product.company
     @current_user.admin?
+  end
+  
+  def primary?
+    show?
   end
   
 end

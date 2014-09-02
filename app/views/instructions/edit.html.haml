@@ -1,10 +1,12 @@
-%h1
-  Editing 
-  = @instruction.language.name
-  Instructions
+= render 'breadcrumbs'
 
-= render 'form'
+.row.xs-margin-top
+  .col-xs-12.col-sm-8.col-md-6.col-lg-4.col-sm-offset-2.col-md-offset-3.col-lg-offset-4
+  
+    .panel.panel-default
 
-= link_to 'Show', @instruction
-\|
-= link_to 'Back', product_instructions_path(@instruction.product)
+      .panel-heading
+        %h1.panel-title Edit instruction
+          
+      .panel-body
+        = render 'form'

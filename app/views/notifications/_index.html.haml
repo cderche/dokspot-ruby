@@ -1,28 +1,27 @@
-%h1 Listing notifications
+%br
+.text-right
+  = link_to t('new.notification'), new_product_notification_path(product), class: 'btn btn-success btn-sm' if policy(Notification.new(product: product)).new?
+%br
 
-%table
+%table.table.table-hover
   %tr
     %th Content
     %th Category
-    %th Product
-    %th Expiration
     %th Published
-    %th
     %th
     %th
   
   - product.notifications.each do |notification|
-    %tr
+    %tr{class: notification.category}
       %td= notification.content
-      %td= notification.category
-      %td= notification.product
-      %td= notification.expiration
-      %td= notification.published
-      %td= notification.save
-      //%td= link_to t('show'), notification_path(notification) if policy(notification).show?
-      //%td= link_to t('edit'), edit_notification_path(notification)
-      //%td= link_to t('destroy'), notification, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td{class: "text-#{notification.category}"}
+        = notification.category
+      %td
+        - if notification.published?
+          %span.glyphicon.glyphicon-ok.text-success
+        - else
+          %span.glyphicon.glyphicon-remove.text-danger
+      %td= link_to t('keywords.edit'), edit_notification_path(notification), class: 'btn btn-warning btn-xs'
+      %td= link_to t('keywords.delete'), notification, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs'
 
 %br
-
-= link_to t('new'), new_product_notification_path(product) if policy(product.notifications.build).new?

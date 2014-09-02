@@ -2,7 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :language
+    .form-group
+      = f.association :language, input_html: { autofocus: true, class: 'form-control' }
 
   .form-actions
-    = f.button :submit
+    .text-center
+      = f.button :submit, class: 'btn-success'

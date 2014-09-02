@@ -1,7 +1,12 @@
-%h1 Editing notification
+= render 'breadcrumbs'
 
-= render 'form'
+.row.xs-margin-top
+  .col-xs-12.col-sm-8.col-md-6.col-lg-4.col-sm-offset-2.col-md-offset-3.col-lg-offset-4
+  
+    .panel.panel-default
 
-= link_to t('show'), @notification
-\|
-= link_to t('back'), notifications_path
+      .panel-heading
+        %h1.panel-title Edit notification
+          
+      .panel-body
+        = render 'form'

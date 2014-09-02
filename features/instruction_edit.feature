@@ -69,7 +69,6 @@ Feature: Edit Instruction
       | visitor   | "unpublished" | "a"   | "published"   | "You need to sign in or sign up before continuing." |
       | visitor   | "unpublished" | "a"   | "unpublished" | "You need to sign in or sign up before continuing." |
    
-  @solo   
   Scenario Outline: Edit instruction
     Given I am a <role>
     And there is a <p_pub> product belonging to <owner> company has a <i_pub> instruction

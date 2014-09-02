@@ -2,11 +2,20 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name  if current_user.admin?
-    = f.input :symbol if current_user.admin?
-    = f.input :website
-    = f.input :contact, as: :email
-    = f.input :order_email, as: :email
+  
+    .form-group
+      = f.input :name, input_html: { class: 'form-control', autofocus: true } if current_user.admin?
+    .form-group
+      = f.input :symbol, input_html: { class: 'form-control' } if current_user.admin?
+    .form-group  
+      = f.input :website, input_html: { class: 'form-control' }
+    .form-group
+      = f.input :contact, as: :email, input_html: { class: 'form-control' }
+    .form-group
+      = f.input :order_email, as: :email, input_html: { class: 'form-control' }
+  
+  %br
 
   .form-actions
-    = f.button :submit
+    .text-center
+      = f.button :submit, class: 'btn-success'

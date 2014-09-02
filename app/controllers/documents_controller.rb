@@ -2,7 +2,7 @@ require 'open-uri'
 
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_action :set_instruction, only: [:new, :create, :index]
+  before_action :set_instruction, except: [:show, :edit, :update, :destroy, :download] #only: [:new, :create, :index]
 
   # GET /documents
   # GET /documents.json
@@ -33,7 +33,7 @@ class DocumentsController < ApplicationController
     authorize @document
     respond_to do |format|
       if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.html { redirect_to @instruction, notice: t('documents.create.success') }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new }
@@ -61,9 +61,10 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1.json
   def destroy
     authorize @document
+    instruction = @document.instruction
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to instruction, notice: t('documents.destroy.success') }
       format.json { head :no_content }
     end
   end

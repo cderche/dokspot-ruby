@@ -1,11 +1,14 @@
-%h1 Listing users
-
-%table
+%br
+.text-right
+  = link_to "New User", new_user_invitation_path, class: 'btn btn-success btn-sm'
+%br
+%table.table.table-hover
+  %tr
+    %th Email
+    %th Role
+    %th
+    %th
   %tbody
     - @company.users.each do |user|
       %tr
         = render user
-        
-%br
-
-= link_to "New User", new_user_invitation_path

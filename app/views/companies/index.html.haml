@@ -1,11 +1,20 @@
-%h1 Listing companies
+= render 'breadcrumbs'
 
-%table
+.page-header
+  %h1
+    = t('keywords.companies')
+
+.text-right
+  = link_to t('new.company'), new_company_path, class: 'btn btn-success btn-sm' if policy(Company).new?
+
+%br
+
+
+%table.table.table-hover
   %tr
     %th Name
     %th Symbol
     %th Website
-    %th
     %th
 
   - @companies.each do |company|
@@ -13,6 +22,4 @@
       %td= company.name
       %td= company.symbol
       %td= link_to company.website, company.website
-      %td= link_to t('show.company'), company if policy(company).show?
-      
-= link_to t('new.company'), new_company_path if policy(Company).new?
+      %td= link_to t('keywords.show'), company, class: 'btn btn-primary btn-xs' if policy(company).show?

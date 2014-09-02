@@ -1,9 +1,12 @@
-%h1 Listing documents
+%br
 
-%table
+.text-right
+  = link_to t('new.document'), new_instruction_document_path(instruction), class: "btn btn-success btn-xs" if policy(Document.new(instruction: instruction)).new?
+
+%br
+
+%table.table.table-hover
   %tr
-    %th Comment
-    %th File
     %th Version
     %th
     %th
@@ -11,12 +14,10 @@
 
   - instruction.documents.each do |document|
     %tr
-      %td= document.comment
-      %td= document.file
-      %td= document.version
-      %td= link_to t('open'), document_download_path(document), class: 'download' if policy(document).download?
-      %td= link_to t('delete'), document, :method => :delete, :data => { :confirm => 'Are you sure?' } if policy(document).destroy?
-
-%br
-
-= link_to t('new'), new_instruction_document_path(instruction) if policy(Document.new(instruction: instruction)).new?
+      %td
+        = document.version
+      %td
+        - if document.primary?
+          %span.glyphicon.glyphicon-star.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Primary"}
+      %td= link_to t('documents.download'), document_download_path(document), class: "download btn btn-primary btn-xs" if policy(document).download?
+      %td= link_to t('delete.document'), document, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs' if policy(document).destroy?

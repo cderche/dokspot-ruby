@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class InstructionsController < ApplicationController
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:new, :create, :index]
@@ -60,14 +62,17 @@ class InstructionsController < ApplicationController
   # DELETE /instructions/1
   # DELETE /instructions/1.json
   def destroy
+    authorize @instruction
+    product = @instruction.product
     @instruction.destroy
     respond_to do |format|
-      format.html { redirect_to instructions_url, notice: I18n.t('instructions.destroy.success') }
+      format.html { redirect_to product, notice: I18n.t('instructions.destroy.success') }
       format.json { head :no_content }
     end
   end
   
-  def primary_document
+  def primary
+    @instruction = Instruction.find(params[:instruction_id])
     @document = @instruction.primary
     authorize @document
     data = open(@document.file.url)

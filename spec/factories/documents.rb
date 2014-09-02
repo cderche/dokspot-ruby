@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :document do
     comment "MyString"
-    file "MyString"
     version "MyString"
   end
 end

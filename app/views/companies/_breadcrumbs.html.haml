@@ -1,0 +1,27 @@
+.xs-margin-top
+  %ol.breadcrumb
+    
+    - if action_name == 'index'
+      %li.active
+        = link_to t('keywords.companies'), companies_path if policy(Company).index?
+    
+    - elsif action_name == 'show'
+      - if current_user.admin?
+        %li
+          = link_to t('keywords.companies'), companies_path if policy(Company).index?
+      %li.active
+        = link_to @company.name, @company if policy(@company).show?
+    
+    - elsif action_name == 'new'
+      %li
+        = link_to t('keywords.companies'), companies_path if policy(Company).index?
+      %li.active
+        = link_to t('keywords.new'), new_company_path if policy(Company).new?
+    
+    - elsif action_name == 'edit'
+      %li
+        = link_to t('keywords.companies'), companies_path if policy(Company).index?
+      %li
+        = link_to @company.name, @company if policy(@company).show?
+      %li.active
+        = link_to t('keywords.edit'), edit_company_path(@company) if policy(@company).edit?

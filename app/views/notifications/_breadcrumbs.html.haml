@@ -1,0 +1,13 @@
+.xs-margin-top
+  %ol.breadcrumb
+
+    - if action_name == 'new'
+      %li
+        = link_to @product.name, @product if policy(@product).show?
+      %li.active
+      = link_to t('new.notification'), new_product_notification_path(@product) if policy(Notification.new(product: @product)).new?
+    - elsif action_name == 'edit'
+      %li
+        = link_to @notification.product.name, @notification.product if policy(@notification.product).show?
+      %li.active
+        = link_to t('edit.notification'), edit_notification_path(@notification) if policy(@notification).edit?

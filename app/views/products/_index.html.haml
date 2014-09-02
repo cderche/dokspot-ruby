@@ -1,9 +1,11 @@
-%h1 Listing products
-
-%table
+%br
+.text-right
+  = link_to t('new.product'), new_company_product_path(@company), class: 'btn btn-success btn-sm' if policy(Product.new(company: @company)).new?
+%br
+%table.table.table-hover
   %tr
     %th Name
-    %th Uuid
+    %th UUID
     %th Published
     %th
 
@@ -11,11 +13,9 @@
     %tr
       %td= product.name
       %td= product.uuid
-      %td= product.published
-      %td= link_to 'Show', product if policy(product).show?
-      //%td= link_to 'Edit Product', edit_product_path(product)# if policy(product).edit?
-      //%td= link_to 'Destroy Product', product, :method => :delete, :data => { :confirm => 'Are you sure?' } #if policy(product).destroy?
-
-%br
-
-= link_to t('new.product'), new_company_product_path(@company) if policy(@company.products.build).new?
+      %td
+        - if product.published?
+          %span.glyphicon.glyphicon-ok.text-success
+        - else
+          %span.glyphicon.glyphicon-remove.text-danger
+      %td= link_to t('keywords.show'), product, class: 'btn btn-primary btn-xs' if policy(product).show?

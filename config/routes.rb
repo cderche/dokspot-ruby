@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users, skip: :registrations
-  resources :users
+  resources :users do
+    get :promote
+    get :demote
+  end
 
   resources :companies do
     resources :products, except: :index, shallow: true
@@ -9,10 +12,13 @@ Rails.application.routes.draw do
   
   resources :products, except: [:index, :new, :create] do
     resources :instructions, shallow: true
-    resources :notifications, shallow: true
+    resources :notifications, shallow: true, except: :show
   end
   
-  resources :instructions, only: [:show, :edit, :destroy] do
+  #resources :instructions, only: [:show, :edit, :destroy]
+  #except: [:new, :index]
+  
+  resources :instructions, except: [:index, :new, :create] do
     resources :documents, except: :show, shallow: true
     get :primary
   end

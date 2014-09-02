@@ -1,0 +1,21 @@
+.xs-margin-top
+  %ol.breadcrumb
+    
+    - if action_name == 'show'
+      - if user_signed_in?
+        %li
+          = link_to @product.company.name, @product.company if policy(@product.company).show?
+      %li.active
+        = link_to @product.name, @product if policy(@product).show?
+    - elsif action_name == 'new'
+      %li
+        = link_to @company.name, @company if policy(@company).show?
+      %li.active
+        = link_to t('new.product'), new_company_product_path(@company) if policy(Product.new(company: @company)).new?
+    - elsif action_name == 'edit'
+      %li
+        = link_to @product.company.name, @product.company if policy(@product.company).show?
+      %li
+        = link_to @product.name, @product if policy(@product).show?
+      %li.active
+        = link_to t('keywords.edit'), edit_product_path(@product) if policy(@product).edit?

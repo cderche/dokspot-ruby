@@ -18,15 +18,14 @@ product_new             -- COMPLETE
 
 instructions_show       -- COMPLETE
 instruction_show        -- COMPLETE
-instruction_edit
-instruction_delete
-instruction_new
+instruction_edit        -- COMPLETE
+instruction_delete      -- COMPLETE
+instruction_new         -- COMPLETE
 
-documents_show -- in instruction page
-document_show -- include 'view latest'
-download
-document_delete
-document_new
+documents_show          -- COMPLETE
+document_download -- both on the products page and the instruction page
+document_delete         -- COMPLETE
+document_new            -- COMPLETE
 
 qr_show -- in product page
 qr_edit
@@ -40,6 +39,10 @@ order_delete
 order_new
 
 search
+
+promote
+demote
+instruction_primary
 
 ----
 

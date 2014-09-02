@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820124117) do
+ActiveRecord::Schema.define(version: 20140901210544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140820124117) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "instruction_id"
+    t.boolean  "primary"
   end
 
   add_index "documents", ["instruction_id"], name: "index_documents_on_instruction_id", using: :btree
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140820124117) do
 
   create_table "notifications", force: true do |t|
     t.string   "content"
-    t.string   "category"
+    t.integer  "category"
     t.integer  "product_id"
     t.date     "expiration"
     t.boolean  "published"
