@@ -30,13 +30,14 @@ class DocumentPolicy
   end
 
   def update?
+    return false if @current_user.nil?
     @current_user.admin? or @current_user.company == @document.instruction.product.company
   end
 
   def destroy?
     return false if @current_user.nil?
-    return true if @current_user.company == @document.instruction.product.company
-    @current_user.admin?
+    return true if @current_user.company == @document.instruction.product.company and !@document.primary?
+    @current_user.admin? and !@document.primary?
   end
   
   def primary?
@@ -47,6 +48,10 @@ class DocumentPolicy
     return true if @current_user.nil? and (@document.instruction.published? and @document.instruction.product.published?)
     return true if @current_user.company == @document.instruction.product.company
     @current_user.admin?
+  end
+  
+  def make_primary?
+    update?
   end
   
 end

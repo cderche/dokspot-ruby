@@ -26,7 +26,10 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     #@name ||= "#{timestamp}-#{super}" if original_filename.present? and super.present?
-    "#{Time.now.to_i}.pdf"
+    #"#{model.instruction.product.name}_#{model.instruction.language.name}_#{model.version}.pdf"
+    #require 'securerandom'
+    #SecureRandom.hex
+    "document.pdf"
   end
 
   protected

@@ -11,4 +11,9 @@ class Instruction < ActiveRecord::Base
   def primary
     self.documents.where(primary: true).first
   end
+  
+  def published?
+    self.published and self.product.published
+  end
+  
 end

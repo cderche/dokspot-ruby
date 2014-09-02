@@ -11,13 +11,20 @@
     %th
     %th
     %th
-
-  - instruction.documents.each do |document|
+    
+  - instruction.documents.primary.each do |document|
     %tr
       %td
         = document.version
-      %td
-        - if document.primary?
-          %span.glyphicon.glyphicon-star.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Primary"}
       %td= link_to t('documents.download'), document_download_path(document), class: "download btn btn-primary btn-xs" if policy(document).download?
+      %td
+        %span.glyphicon.glyphicon-star.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Primary"}
+      %td
+        
+  - instruction.documents.nonprimary.order(created_at: :desc).each do |document|
+    %tr
+      %td
+        = document.version
+      %td= link_to t('documents.download'), document_download_path(document), class: "download btn btn-primary btn-xs" if policy(document).download?
+      %td= link_to t('keywords.make_primary'), document_path(document, document: {primary: true}), method: :put, class: 'btn btn-warning btn-xs' if policy(document).make_primary?
       %td= link_to t('delete.document'), document, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs' if policy(document).destroy?

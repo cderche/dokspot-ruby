@@ -2,8 +2,10 @@ require 'open-uri'
 
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
-  before_action :set_instruction, except: [:show, :edit, :update, :destroy, :download] #only: [:new, :create, :index]
+  before_action :set_instruction, except: [:show, :edit, :update, :destroy, :download, :make_primary] #only: [:new, :create, :index]
 
+  skip_before_filter :authenticate_user!, only: :download
+  
   # GET /documents
   # GET /documents.json
   def index
@@ -31,6 +33,7 @@ class DocumentsController < ApplicationController
   def create
     @document = @instruction.documents.build(document_params)
     authorize @document
+    disable_primary if @document.primary
     respond_to do |format|
       if @document.save
         format.html { redirect_to @instruction, notice: t('documents.create.success') }
@@ -44,11 +47,13 @@ class DocumentsController < ApplicationController
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
+
   def update
     authorize @document
+    disable_primary if document_params[:primary]
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.html { redirect_to @document.instruction, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class DocumentsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
@@ -73,7 +78,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:document_id])
     authorize @document
     data = open(@document.file.url)
-    send_data data.read, filename: fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+    send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
   end
 
   private
@@ -84,14 +89,20 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:comment, :file, :version)
+      params.require(:document).permit(:comment, :file, :version, :primary)
     end
     
     def set_instruction
       @instruction = Instruction.find(params[:instruction_id])
     end
     
-    def fileName
-      "#{@document.instruction.product.name}_#{@document.instruction.language.name}_#{@document.version}"
+    def disable_primary
+      instruction = @document.instruction
+      instruction.documents.each do |document|
+        if document != @document
+          document.primary = false
+          document.save
+        end
+      end
     end
 end

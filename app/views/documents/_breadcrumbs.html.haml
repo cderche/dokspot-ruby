@@ -1,0 +1,12 @@
+.xs-margin-top
+  %ol.breadcrumb
+    
+    - if action_name == 'new'
+      %li
+        = link_to @instruction.product.company.name, @instruction.product.company if policy(@instruction.product.company).show?
+      %li
+        = link_to @instruction.product.name, @instruction.product if policy(@instruction.product).show?
+      %li
+        = link_to @instruction.language.name, @instruction if policy(@instruction).show?
+      %li.active
+        = link_to t('new.document'), new_instruction_document_path(@instruction) if policy(Document.new(instruction: @instruction)).new?

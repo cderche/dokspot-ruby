@@ -5,7 +5,7 @@ class InstructionsController < ApplicationController
   before_action :set_product, only: [:new, :create, :index]
   after_action :verify_authorized
 
-  skip_before_filter :authenticate_user!, only: :show
+  skip_before_filter :authenticate_user!, only: [:show, :primary]
 
   # GET /instructions/1
   # GET /instructions/1.json
@@ -50,7 +50,7 @@ class InstructionsController < ApplicationController
     authorize @instruction
     respond_to do |format|
       if @instruction.update(instruction_params)
-        format.html { redirect_to @instruction, notice: I18n.t('instructions.update.success') }
+        format.html { redirect_to @instruction.product, notice: I18n.t('instructions.update.success') }
         format.json { render :show, status: :ok, location: @instruction }
       else
         format.html { render :edit }
@@ -76,7 +76,7 @@ class InstructionsController < ApplicationController
     @document = @instruction.primary
     authorize @document
     data = open(@document.file.url)
-    send_data data.read, filename: fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+    send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
   end
 
   private
@@ -87,7 +87,7 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.require(:instruction).permit(:product_id, :language_id)
+      params.require(:instruction).permit(:product_id, :language_id, :published)
     end
     
     def set_product

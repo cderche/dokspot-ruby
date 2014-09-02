@@ -3,10 +3,14 @@
 
     - if action_name == 'new'
       %li
+        = link_to @product.company.name, @product.company if policy(@product.company).show?
+      %li
         = link_to @product.name, @product if policy(@product).show?
       %li.active
       = link_to t('new.notification'), new_product_notification_path(@product) if policy(Notification.new(product: @product)).new?
     - elsif action_name == 'edit'
+      %li
+        = link_to @notification.product.company.name, @notification.product.company if policy(@notification.product.company).show?
       %li
         = link_to @notification.product.name, @notification.product if policy(@notification.product).show?
       %li.active

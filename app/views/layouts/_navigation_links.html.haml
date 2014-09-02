@@ -1,16 +1,18 @@
 -# add navigation links to this file
 - if user_signed_in?
+  -	if current_user.admin?
+    %li= link_to 'Companies', :companies
+  - else
+    %li
+      - if policy(current_user.company).show?
+        = link_to current_user.company do
+          %span.glyphicon.glyphicon-home
+  
   %li
-    = link_to 'Edit account', edit_user_path(current_user)
-  %li
-    = link_to 'Sign out', :destroy_user_session, method: :delete
+    = link_to :destroy_user_session, method: :delete do
+      %span.glyphicon.glyphicon-log-out
+
 - else
   %li
-    = link_to 'Sign in', :new_user_session
-  /
-    %li
-      = #link_to 'Sign up', new_user_registration_path
-- if user_signed_in?
-  -	if current_user.admin?
-    %li
-      = link_to 'Companies', :companies
+    = link_to :new_user_session do
+      %span.glyphicon.glyphicon-log-in

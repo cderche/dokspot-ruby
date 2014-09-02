@@ -17,5 +17,5 @@ class Notification < ActiveRecord::Base
   #validates :expiration,  presence: true
   validates :product,     presence: true
   validates :category,    presence: true
-
+  
 end
