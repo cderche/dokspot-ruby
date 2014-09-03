@@ -1,0 +1,6 @@
+.xs-margin-top
+
+= image_tag product.qrcode_svg.url, class: 'img-responsive qrcode'
+%br
+.text-center
+  = link_to "download .svg", product_download_qrcode_path(product), class: 'btn btn-primary btn-xs'

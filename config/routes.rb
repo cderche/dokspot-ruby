@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'qrcode/show'
+
   devise_for :users, skip: :registrations
   resources :users do
     get :promote
@@ -10,9 +12,10 @@ Rails.application.routes.draw do
     resources :products, except: :index, shallow: true
   end
   
-  resources :products, except: [:index, :new, :create] do
+  resources :products, path: '', except: [:index, :new, :create] do
     resources :instructions, shallow: true
     resources :notifications, shallow: true, except: :show
+    get :download_qrcode
   end
   
   #resources :instructions, only: [:show, :edit, :destroy]
@@ -29,6 +32,6 @@ Rails.application.routes.draw do
 
   root to: 'visitors#index'
   
-  get :search, to: "visitors#search"
+  post :search, to: "visitors#search"
   
 end

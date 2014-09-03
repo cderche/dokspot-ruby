@@ -50,3 +50,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'cucumber-rails'
 end
+gem 'friendly_id'
+gem 'rqrcode-rails3'
+gem 'paperclip'
+gem 'mini_magick'
+gem 'aws-sdk'

@@ -1,7 +1,7 @@
 .container-fluid
   .row.lg-margin-top
-    .col-xs-12.col-sm-8.col-md-6.col-lg-4.col-sm-offset-2.col-md-offset-3.col-lg-offset-4
-      = image_tag "dokspot-circle.png"
-      = simple_form_for :search, url: search_path, method: :get do |f|
-        .form-group
-          =f.input :query, input_html: { class: 'form-control input-lg text-center', placeholder: 'Enter Code', autofocus: true }, label: false
+  .col-xs-8.col-sm-4.col-md-4.col-lg-2.col-xs-offset-2.col-sm-offset-4.col-md-offset-4.col-lg-offset-5
+    = image_tag "dokspot-circle.png"
+    = simple_form_for :search, url: search_path, method: :post do |f|
+      .form-group
+        =f.input :query, input_html: { class: 'form-control input-lg text-center', placeholder: 'Enter Code', autofocus: true }, label: false

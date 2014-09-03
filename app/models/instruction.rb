@@ -2,6 +2,7 @@ class Instruction < ActiveRecord::Base
   belongs_to :product
   belongs_to :language
   has_many   :documents
+  accepts_nested_attributes_for :documents
   
   validates :language,     presence: true
   validates :product,     presence: true
@@ -10,10 +11,6 @@ class Instruction < ActiveRecord::Base
   
   def primary
     self.documents.where(primary: true).first
-  end
-  
-  def published?
-    self.published and self.product.published
   end
   
 end

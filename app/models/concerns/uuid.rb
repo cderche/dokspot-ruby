@@ -1,5 +1,3 @@
-require 'securerandom'
-
 module Uuid
   extend ActiveSupport::Concern
   
@@ -10,6 +8,7 @@ module Uuid
   protected
   
     def generate_uuid
+      puts "Generating UUID..."
       self.uuid = "#{self.company.symbol}#{self.id}"
       self.save
     end

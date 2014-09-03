@@ -18,6 +18,7 @@ class InstructionsController < ApplicationController
   def new
     #@instruction = Instruction.new
     @instruction = @product.instructions.build
+    @instruction.documents.build
     authorize @instruction
   end
 
@@ -87,10 +88,10 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.require(:instruction).permit(:product_id, :language_id, :published)
+      params.require(:instruction).permit(:product_id, :language_id, :published, documents_attributes: [:version, :file, :primary])
     end
     
     def set_product
-      @product = Product.find(params[:product_id])
+      @product = Product.friendly.find(params[:product_id])
     end
 end

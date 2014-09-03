@@ -1,4 +1,7 @@
 class Company < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :symbol
+  
   after_initialize :set_default_published, :if => :new_record?
 
   scope :published, -> { where(published: true) }

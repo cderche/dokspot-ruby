@@ -16,7 +16,7 @@ if Rails.env.production? or Rails.env.development?
       :host                   => 's3-eu-west-1.amazonaws.com',
       :endpoint               => 'https://s3-eu-west-1.amazonaws.com'
     }
-    config.fog_directory  = 'dokspot-development'
+    config.fog_directory  = S3_BUCKET
     config.fog_public     = false
     #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
     #config.s3_access_policy = 'public-read'

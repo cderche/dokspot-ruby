@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901210544) do
+ActiveRecord::Schema.define(version: 20140903100157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20140901210544) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "qrcode_svg_file_name"
+    t.string   "qrcode_svg_content_type"
+    t.integer  "qrcode_svg_file_size"
+    t.datetime "qrcode_svg_updated_at"
+    t.string   "qrcode_png_file_name"
+    t.string   "qrcode_png_content_type"
+    t.integer  "qrcode_png_file_size"
+    t.datetime "qrcode_png_updated_at"
   end
 
   add_index "products", ["company_id"], name: "index_products_on_company_id", using: :btree

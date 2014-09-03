@@ -37,4 +37,13 @@ class ProductPolicy
     @current_user.admin?
   end
   
+  def search?
+    show?
+  end
+  
+  def download_qrcode?
+    return false if @current_user.nil?
+    return true if @current_user.company == @product.company
+    @current_user.admin?
+  end
 end

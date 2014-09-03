@@ -18,9 +18,12 @@
         = notification.category
       %td
         - if notification.published?
-          %span.glyphicon.glyphicon-ok.text-success
+          - if product.published?
+            = render "support/published"
+          - else
+            = render "support/not_visible"
         - else
-          %span.glyphicon.glyphicon-remove.text-danger
+          = render "support/not_published"
       %td= link_to t('keywords.edit'), edit_notification_path(notification), class: 'btn btn-warning btn-xs'
       %td= link_to t('keywords.delete'), notification, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs'
 

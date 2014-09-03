@@ -1,15 +1,16 @@
 = render 'breadcrumbs'
 
-= render partial: 'notifications/display', locals: { product: @product }
+- if !user_signed_in?
+  = render partial: 'notifications/display', locals: { product: @product }
 
 .page-header
   %h1
     = @product.name
     - if user_signed_in?
       - if @product.published?
-        %span.glyphicon.glyphicon-ok.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Published"}
+        = render "support/published"
       - else
-        %span.glyphicon.glyphicon-remove.text-danger{data:{toggle:"tooltip",placement:"right"}, title:"Not Published"}
+        = render "support/not_published"
     %br
     %small
       = @product.uuid
@@ -33,6 +34,8 @@
   - if user_signed_in?
     %li
       = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}
+    %li
+      = link_to t('keywords.resources'), '#resources', role: 'tab', data: {toggle: 'tab'}
     
 / TAB PANES
 %div.tab-content
@@ -41,3 +44,5 @@
   - if user_signed_in?
     %div.tab-pane#notifications
       = render partial: "notifications/index",  locals: { product: @product }
+    %div.tab-pane#resources
+      = render partial: "resources",  locals: { product: @product }

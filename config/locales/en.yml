@@ -27,6 +27,7 @@ en:
     company:    "Company"
     promote: "Promote"
     demote: "Demote"
+    qrcode: 'QR Code'
   new:
     company: "New Company"
     product: "New Product"

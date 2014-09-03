@@ -15,7 +15,7 @@
       %td= product.uuid
       %td
         - if product.published?
-          %span.glyphicon.glyphicon-ok.text-success
+          = render "support/published"
         - else
-          %span.glyphicon.glyphicon-remove.text-danger
+          = render "support/not_published"
       %td= link_to t('keywords.show'), product, class: 'btn btn-primary btn-xs' if policy(product).show?

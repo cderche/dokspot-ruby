@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     
     respond_to do |format|
       if @product.save
+        generate_qrcode
         format.html { redirect_to @product, notice: I18n.t('products.create.success') }
         format.json { render :show, status: :created, location: @product }
       else
@@ -70,11 +71,18 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def download_qrcode
+    @product = Product.friendly.find(params[:product_id])
+    authorize @product
+    data = open(@product.qrcode_svg.url)
+    send_data data.read, filename: @product.name, type: 'image/svg+xml', disposition: :attachment, stream: true, buffer_size: 4096
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -83,6 +91,24 @@ class ProductsController < ApplicationController
     end
     
     def set_company
-      @company = Company.find(params[:company_id])
+      @company = Company.friendly.find(params[:company_id])
+    end
+    
+    def generate_qrcode
+      puts "Generating QRCode..."
+      url = "#{root_url}#{@product.uuid}"
+      puts "URL is #{url}"
+      
+      size = RQRCode.minimum_qr_size_from_string(url)
+      qrcode = RQRCode::QRCode.new(url, size: size, level: :h)
+      
+      # SVG
+      svg = RQRCode::Renderers::SVG::render(qrcode)
+      file = Tempfile.new(['file','.svg'])
+      puts "TempFile Path: #{file.path}"
+      file.write(svg.to_s)
+      @product.qrcode_svg = file
+      @product.save!
+      puts "QR Code: #{@product.qrcode_svg.url}"
     end
 end

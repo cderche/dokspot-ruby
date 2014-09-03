@@ -18,10 +18,13 @@
       %tr
         %td= instruction.language.name
         %td
-          - if product.published?
-            %span.glyphicon.glyphicon-ok.text-success
+          - if instruction.published?
+            - if product.published?
+              = render "support/published"
+            - else
+              = render "support/not_visible"
           - else
-            %span.glyphicon.glyphicon-remove.text-danger
+            = render "support/not_published"
         %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).primary?
         %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
         %td= link_to t('keywords.edit'), edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' if policy(instruction).edit?
