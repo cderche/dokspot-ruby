@@ -40,7 +40,7 @@ group :development, :test do
   gem 'thin'
 end
 group :production do
-  gem 'puma'
+#gem 'puma'
   gem 'rails_12factor'
 end
 group :test do
