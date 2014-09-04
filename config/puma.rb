@@ -6,9 +6,6 @@ preload_app!
 rackup      DefaultRackup
 port        ENV['PORT']     || 3000
 environment ENV['RACK_ENV'] || 'development'
-S3_KEY      ENV['S3_KEY']
-S3_SECRET   ENV['S3_SECRET']
-S3_BUCKET   ENV['S3_BUCKET']
 
 on_worker_boot do
   # worker specific setup
