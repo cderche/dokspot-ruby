@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   after_action :verify_authorized
 
   def show
-    puts "HEELO WOOOORLD"
+    puts "Hello World"
     authorize @user
     if current_user.admin?
-      redirect_to companies_path
+      redirect_to @user.company
     else
       redirect_to current_user.company
     end
@@ -28,8 +28,9 @@ class UsersController < ApplicationController
 
   def destroy
     authorize @user
+    company = @user.company
     @user.destroy
-    redirect_to users_path, :notice => "User deleted."
+    redirect_to company, :notice => "User deleted."
   end
 
   def promote

@@ -36,7 +36,7 @@ class InstructionsController < ApplicationController
 
     respond_to do |format|
       if @instruction.save
-        format.html { redirect_to @instruction, notice: I18n.t('instructions.create.success') }
+        format.html { redirect_to @instruction.product, notice: I18n.t('instructions.create.success') }
         format.json { render :show, status: :created, location: @instruction }
       else
         format.html { render :new }

@@ -14,6 +14,10 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+ 
+
 .xs-margin-top      { margin-top:     20px    }
 .lg-margin-top      { margin-top:     200px   }
 .center-horizontal  { vertical-align: middle  }
