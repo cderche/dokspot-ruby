@@ -8,10 +8,10 @@
     - if action_name == 'new'
       = f.simple_fields_for :documents do |d|
         .form-group
-          = d.input :version, input_html: { class: 'form-control', placeholder: 'e.g. 1.0', autofocus: true}
+          = d.input :version, input_html: { class: 'form-control', placeholder: 'e.g. 1.0' }
         %br
         .form-group
-          = d.file_field :file
+          = d.input :file, as: :file
         %br
         .form-group
           = d.input :primary, as: :hidden, input_html: { value: true }

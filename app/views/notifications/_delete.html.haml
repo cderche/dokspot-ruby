@@ -1,0 +1,18 @@
+- if policy(notification).destroy?
+  %button.btn.btn-danger.btn-xs{data: {toggle: 'modal', target: "#deleteNotification#{notification.id}"}}
+    = t('keywords.delete')
+  
+  .modal.fade{id: "deleteNotification#{notification.id}", tabIndex: '-1', role: 'dialog', aria: {labelledby: "deleteNotification#{notification.id}", hidden: true}}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{data: {dismiss: 'modal'}, type: 'button'}
+            %span{aria:{hidden:true}} &times;
+            %span.sr-only Close
+          %h4.modal-title.text-danger.text-center
+            = t('keywords.warning')
+        .modal-body.text-left
+          %p= t('notifications.destroy.warning')
+        .modal-footer
+          %button.btn.btn-default{data:{dismiss:'modal'}} Close
+          = link_to t('keywords.delete'), notification, method: :delete, class: 'btn btn-danger'

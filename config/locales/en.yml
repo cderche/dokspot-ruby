@@ -60,7 +60,7 @@ en:
       success: "Product was successfully updated."
     destroy:
       success: "Product was successfully destroyed."
-      warning: "WARNING: By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
+      warning: "By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
   instructions:
     primary: "View Primary"
     history: "History"
@@ -70,10 +70,13 @@ en:
       success: "Instruction was successfully updated."
     destroy:
       success: "Instruction was successfully destroyed."
-      warning: "WARNING: By agreeing to destroy this instructions you will destroy all documents associated with it. These will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
+      warning: "WARNING: By agreeing to destroy these instructions you will destroy all documents associated with it. These will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
   documents:
     download: "Download"
     destroy:
       success: "Document was successfully destroyed."
     create:
       success: "Document was successfully created."
+  notifications:
+    destroy:
+      warning: "Are you sure you want to delete this notification?"

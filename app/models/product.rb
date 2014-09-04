@@ -27,16 +27,16 @@ class Product < ActiveRecord::Base
     styles: { medium: "300x300>", thumb: "100x100>" },
     storage: :s3,
     s3_credentials: {
-      bucket:             S3_BUCKET,
-      access_key_id:      S3_KEY,
-      secret_access_key:  S3_SECRET
+      bucket:             ENV['S3_BUCKET'],
+      access_key_id:      ENV['S3_KEY'],
+      secret_access_key:  ENV['S3_SECRET']
     }
   has_attached_file :qrcode_svg,
     storage: :s3,
     s3_credentials: {
-      bucket:             S3_BUCKET,
-      access_key_id:      S3_KEY,
-      secret_access_key:  S3_SECRET
+      bucket:             ENV['S3_BUCKET'],
+      access_key_id:      ENV['S3_KEY'],
+      secret_access_key:  ENV['S3_SECRET']
     }
   validates_attachment_content_type :qrcode_png, content_type: "image/png"
   do_not_validate_attachment_file_type :qrcode_svg

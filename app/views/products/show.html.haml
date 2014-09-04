@@ -2,7 +2,7 @@
 
 - if !user_signed_in?
   = render partial: 'notifications/display', locals: { product: @product }
-
+  
 .page-header
   %h1
     = @product.name
@@ -23,7 +23,7 @@
 .text-right
   .btn-group.btn-group-sm
     = link_to t('edit.product'), edit_product_path(@product), class: 'btn btn-warning' if policy(@product).edit?
-    = link_to t('delete.product'), @product, method: :delete, data: { confirm: I18n.t('products.destroy.warning') }, class: 'btn btn-danger' if policy(@product).destroy?
+    = render partial: "delete", locals: {product: @product}
       
 %br
 

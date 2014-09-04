@@ -1,0 +1,18 @@
+- if policy(instruction).destroy?
+  %button.btn.btn-danger.btn-xs{data: {toggle: 'modal', target: "#deleteInstruction#{instruction.id}"}}
+    = t('keywords.delete')
+  
+  .modal.fade{id: "deleteInstruction#{instruction.id}", tabIndex: '-1', role: 'dialog', aria: {labelledby: "deleteInstruction#{instruction.id}", hidden: true}}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{data: {dismiss: 'modal'}, type: 'button'}
+            %span{aria:{hidden:true}} &times;
+            %span.sr-only Close
+          %h4.modal-title.text-danger.text-center
+            = t('keywords.warning')
+        .modal-body.text-left
+          %p= t('instructions.destroy.warning')
+        .modal-footer
+          %button.btn.btn-default{data:{dismiss:'modal'}} Close
+          = link_to t('keywords.delete'), instruction, method: :delete, class: 'btn btn-danger'

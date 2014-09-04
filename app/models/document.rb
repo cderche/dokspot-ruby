@@ -3,6 +3,9 @@ class Document < ActiveRecord::Base
   
   belongs_to :instruction
   
+  validates :version, presence: true
+  validates :file,    presence: true
+  
   scope :primary, -> { where(primary: true) }
   scope :nonprimary, -> { where(primary: false) }
   
