@@ -20,8 +20,8 @@ module Myapp
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
     
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-    config.serve_static_assets = true
+    #config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    #config.serve_static_assets = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
