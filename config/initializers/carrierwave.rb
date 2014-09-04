@@ -4,7 +4,7 @@ if Rails.env.test? or Rails.env.cucumber?
     config.enable_processing = false
   end
 end
-=begin
+
 if Rails.env.production? or Rails.env.development?
   CarrierWave.configure do |config|
     config.storage = :fog
@@ -22,4 +22,3 @@ if Rails.env.production? or Rails.env.development?
     #config.s3_access_policy = 'public-read'
   end
 end
-=end
