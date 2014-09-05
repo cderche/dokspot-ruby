@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   #after_action :verify_authorized
   
+  before_action :include_roadie, only: :invite
+  
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
   def user_not_authorized
@@ -33,6 +35,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:invite) do |u|
       u.permit(:email, :company_id)
     end
+  end
+  
+  def include_roadie
+    puts 'Including roadie...'
+    include Roadie::Rails::Automatic
   end
 
 end
