@@ -1,3 +1,4 @@
+@validated
 Feature: Edit Products
   As a user of the website
   I want to see the edit product page
@@ -38,13 +39,13 @@ Feature: Edit Products
       | visitor   | "You need to sign in or sign up before continuing." | a     | published   |
       | visitor   | "You need to sign in or sign up before continuing." | a     | unpublished |
       | admin     | the EDIT product fields                             | a     | published   |
-      | manager   | "Access denied."                                    | a     | published   |
-      | operator  | "Access denied."                                    | a     | published   |
+      | manager   | "You are not authorized to perform this action."    | a     | published   |
+      | operator  | "You are not authorized to perform this action."    | a     | published   |
       | admin     | the EDIT product fields                             | a     | unpublished |
-      | manager   | "Access denied."                                    | a     | unpublished |
-      | operator  | "Access denied."                                    | a     | unpublished |
+      | manager   | "You are not authorized to perform this action."    | a     | unpublished |
+      | operator  | "You are not authorized to perform this action."    | a     | unpublished |
       
-  Scenario Outline: Edit company
+  Scenario Outline: Edit product
     Given I am a <role>
     And there is <owner> company with a <published> product
     When I EDIT the product

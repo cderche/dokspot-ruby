@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if current_user.admin?
-      puts "User exists: #{@user.nil?}"
       companies_path
     else
       resource.company

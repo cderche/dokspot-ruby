@@ -1,3 +1,4 @@
+@validated
 Feature: Show Instructions
   As a user of the website
   I want to see the instructions for a registered product
@@ -11,18 +12,18 @@ Feature: Show Instructions
     Then I should see <response>
     
     Examples:
-      | role      | published   | owner | response                |
-      | admin     | published   | a     | ALL instructions        |
-      | admin     | published   | my    | ALL instructions        |
-      | admin     | unpublished | a     | ALL instructions        |
-      | admin     | unpublished | my    | ALL instructions        |
-      | manager   | published   | a     | "Access denied"         |
-      | manager   | published   | my    | ALL instructions        |
-      | manager   | unpublished | a     | "Access denied"         |
-      | manager   | unpublished | my    | ALL instructions        |
-      | operator  | published   | a     | "Access denied"         |
-      | operator  | published   | my    | ALL instructions        |
-      | operator  | unpublished | a     | "Access denied"         |
-      | operator  | unpublished | my    | ALL instructions        |
-      | visitor   | published   | a     | PUBLISHED instructions  |
-      | visitor   | unpublished | a     | "Access denied"         |
+      | role      | published   | owner | response                                          |
+      | admin     | published   | a     | ALL instructions                                  |
+      | admin     | published   | my    | ALL instructions                                  |
+      | admin     | unpublished | a     | ALL instructions                                  |
+      | admin     | unpublished | my    | ALL instructions                                  |
+      | manager   | published   | a     | "You are not authorized to perform this action."  |
+      | manager   | published   | my    | ALL instructions                                  |
+      | manager   | unpublished | a     | "You are not authorized to perform this action."  |
+      | manager   | unpublished | my    | ALL instructions                                  |
+      | operator  | published   | a     | "You are not authorized to perform this action."  |
+      | operator  | published   | my    | ALL instructions                                  |
+      | operator  | unpublished | a     | "You are not authorized to perform this action."  |
+      | operator  | unpublished | my    | ALL instructions                                  |
+      | visitor   | published   | a     | PUBLISHED instructions                            |
+      | visitor   | unpublished | a     | "You are not authorized to perform this action."  |

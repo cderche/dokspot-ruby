@@ -1,3 +1,4 @@
+@validated
 Feature: Show Companies
   As a user of the website
   I want to see the company page
@@ -12,8 +13,8 @@ Feature: Show Companies
   Examples:
     | role      | owner | response                                                |
     | visitor   | a     | see "You need to sign in or sign up before continuing." |
-    | manager   | a     | see "Access denied."                                    |
-    | operator  | a     | see "Access denied."                                    |
+    | manager   | a     | see "You are not authorized to perform this action."    |
+    | operator  | a     | see "You are not authorized to perform this action."    |
     | admin     | a     | see the company details                                 |
     | admin     | a     | see the EDIT company button                             |
     | admin     | a     | see the DELETE company button                           |

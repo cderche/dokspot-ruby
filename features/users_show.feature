@@ -1,3 +1,4 @@
+@validated
 Feature: Show Users
   As a user of the website
   I want to see registered users listed on the a company page

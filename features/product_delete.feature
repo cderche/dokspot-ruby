@@ -1,3 +1,4 @@
+@validated
 Feature: Delete products
   As a user of the website
   I want to delete a product from my company

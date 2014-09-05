@@ -97,7 +97,7 @@ class ProductsController < ApplicationController
     def generate_qrcode
       puts "Generating QRCode..."
       url = "#{root_url}#{@product.uuid}"
-      puts "URL is #{url}"
+      #puts "URL is #{url}"
       
       size = RQRCode.minimum_qr_size_from_string(url)
       qrcode = RQRCode::QRCode.new(url, size: size, level: :h)
@@ -105,7 +105,7 @@ class ProductsController < ApplicationController
       # SVG
       svg = RQRCode::Renderers::SVG::render(qrcode)
       file = Tempfile.new(['file','.svg'])
-      puts "TempFile Path: #{file.path}"
+      #puts "TempFile Path: #{file.path}"
       file.write(svg.to_s)
       @product.qrcode_svg = file
       @product.save!

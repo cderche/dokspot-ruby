@@ -1,3 +1,4 @@
+@validated
 Feature: New Company
   As a admin of the website
   I want to see the new company page

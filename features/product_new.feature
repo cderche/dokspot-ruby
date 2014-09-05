@@ -1,3 +1,4 @@
+@validated
 Feature: New Product
   As a user of the website
   I want to see the new product page

@@ -1,4 +1,4 @@
-@solo
+@validated
 Feature: New Document
   As a user of the website
   I want to see the new document page

@@ -52,7 +52,7 @@ When(/^I visit the product page$/) do
 end
 
 When(/^I click on the EDIT product button$/) do
-  click_link I18n.t('edit.product'),  href: edit_product_path(@product)
+  click_link I18n.t('keywords.edit'),  href: edit_product_path(@product)
 end
 
 When(/^I visit the product EDIT page$/) do
@@ -68,7 +68,7 @@ When(/^I EDIT the product$/) do
 end
 
 When(/^I click on the DELETE product button$/) do
-  click_link I18n.t('delete.product'),  href: product_path(@product)
+  click_link I18n.t('keywords.delete'),  href: product_path(@product)
 end
 
 When(/^I click on the NEW product button$/) do
@@ -102,19 +102,19 @@ Then(/^I should see the product details$/) do
 end
 
 Then(/^I should see the EDIT product button$/) do
-  expect(page).to have_link I18n.t('edit.product'), href: edit_product_path(@product)
+  expect(page).to have_link I18n.t('keywords.edit'), href: edit_product_path(@product)
 end
 
 Then(/^I should see the DELETE product button$/) do
-  expect(page).to have_link I18n.t('delete.product'), href: product_path(@product)
+  expect(page).to have_link I18n.t('keywords.delete'), href: product_path(@product)
 end
 
 Then(/^I should not see the EDIT product button$/) do
-  expect(page).to_not have_link I18n.t('edit.product'), href: edit_product_path(@product)
+  expect(page).to_not have_link I18n.t('keywords.edit'), href: edit_product_path(@product)
 end
 
 Then(/^I should not see the DELETE product button$/) do
-  expect(page).to_not have_link I18n.t('delete.product'), href: product_path(@product)
+  expect(page).to_not have_link I18n.t('keywords.delete'), href: product_path(@product)
 end
 
 Then(/^I should see the EDIT product page$/) do

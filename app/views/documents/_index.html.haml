@@ -27,4 +27,4 @@
         = document.version
       %td= link_to t('documents.download'), document_download_path(document), class: "download btn btn-primary btn-xs" if policy(document).download?
       %td= link_to t('keywords.make_primary'), document_path(document, document: {primary: true}), method: :put, class: 'btn btn-warning btn-xs' if policy(document).make_primary?
-      %td= link_to t('delete.document'), document, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs' if policy(document).destroy?
+      %td= link_to t('keywords.delete'), document, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs' if policy(document).destroy?

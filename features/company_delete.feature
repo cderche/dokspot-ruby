@@ -1,3 +1,4 @@
+@validated
 Feature: Delete Companies
   As a admin of the website
   I want to delete a company from the website

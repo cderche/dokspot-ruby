@@ -8,7 +8,7 @@ module Uuid
   protected
   
     def generate_uuid
-      puts "Generating UUID..."
+      #puts "Generating UUID..."
       self.uuid = "#{self.company.symbol}#{self.id}"
       self.save
     end

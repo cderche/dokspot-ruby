@@ -1,3 +1,4 @@
+@validated
 Feature: Show Products
   As a user of the website
   I want to see registered products for a company
@@ -13,8 +14,8 @@ Feature: Show Products
     Examples:
       | role      | owner | response                                            |
       | visitor   | a     | "You need to sign in or sign up before continuing." |
-      | operator  | a     | "Access denied"                                     |
-      | manager   | a     | "Access denied"                                     |
+      | operator  | a     | "You are not authorized to perform this action."    |
+      | manager   | a     | "You are not authorized to perform this action."    |
       | admin     | a     | information about each product                      |
       | admin     | a     | the NEW product button                              |
       | manager   | my    | information about each product                      |

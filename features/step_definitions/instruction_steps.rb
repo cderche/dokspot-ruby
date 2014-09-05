@@ -135,7 +135,7 @@ When(/^I visit the instruction page$/) do
 end
 
 When(/^I click on the EDIT instruction button$/) do
-  click_link I18n.t('edit.instruction'),  href: edit_instruction_path(@instruction)
+  click_link I18n.t('keywords.edit'),  href: edit_instruction_path(@instruction)
 end
 
 When(/^I visit the instruction EDIT page$/) do
@@ -150,7 +150,7 @@ When(/^I EDIT the instruction$/) do
 end
 
 When(/^I click on the DELETE instruction button$/) do
-  click_link I18n.t('delete.instruction'), href: instruction_path(@instruction)
+  click_link I18n.t('keywords.delete'), href: instruction_path(@instruction)
 end
 
 When(/^I click on the NEW instruction button$/) do
@@ -162,6 +162,8 @@ When(/^I create a instruction$/) do
   language = FactoryGirl.create(:language, { name: "English" })
   visit new_product_instruction_path(@product)
   select "English", from: 'instruction_language_id'
+  fill_in 'instruction[documents_attributes][0][version]', with: '1.0'
+  attach_file('instruction[documents_attributes][0][file]', Rails.root.join('spec', 'support', 'example.pdf'))
   click_button 'Create Instruction'
 end
 
@@ -196,15 +198,15 @@ Then(/^I should see the instruction details$/) do
 end
 
 Then(/^I should see the EDIT instruction button$/) do
-  expect(page).to have_link I18n.t('edit.instruction'), edit_instruction_path(@instruction)
+  expect(page).to have_link I18n.t('keywords.edit'), edit_instruction_path(@instruction)
 end
 
 Then(/^I should see the DELETE instruction button$/) do
-  expect(page).to have_link I18n.t('delete.instruction'), instruction_path(@instruction)
+  expect(page).to have_link I18n.t('keywords.delete'), instruction_path(@instruction)
 end
 
 Then(/^I should see the EDIT instruction page$/) do
-  expect(page).to have_content "Editing #{@instruction.language.name} Instructions"
+  expect(page).to have_content "Edit instruction"
 end
 
 Then(/^I should see the EDIT instruction fields$/) do

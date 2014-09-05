@@ -22,7 +22,7 @@
 
 .text-right
   .btn-group.btn-group-sm
-    = link_to t('edit.product'), edit_product_path(@product), class: 'btn btn-warning' if policy(@product).edit?
+    = link_to t('keywords.edit'), edit_product_path(@product), class: 'btn btn-warning' if policy(@product).edit?
     = render partial: "delete", locals: {product: @product}
       
 %br

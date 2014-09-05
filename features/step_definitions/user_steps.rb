@@ -144,16 +144,29 @@ When /^I look at the list of users$/ do
   visit '/'
 end
 
+When(/^I click on the PROMOTE button for a user$/) do
+  user = @company.users.where(role: 0).first
+  click_link I18n.t('keywords.promote'), href: user_promote_path(user)
+end
+
+When(/^I click on the DEMOTE button for a user$/) do
+  user = @company.users.where(role: 1).first
+  click_link I18n.t('keywords.demote'), href: user_demote_path(user)
+end
+
+
 ### THEN ###
 Then /^I should be signed in$/ do
-  expect(page).to have_content "Sign out"
+  #expect(page).to have_content "Sign out"
+  expect(page).to have_link '', destroy_user_session_path
   #expect(page).to_not have_content "Sign up"
   expect(page).to_not have_content "Sign in"
 end
 
 Then /^I should be signed out$/ do
   #expect(page).to have_content "Sign up"
-  expect(page).to have_content "Sign in"
+  #expect(page).to have_content "Sign in"
+  expect(page).to have_link '', href: new_user_session_path
   expect(page).to_not have_content "Sign out"
 end
 
@@ -205,10 +218,18 @@ end
 Then(/^I should see information on each user$/) do
   @company.users.all.each do |user|
     expect(page).to have_content user.email
-    if @user.admin?
-      expect(page).to have_link I18n.t('delete'), user_path(user)
-    elsif @user.manager? and user.operator?
-      expect(page).to have_link I18n.t('delete'), user_path(user)
+    if @user.admin? or @user.manager?
+      expect(page).to have_link I18n.t('keywords.delete'), user_path(user)
+    elsif user.operator?
+      expect(page).to_not have_link I18n.t('keywords.delete'), user_path(user)
     end
   end
+end
+
+Then(/^I should user promoted message$/) do
+  expect(page).to have_content I18n.t('promotion.success')
+end
+
+Then(/^I should user demoted message$/) do
+  expect(page).to have_content I18n.t('demotion.success')
 end

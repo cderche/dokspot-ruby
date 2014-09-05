@@ -1,8 +1,8 @@
+@validated
 Feature: New Instruction
   As a user of the website
   I want to see the new instruction page
   so I can fill in a new instruction's information
-
   
   Scenario Outline: Click new instruction button
     Given I am a <role>

@@ -1,11 +1,12 @@
+=begin
 if Rails.env.test? or Rails.env.cucumber?
   CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false
   end
 end
-
-if Rails.env.production? or Rails.env.development?
+=end
+#if Rails.env.production? or Rails.env.development?
   CarrierWave.configure do |config|
     config.storage = :fog
     config.fog_credentials = {
@@ -18,7 +19,6 @@ if Rails.env.production? or Rails.env.development?
     }
     config.fog_directory  = ENV['S3_BUCKET']
     config.fog_public     = false
-    #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
-    #config.s3_access_policy = 'public-read'
+    config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
   end
-end
+  #end

@@ -1,3 +1,4 @@
+@validated
 Feature: Show Companies
   As a admin of the website
   I want to see registered companies listed on the a companies index page
@@ -11,8 +12,8 @@ Feature: Show Companies
     
     Examples:
     | role      | response                                            |
-    | manager   | "Access denied."                                    |
-    | operator  | "Access denied."                                    |
+    | manager   | "You are not authorized to perform this action."    |
+    | operator  | "You are not authorized to perform this action."    |
     | visitor   | "You need to sign in or sign up before continuing." |
     | admin     | information on each company                         |
     | admin     | a button for add a new company                      |

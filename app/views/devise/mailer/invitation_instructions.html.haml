@@ -1,7 +1,24 @@
-%p= I18n.t("devise.mailer.invitation_instructions.hello", email: @resource.email)
-
-%p= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
-
-%p= link_to I18n.t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token)
-
-%p= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe
+.container
+  .row
+    .col-xs-12
+      .image-header
+        = image_tag 'dokspot-mail.png'
+      
+      .page-header
+        %h3 Welcome to dokspot!
+        
+      .lead
+        %p= I18n.t("devise.mailer.invitation_instructions.hello")
+        
+        %p= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
+        
+        .row
+          .col-xs-offset-4.col-xs-4
+            = link_to I18n.t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token), class: 'btn btn-success btn-lg'
+  
+        %p= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe
+        
+        %h3
+          %small= I18n.t("devise.mailer.invitation_instructions.signature").html_safe
+          
+        

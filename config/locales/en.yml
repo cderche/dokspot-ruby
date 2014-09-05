@@ -25,9 +25,12 @@ en:
     edit:       "Edit"
     companies:  "Companies"
     company:    "Company"
+    products:   "Products"
+    users:      "Users"
     promote: "Promote"
     demote: "Demote"
     qrcode: 'QR Code'
+    delete: 'Delete'
   new:
     company: "New Company"
     product: "New Product"
@@ -46,6 +49,10 @@ en:
     product: "Delete Product"
     instruction: "Delete Instruction"
     document: "Delete"
+  promotion:
+    success: "The promotion was successful"
+  demotion:
+    success: "The demotion was successful"
   companies:
     plural: "Companies"
     success: "Company was successfully created."

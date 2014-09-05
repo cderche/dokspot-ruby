@@ -34,20 +34,22 @@ class UsersController < ApplicationController
   end
 
   def promote
+    @user = User.find(params[:user_id])
     authorize @user
     if @user.update_attributes(role: :manager)
-      redirect_to @user.company, notice: t('devise.registrations.updated')
+      redirect_to @user.company, notice: t('promotion.success')
     else
-      redirect_to @user.company, :alert => "Unable to update user."
+      redirect_to @user.company, alert: "Unable to promote this user."
     end
   end
   
   def demote
+    @user = User.find(params[:user_id])
     authorize @user
     if @user.update_attributes(role: :operator)
-      redirect_to @user.company, notice: t('devise.registrations.updated')
+      redirect_to @user.company, notice: t('demotion.success')
     else
-      redirect_to @user.company, :alert => "Unable to update user."
+      redirect_to @user.company, alert: "Unable to update user."
     end
   end
     

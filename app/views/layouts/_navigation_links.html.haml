@@ -3,18 +3,17 @@
   -	if current_user.admin?
     %li
       = link_to :companies do
-        %span.glyphicon.glyphicon-th
+        %span.glyphicon.glyphicon-th{title: 'Companies'}
   - else
     %li
-      - if policy(current_user.company).show?
-        = link_to current_user.company do
-          %span.glyphicon.glyphicon-th
+      = link_to current_user.company do
+        %span.glyphicon.glyphicon-th{title: 'Company'}
   
   %li
     = link_to :destroy_user_session, method: :delete do
-      %span.glyphicon.glyphicon-log-out
+      %span.glyphicon.glyphicon-log-out{title: 'Sign out'}
 
 - else
   %li
     = link_to :new_user_session do
-      %span.glyphicon.glyphicon-log-in
+      %span.glyphicon.glyphicon-log-in{title: 'Sign in'}

@@ -1,3 +1,4 @@
+@validated
 Feature: Delete document
   As a user of the website
   I want to delete a document from my instruction
@@ -6,7 +7,9 @@ Feature: Delete document
   Scenario Outline: Click delete button
     Given I am a <role>
     And there is a <p_pub> product belonging to <owner> company has a <i_pub> instruction
-    And the instruction has a document
+    #And the instruction has a document
+    # there must be multiple documents
+    And there is a set of documents for the instruction
     When I visit the instruction page
     And I click on the DELETE document button
     Then I should see the document successfully deleted message

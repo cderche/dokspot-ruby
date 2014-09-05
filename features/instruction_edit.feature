@@ -1,3 +1,4 @@
+@validated
 Feature: Edit Instruction
   As a user of the website
   I want to see the edit instruction page
@@ -6,7 +7,7 @@ Feature: Edit Instruction
   Scenario Outline: Click edit button
     Given I am a <role>
     And there is a <p_pub> product belonging to <owner> company has a <i_pub> instruction
-    When I visit the instruction page
+    When I visit the product page
     And I click on the EDIT instruction button
     Then I should see the EDIT instruction page
     
@@ -50,25 +51,25 @@ Feature: Edit Instruction
       | manager   | "published"   | "my"  | "unpublished" | the EDIT instruction fields |
       | manager   | "unpublished" | "my"  | "published"   | the EDIT instruction fields |
       | manager   | "unpublished" | "my"  | "unpublished" | the EDIT instruction fields |
-      | manager   | "published"   | "a"   | "published"   | "Access denied."            |
-      | manager   | "published"   | "a"   | "unpublished" | "Access denied."            |
-      | manager   | "unpublished" | "a"   | "published"   | "Access denied."            |
-      | manager   | "unpublished" | "a"   | "unpublished" | "Access denied."            |
+      | manager   | "published"   | "a"   | "published"   | "You are not authorized to perform this action."  |
+      | manager   | "published"   | "a"   | "unpublished" | "You are not authorized to perform this action."  |
+      | manager   | "unpublished" | "a"   | "published"   | "You are not authorized to perform this action."  |
+      | manager   | "unpublished" | "a"   | "unpublished" | "You are not authorized to perform this action."  |
       
       | operator  | "published"   | "my"  | "published"   | the EDIT instruction fields |
       | operator  | "published"   | "my"  | "unpublished" | the EDIT instruction fields |
       | operator  | "unpublished" | "my"  | "published"   | the EDIT instruction fields |
       | operator  | "unpublished" | "my"  | "unpublished" | the EDIT instruction fields |
-      | operator  | "published"   | "a"   | "published"   | "Access denied."            |
-      | operator  | "published"   | "a"   | "unpublished" | "Access denied."            |
-      | operator  | "unpublished" | "a"   | "published"   | "Access denied."            |
-      | operator  | "unpublished" | "a"   | "unpublished" | "Access denied."            |
+      | operator  | "published"   | "a"   | "published"   | "You are not authorized to perform this action."  |
+      | operator  | "published"   | "a"   | "unpublished" | "You are not authorized to perform this action."  |
+      | operator  | "unpublished" | "a"   | "published"   | "You are not authorized to perform this action."  |
+      | operator  | "unpublished" | "a"   | "unpublished" | "You are not authorized to perform this action."  |
       
       | visitor   | "published"   | "a"   | "published"   | "You need to sign in or sign up before continuing." |
       | visitor   | "published"   | "a"   | "unpublished" | "You need to sign in or sign up before continuing." |
       | visitor   | "unpublished" | "a"   | "published"   | "You need to sign in or sign up before continuing." |
       | visitor   | "unpublished" | "a"   | "unpublished" | "You need to sign in or sign up before continuing." |
-   
+  
   Scenario Outline: Edit instruction
     Given I am a <role>
     And there is a <p_pub> product belonging to <owner> company has a <i_pub> instruction

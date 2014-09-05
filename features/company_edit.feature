@@ -1,3 +1,4 @@
+@validated
 Feature: Edit Companies
   As a user of the website
   I want to see the edit company page
@@ -23,7 +24,7 @@ Feature: Edit Companies
       | role      | response                                            |
       | admin     | the EDIT company fields                             |
       | manager   | the EDIT company fields                             |
-      | operator  | "Access denied."                                    |
+      | operator  | "You are not authorized to perform this action."    |
       | visitor   | "You need to sign in or sign up before continuing." |
       
   Scenario Outline: Edit company
