@@ -24,3 +24,14 @@
 .gray-bg            { background-color: rgb(54, 59, 63) }
 .qrcode             { height: 200px; width: 200px;  }
 .image-header       { background-color: rgb(54, 59, 63); padding-top: 20px; padding-bottom: 20px; margin-bottom: 50px; }
+
+.xs-padding-bottom  { padding-bottom: 20px; }
+
+.dokspot-mail { 
+  background-image:     asset-data-url("dokspot-mail.png");
+  background-repeat:    no-repeat;
+  background-position:  center;
+  height:               50px;
+  width:                auto;
+  margin-top:           20px;
+}
