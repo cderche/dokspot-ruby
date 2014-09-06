@@ -32,11 +32,16 @@ class Product < ActiveRecord::Base
       secret_access_key:  ENV['S3_SECRET']
     }
   has_attached_file :qrcode_svg,
-    storage: :s3,
-    s3_credentials: {
-      bucket:             ENV['S3_BUCKET'],
-      access_key_id:      ENV['S3_KEY'],
-      secret_access_key:  ENV['S3_SECRET']
+    storage: :fog,
+    fog_directory: ENV['S3_BUCKET'],
+    fog_credentials: {
+      aws_access_key_id:      ENV['S3_KEY'],
+      aws_secret_access_key:  ENV['S3_SECRET'],
+      provider: 'AWS',
+      region:             'eu-west-1',
+      scheme:             'https'
+      #host:               's3-eu-west-1.amazonaws.com',
+      #endpoint:           'https://s3-eu-west-1.amazonaws.com',
     }
   validates_attachment_content_type :qrcode_png, content_type: "image/png"
   do_not_validate_attachment_file_type :qrcode_svg
