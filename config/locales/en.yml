@@ -87,3 +87,6 @@ en:
   notifications:
     destroy:
       warning: "Are you sure you want to delete this notification?"
+  users:
+    destroy:
+      warning: "Are you sure you want to remove %{email} as a user?"
