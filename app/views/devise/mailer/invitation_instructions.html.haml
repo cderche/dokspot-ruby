@@ -4,35 +4,35 @@
     %meta(http-equiv="Content-Typ" content="text/html; charset:=UTF-8")
     = stylesheet_link_tag "emails.css"
     
-    %body
-      
-      .container-fluid
-        .text-center
-          .dokspot-mail
-      
-        .page-header
-          %h3 Welcome to dokspot!
-          
-        .lead
-          .row
-            .col-xs-12 
-              %p= I18n.t("devise.mailer.invitation_instructions.hello", email: @resource.email)
-              
-              %br
-          
-              %p= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
-          
-          .row.xs-padding-bottom
-            .col-xs-12.text-center
-              = link_to I18n.t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token), class: 'btn btn-success btn-lg'
-
-          %br
-          
-          .row
-            .col-xs-12.text-center
-              %p.xs-margin-top
-                %small= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe
-          
-              %h3.xs-margin-top
-                %small= I18n.t("devise.mailer.invitation_instructions.signature").html_safe
+  %body
+    
+    .container-fluid
+      .text-center
+        .dokspot-mail
+    
+      .page-header
+        %h3 Welcome to dokspot!
+        
+      .lead
+        .row
+          .col-xs-12 
+            %p= I18n.t("devise.mailer.invitation_instructions.hello", email: @resource.email)
             
+            %br
+        
+            %p= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
+        
+        .row.xs-padding-bottom
+          .col-xs-12.text-center
+            = link_to I18n.t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token), class: 'btn btn-success btn-lg'
+
+        %br
+        
+        .row
+          .col-xs-12.text-center
+            %p.xs-margin-top
+              %small= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe
+        
+            %h3.xs-margin-top
+              %small= I18n.t("devise.mailer.invitation_instructions.signature").html_safe
+          
