@@ -31,6 +31,7 @@ class CompaniesController < ApplicationController
   def create
     authorize Company
     @company = Company.new(company_params)
+    @company.symbol = @company.symbol.upcase
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: I18n.t('companies.success') }
