@@ -16,7 +16,7 @@ en:
       invitation_instructions:
         subject: 'Welcome to dokspot! - Invitation instructions'
         hello: 'Hello %{email},'
-        someone_invited_you: 'You have been invited to collaborate on %{url}, the digital IFU management platform. To proceed simply click the link below.'
+        someone_invited_you: 'You have been invited to collaborate on dokspot.com, the digital IFU management platform. To proceed simply click the link below.'
         accept: 'Accept invitation'
         ignore: "If you believe you have received this email by mistake, please ignore this email.<br />Your account won't be created until you access the link above and set your password."
         signature: 'the dokspot team'
