@@ -12,12 +12,13 @@
     %h4
       Website:
       = link_to @company.website, @company.website
-    %h4
-      Contact:
-      = mail_to @company.contact, @company.contact
-    %h4
-      Orders:
-      = mail_to @company.order_email, @company.order_email
+    - if current_user.admin?
+      %h4
+        Contact:
+        = mail_to @company.contact, @company.contact
+      %h4
+        Orders:
+        = mail_to @company.order_email, @company.order_email
   .col-sm-4.text-right
     .btn-group.btn-group-sm
       = link_to t('edit.company'), edit_company_path(@company), class: 'btn btn-warning' if policy(@company).edit?

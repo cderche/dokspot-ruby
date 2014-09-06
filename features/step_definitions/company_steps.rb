@@ -122,8 +122,8 @@ end
 Then(/^I should see the company details$/) do
   expect(page).to have_content  @company.name
   expect(page).to have_content  @company.symbol
-  expect(page).to have_content  @company.contact
-  expect(page).to have_content  @company.order_email
+  expect(page).to have_content  @company.contact if @user.admin?
+  expect(page).to have_content  @company.order_email if @user.admin?
   expect(page).to have_link     @company.website,   href: @company.website
 end
 
