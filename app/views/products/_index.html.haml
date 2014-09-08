@@ -13,9 +13,5 @@
     %tr
       %td= product.name
       %td= product.uuid
-      %td
-        - if product.published?
-          = render "support/published"
-        - else
-          = render "support/not_published"
+      %td= render partial: "support/published", locals: {object: product}
       %td= link_to t('keywords.show'), product, class: 'btn btn-primary btn-xs' if policy(product).show?

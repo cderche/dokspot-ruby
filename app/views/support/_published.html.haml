@@ -1,1 +1,24 @@
-%span.glyphicon.glyphicon-ok.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Published"}
+/ CALC RESPONSE
+- response = 0
+
+- if object.class.name == 'Product'
+  - if object.published?
+    - response = 0
+  - else
+    - response = 1
+- else
+  - if object.published?
+    - if object.product.published?
+      - response = 0
+    - else
+      - response = 2
+  - else
+    - response = 1
+
+/ ASSIGN RESPONSE
+- if response == 0
+  %span.glyphicon.glyphicon-ok.text-success{data:{toggle:"tooltip",placement:"right"}, title:"Published"}
+- elsif response == 1
+  %span.glyphicon.glyphicon-remove.text-danger{data:{toggle:"tooltip",placement:"right"}, title:"Not Published"}
+- elsif response == 2
+  %span.glyphicon.glyphicon-flag.text-warning{data:{toggle:"tooltip",placement:"right"}, title:"Product Not Published"}

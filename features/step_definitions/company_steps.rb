@@ -71,7 +71,7 @@ When(/^I visit the companies index page$/) do
 end
 
 When(/^I click on the EDIT company button$/) do
-  click_link I18n.t('edit.company'),  href: edit_company_path(@company)
+  click_link I18n.t('keywords.edit'),  href: edit_company_path(@company)
 end
 
 When(/^I visit the company edit page$/) do
@@ -86,7 +86,7 @@ When(/^I edit the company$/) do
 end
 
 When(/^I click on the DELETE company button$/) do
-  click_link I18n.t('delete.company'),  href: company_path(@company)
+  click_link I18n.t('keywords.delete'),  href: company_path(@company)
 end
 
 When(/^I click on the new company button$/) do
@@ -128,11 +128,11 @@ Then(/^I should see the company details$/) do
 end
 
 Then(/^I should see the EDIT company button$/) do
-  expect(page).to have_link I18n.t('edit.company'),  href: edit_company_path(@company)
+  expect(page).to have_link I18n.t('keywords.edit'),  href: edit_company_path(@company)
 end
 
 Then(/^I should see the DELETE company button$/) do
-  expect(page).to have_link I18n.t('delete.company'),  href: company_path(@company)
+  expect(page).to have_link I18n.t('keywords.delete'),  href: company_path(@company)
 end
 
 Then(/^I should not see the EDIT company button$/) do

@@ -1,7 +1,10 @@
-- if policy(product).destroy?
-  %button.btn.btn-danger.btn-xs{data: {toggle: 'modal', target: '#deleteProductModal'}}
-    = t('keywords.delete')
+.btn-group.btn-group-sm
+  - if policy(product).edit?
+    = link_to t('keywords.edit'), edit_product_path(product), class: 'btn btn-warning'
+  - if policy(product).destroy?
+    = link_to t('keywords.delete'), '', class: 'btn btn-danger', data: {toggle: 'modal', target: '#deleteProductModal'}
   
+- if policy(product).destroy?
   .modal.fade#deleteProductModal{tabIndex: '-1', role: 'dialog', aria: {labelledby: 'deleteProductModal', hidden: true}}
     .modal-dialog
       .modal-content

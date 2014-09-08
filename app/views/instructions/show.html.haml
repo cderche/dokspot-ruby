@@ -1,11 +1,12 @@
 = render 'breadcrumbs'
 
-.page-header
-  %h1
+.jumbotron
+  %h2
     Instruction History
-  %h4
-    = @instruction.product.name
-    = "-"
-    = @instruction.language.name
+    %br
+    %small
+      = @instruction.product.name
+      = "-"
+      = @instruction.language.name
 
 = render partial: "documents/index", locals: { instruction: @instruction } if policy(Document.new(instruction: @instruction)).index?

@@ -17,14 +17,7 @@
     - product.instructions.each do |instruction|
       %tr
         %td= instruction.language.name
-        %td
-          - if instruction.published?
-            - if product.published?
-              = render "support/published"
-            - else
-              = render "support/not_visible"
-          - else
-            = render "support/not_published"
+        %td= render partial: "support/published", locals: {object: instruction}
         %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).primary?
         %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
         %td= link_to t('keywords.edit'), edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' if policy(instruction).edit?

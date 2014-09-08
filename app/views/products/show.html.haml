@@ -3,27 +3,20 @@
 - if !user_signed_in?
   = render partial: 'notifications/display', locals: { product: @product }
   
-.page-header
-  %h1
-    = @product.name
-    - if user_signed_in?
-      - if @product.published?
-        = render "support/published"
-      - else
-        = render "support/not_published"
-    %br
-    %small
-      = @product.uuid
-  %h4
-    - if user_signed_in?  
-      = link_to @product.company.name, @product.company if policy(@product.company).show?
-    - else
-      = @product.company.name
-
-.text-right
-  .btn-group.btn-group-sm
-    = link_to t('keywords.edit'), edit_product_path(@product), class: 'btn btn-warning' if policy(@product).edit?
-    = render partial: "delete", locals: {product: @product}
+.jumbotron
+  .row
+    .col-xs-8
+      %h2
+        =@product.name
+        %br
+        %small
+          = @product.uuid
+          %br
+          = render partial: "support/published", locals: {object: @product} if user_signed_in?
+            
+      %h4= @product.company.name if !user_signed_in?
+    .col-xs-4.text-right
+      = render partial: "delete", locals: {product: @product}
       
 %br
 

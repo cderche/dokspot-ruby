@@ -16,14 +16,7 @@
       %td= notification.content
       %td{class: "text-#{notification.category}"}
         = notification.category
-      %td
-        - if notification.published?
-          - if product.published?
-            = render "support/published"
-          - else
-            = render "support/not_visible"
-        - else
-          = render "support/not_published"
+      %td= render partial: "support/published", locals: {object: notification}
       %td= link_to t('keywords.edit'), edit_notification_path(notification), class: 'btn btn-warning btn-xs'
       %td= render "notifications/delete", notification: notification
       /%td= link_to t('keywords.delete'), notification, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs'
