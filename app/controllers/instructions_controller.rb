@@ -20,11 +20,14 @@ class InstructionsController < ApplicationController
     @instruction = @product.instructions.build
     @instruction.documents.build
     authorize @instruction
+    @languages = Language.all - @product.languages
   end
 
   # GET /instructions/1/edit
   def edit
     authorize @instruction
+    @languages = Language.all - @instruction.product.languages #+ @instruction.language
+    @languages << @instruction.language
   end
 
   # POST /instructions

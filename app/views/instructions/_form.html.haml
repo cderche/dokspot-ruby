@@ -1,9 +1,10 @@
 = simple_form_for [@product, @instruction] do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs  
+
     .form-group
-      = f.association :language, input_html: { autofocus: true, class: 'form-control' }
+      = f.association :language, collection: @languages, input_html: { autofocus: true, class: 'form-control' }, include_blank: false
       
     - if action_name == 'new'
       = f.simple_fields_for :documents do |d|
