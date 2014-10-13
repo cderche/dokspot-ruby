@@ -58,3 +58,4 @@ gem 'mini_magick'
 gem 'aws-sdk'
 gem 'premailer-rails'
 gem "letter_opener", group: :development
+gem 'country_select'

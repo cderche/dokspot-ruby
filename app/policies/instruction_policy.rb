@@ -45,5 +45,9 @@ class InstructionPolicy
   def primary?
     show?
   end
+	
+	def order?
+		show?
+	end
   
 end

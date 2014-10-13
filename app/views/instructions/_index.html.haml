@@ -29,5 +29,6 @@
         %td= instruction.language.name
         %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).show?
         %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
+        %td= link_to t('keywords.order'), new_instruction_order_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).order?
 
 %br

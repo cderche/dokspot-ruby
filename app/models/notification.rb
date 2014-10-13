@@ -3,8 +3,8 @@ class Notification < ActiveRecord::Base
   after_initialize :set_default_published, :if => :new_record?
   
   enum category: {
-    warning:    1,
-    danger:  2
+    warning:  1,
+    danger:   2
   }  
   
   scope :published, -> { where(published: true) }

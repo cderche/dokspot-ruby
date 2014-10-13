@@ -1,7 +1,6 @@
 @order
 Feature: Create Order
 
-	@new_order
   Scenario: Click new order button
     Given there is a "published" product belonging to "a" company has a "published" instruction
     And I am a visitor
@@ -13,4 +12,5 @@ Feature: Create Order
     Given there is a "published" product belonging to "a" company has a "published" instruction
     And I am a visitor
     When I create a new order
+    And I confirm the order
     Then I should see a order successfully created message

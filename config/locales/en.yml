@@ -31,6 +31,13 @@ en:
     demote: "Demote"
     qrcode: 'QR Code'
     delete: 'Delete'
+    order: 'Order'
+    track: 'Track Order'
+    signature: "the dokspot team"
+    greetings: "Hello!"
+    status: "Update Order Status"
+    cancel: "Cancel"
+    back: "Back"
   new:
     company: "New Company"
     product: "New Product"
@@ -90,3 +97,25 @@ en:
   users:
     destroy:
       warning: "Are you sure you want to remove %{email} as a user?"
+  orders:
+    update:
+      success: "Order was successfully updated."
+    reviewed:
+      success: "Order was successfully placed."
+    create:
+      success: "Please review and confirm your order."
+    invalid_code: "The code you provided did not meet the order reference. If you are an MDM please sign in before viewing the order."
+    not_found: "The Order: %{token} was not found. Please check the reference entered is correct."
+    already_processed: "This order can't be modified as it has already been processed."
+    cancelled: "You have successfully cancelled the order."
+  emails:
+    new_order:
+      greeting: "Hi %{name}!"
+      message: "Your order has been received. We are working hard to deliver it within 7 days. You can track its status by clicking the link below"
+      company:
+        message: "An order has been placed on dokspot for one of your instructions for use. It can be visualised using the link below. Please note that in alignment with EU Regulations the customer should receive the order within seven calender days."
+        alternative: "You can view all your orders by visiting the order tab on your company page on dokspot."
+    cancelled_order:
+      message: "This email is to confirm that you have cancelled order %{token} that you placed with dokspot. If you are receiving this as an error, please contact us at help@dokspot.com"
+      company:
+        message: "This is to confirm that the customer who placed order %(token) has decided to cancel their order."

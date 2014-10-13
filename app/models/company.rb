@@ -8,6 +8,7 @@ class Company < ActiveRecord::Base
 
   has_many :users
   has_many :products
+  has_many :orders, through: :products
   
   validates :name,        presence: true
   validates :symbol,      presence: true

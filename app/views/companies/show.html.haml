@@ -30,6 +30,8 @@
     = link_to t('keywords.products'), '#products', role: 'tab', data: {toggle: 'tab'}
   %li
     = link_to t('keywords.users'), '#users', role: 'tab', data: {toggle: 'tab'}
+  %li
+    = link_to t('keywords.orders'), '#orders', role: 'tab', data: {toggle: 'tab'}
 
 / TAB PANES
 %div.tab-content
@@ -37,3 +39,5 @@
     = render partial: "products/index",  locals: { company: @company }
   %div.tab-pane#users
     = render partial: "users/index",     locals: { company: @company }
+  %div.tab-pane#orders
+    = render partial: "orders/index",     locals: { company: @company }

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   
   resources :instructions, except: [:index, :new, :create] do
     resources :documents, except: :show, shallow: true
+		resources :orders, shallow: true
     get :primary
   end
   

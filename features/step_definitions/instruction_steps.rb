@@ -1,4 +1,6 @@
 def create_instruction
+  create_product if @product.nil?
+  
   language = FactoryGirl.create(:language, { name: 'English' })
   tmp = {
     language: language,

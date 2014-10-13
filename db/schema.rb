@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903100157) do
+ActiveRecord::Schema.define(version: 20141002084601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20140903100157) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "published"
+  end
+
+  create_table "customers", force: true do |t|
+    t.string   "full_name"
+    t.string   "company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "postcode"
+    t.string   "city"
+    t.string   "country"
+    t.text     "notes"
+    t.string   "telephone"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "documents", force: true do |t|
@@ -67,6 +82,21 @@ ActiveRecord::Schema.define(version: 20140903100157) do
   end
 
   add_index "notifications", ["product_id"], name: "index_notifications_on_product_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "instruction_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "code"
+    t.boolean  "reviewed"
+    t.string   "token"
+    t.integer  "status"
+    t.string   "track"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+  add_index "orders", ["instruction_id"], name: "index_orders_on_instruction_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"

@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
   has_many    :notifications
   has_many    :languages, through: :instructions
   
+  has_many    :orders, through: :instructions
+  
   def set_default_published
     self.published ||= false
   end

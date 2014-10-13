@@ -1,4 +1,6 @@
 def new_product
+  create_company if @company.nil?
+  
   @new_product ||= {
     name:     "Example Product",
     company:  @company
