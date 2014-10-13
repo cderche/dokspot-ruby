@@ -1,0 +1,77 @@
+%h1
+  Order
+  = @order.token
+  
+.row
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        .panel-title Basket
+      .panel-body
+        %table.table
+          %tr
+            %td.h5 Product
+            %td= @order.instruction.product.name
+          %tr
+            %td.h5 Language
+            %td= @order.instruction.language.name
+    .panel.panel-default
+      .panel-heading
+        .panel-title Information
+      .panel-body
+        %table.table
+          %tr
+            %td.h5 Created At
+            %td= @order.created_at.to_formatted_s(:long)
+          %tr
+            %td.h5 Status
+            - if @order.status == 'cancelled'
+              %td.text-danger= @order.status
+            - elsif @order.status == 'shipped'
+              %td.text-success= @order.status
+            - elsif @order.status == 'processed'
+              %td.text-warning= @order.status
+            - elsif @order.status == 'new_order'
+              %td.text-primary= @order.status
+          %tr
+            %td.h5 Tracking Number
+            %td= @order.track
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        .panel-title Details
+      .panel-body
+        %address
+          %strong= @order.customer.full_name
+          - if @order.customer.company?
+            %br
+            %em= @order.customer.company
+          %br
+          = @order.customer.address1
+          - if @order.customer.address2?
+            %br
+            = @order.customer.address2
+          %br
+          = @order.customer.postcode
+          %br
+          = @order.customer.city
+          %br
+          = @order.customer.country
+          %br
+          %abbr{title: "Phone"}
+            P:
+          = @order.customer.telephone
+          %br
+          %abbr{title: "Email"}
+            E:
+          = @order.customer.email
+          
+        %h5 Notes
+        = @order.customer.notes
+
+
+.text-left.btn-group
+  = link_to 'Edit', edit_order_path(@order), class: 'btn btn-warning' if policy(@order).edit?
+  = link_to t('keywords.cancel'), order_path(@order, order: { status: :cancelled }), method: :put, class: 'btn btn-danger' if policy(@order).cancel?
+.text-right
+  = link_to 'Confirm Order', order_path(@order, order: { reviewed: true }), method: :put, class: 'btn btn-success' if !@order.reviewed

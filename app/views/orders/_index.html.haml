@@ -1,0 +1,39 @@
+%h1 Listing orders
+
+%table.table.table-hover
+  %tr
+    %th Order
+    %th Status
+    %th Created at
+    %th
+    %th
+
+  - @company.orders.each do |order|
+    %tr
+      %td= order.token
+      - if order.status == 'cancelled'
+        %td.text-danger= order.status
+        %td= order.created_at.to_formatted_s(:long)
+      - elsif order.status == 'shipped'
+        %td.text-success= order.status
+        %td= order.created_at.to_formatted_s(:long)
+      - elsif order.status == 'processed'
+        %td.text-primary= order.status
+        - if order.created_at < 7.days.ago
+          %td.text-danger= order.created_at.to_formatted_s(:long)
+        - elsif order.created_at < 3.days.ago
+          %td.text-warning= order.created_at.to_formatted_s(:long)
+        - else
+          %td.text-primary= order.created_at.to_formatted_s(:long)
+        
+      - elsif order.status == 'new_order'
+        %td.text-primary= order.status
+        - if order.created_at < 7.days.ago
+          %td.text-danger= order.created_at.to_formatted_s(:long)
+        - elsif order.created_at < 3.days.ago
+          %td.text-warning= order.created_at.to_formatted_s(:long)
+        - else
+          %td.text-primary= order.created_at.to_formatted_s(:long)
+        
+      %td= link_to 'Show', order, class: 'btn btn-primary btn-xs'
+      %td= link_to 'Edit', edit_order_path(order), class: 'btn btn-warning btn-xs'

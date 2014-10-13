@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    /%meta(http-equiv="Content-Typ" content="text/html; charset:=UTF-8")
+    /= stylesheet_link_tag "application.css"
+  %body
+    
+    .container-fluid
+    
+      .page-header.text-center
+      %h3 Order Cancelled
+        
+      .lead
+        .row
+          .col-xs-12 
+            %p= I18n.t("emails.new_order.greeting", name: @order.customer.full_name)
+            
+            %br
+        
+            %p.text-center= I18n.t("emails.cancelled_order.message", token: @order.token)).html_safe
+
+        %br
+        
+        .row
+          .col-xs-12.text-center
+            %h3.xs-margin-top
+              %small= I18n.t("keywords.signature").html_safe
+              

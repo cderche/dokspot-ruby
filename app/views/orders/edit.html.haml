@@ -1,0 +1,22 @@
+%h1 Editing order
+
+.row
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        .panel-title Basket
+      .panel-body
+        %table.table
+          %tr
+            %td.h5 Product
+            %td= @order.instruction.product.name
+          %tr
+            %td.h5 Language
+            %td= @order.instruction.language.name
+  .col-sm-6
+    .panel.panel-default
+      .panel-heading
+        .panel-title Details
+        .panel-body= render 'form'
+
+= link_to t('keywords.back'), order_path(@order, code: @order.code), class: 'btn btn-primary'
