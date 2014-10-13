@@ -22,7 +22,7 @@
         
         .row.xs-padding-bottom
           .col-xs-12.text-center
-            = link_to I18n.t("keywords.track"), order_path({id: @order.token, code: @order.code}), class: 'btn btn-success btn-lg'
+            = link_to I18n.t("keywords.track"), order_url({id: @order.token, code: @order.code}), class: 'btn btn-success btn-lg'
 
         %br
         
