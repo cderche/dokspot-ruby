@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'service', to: 'visitors#service'
+  get 'about', to: 'visitors#about'
+  
   get 'qrcode/show'
 
   devise_for :users, skip: :registrations

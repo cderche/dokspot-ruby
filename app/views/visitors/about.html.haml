@@ -1,0 +1,36 @@
+.jumbotron.content-header
+  .container.text-center
+    =image_tag "dokspot-circle.png", class: "img"
+    %h1 About Us
+
+.container.extended-container
+  .row.text-right
+    .col-md-6.text-center
+      %h1.lead The Company
+      %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+      =link_to "The Service", service_path, class: 'btn btn-default btn-lg btn-primary'
+    .col-md-6.text-center
+      %h1.lead Contact Us
+      %form{:role => "form"}
+        .row.text-left
+          .col-md-6
+            .form-group
+              %label.control-label{:for => "formInput33"} Field label
+              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+          .col-md-6
+            .form-group
+              %label.control-label{:for => "formInput33"} Field label
+              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+        .row.text-left
+          .col-md-6
+            .form-group
+              %label.control-label{:for => "formInput33"} Field label
+              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+          .col-md-6
+            .form-group
+              %label.control-label{:for => "formInput33"} Field label
+              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+        .row
+          .col-md-12
+            %textarea.form-control{:rows => "3"}
+            %button.btn{:style => "margin-top: 10px", :type => "submit"} Submit

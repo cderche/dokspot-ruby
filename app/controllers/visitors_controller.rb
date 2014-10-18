@@ -10,6 +10,9 @@ class VisitorsController < ApplicationController
     redirect_to @product
   end
   
+  def service
+  end
+  
   private
   
   def catch_not_found

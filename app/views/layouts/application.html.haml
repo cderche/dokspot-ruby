@@ -8,9 +8,11 @@
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body{class: ('gray-bg' if controller_name == 'visitors') }
-    %header
-      = render 'layouts/navigation'
-    %main{role: "main"}
+  %body
+    #wrap
+      %header
+        = render 'layouts/navigation'
       = render 'layouts/messages'
       = yield
+      #push
+    = render 'layouts/footer'

@@ -1,3 +1,5 @@
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,25 +17,179 @@
  */
 
 @import "bootstrap-sprockets";
+
 @import "bootstrap";
- 
 
-.xs-margin-top      { margin-top:     20px    }
-.lg-margin-top      { margin-top:     200px   }
-.center-horizontal  { vertical-align: middle  }
-.gray-bg            { background-color: rgb(54, 59, 63) }
-.qrcode             { height: 200px; width: 200px;  }
-.image-header       { background-color: rgb(54, 59, 63); padding-top: 20px; padding-bottom: 20px; margin-bottom: 50px; }
+$footer-height: 240px;
 
-.xs-padding-bottom  { padding-bottom: 20px; }
+.xs-margin-top
+{
+    margin-top: 20px;
+}
 
-.dokspot-mail { 
-  background-image:     asset-data-url("dokspot-mail.png");
-  background-repeat:    no-repeat;
-  background-position:  center;
-  height:               50px;
-  width:                auto;
-  margin-top:           20px;
-  //display:              inline;
-  visibility:           visible;
+.lg-margin-top
+{
+    margin-top: 300px;
+}
+
+.center-horizontal
+{
+    vertical-align: middle;
+}
+
+.gray-bg
+{
+    background-color: rgb(54, 59, 63);
+}
+
+.qrcode
+{
+    height: 200px;
+    width: 200px;
+}
+
+.image-header
+{
+    background-color: rgb(54, 59, 63);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.xs-padding-bottom
+{
+    padding-bottom: 20px;
+}
+
+.dokspot-mail
+{
+    background-image: asset-data-url("dokspot-mail.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50px;
+    width: auto;
+    margin-top: 20px;
+    visibility: visible;
+}
+
+.content-header
+{
+    background-color: #0071bc;
+    color: #fff;
+}
+
+.container-colored
+{
+    background-color: rgba(0, 113, 188, 0.4);
+}
+
+.extended-container
+{
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.footer-container
+{
+    background-color: #222;
+}
+
+.lg-container
+{
+  height: 200px;
+}
+
+.md-container
+{
+  height: 100px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+
+/* Set the fixed height of the footer here */
+/* Negative indent footer by it's height */
+
+@media(max-width: 767px){
+  #push,
+  #footer {
+    height: 290px;
+  }
+  
+  #wrap {
+    margin: 0 auto -290px;
+  }
+}
+
+@media(min-width: 768px){
+  #push,
+  #footer {
+    height: 310px;
+  }
+  
+  #wrap {
+    margin: 0 auto -310px;
+  }
+}
+
+@media(min-width:992px){
+  #push,
+  #footer {
+    height: 240px;
+  } 
+  
+  #wrap {
+    margin: 0 auto -240px;
+  }
+}
+
+/* Pinegrow Styles */
+
+.content-header
+{
+  background-color: #0071bc !important;
+  color: #fff !important;
+}
+
+.container-colored
+{
+    background-color: rgba(0, 113, 188, 0.4);
+}
+
+.extended-container
+{
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.footer-container
+{
+    background-color: #222;
+}
+
+.lg-container
+{
+  height: 250px;
+}
+
+.md-container
+{
+  height: 140px;
+}
+
+#launch-page {
+  background-color: #363b3f; 
 }
