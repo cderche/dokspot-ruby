@@ -47,7 +47,8 @@
     .col-md-3.text-center
       %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo3", "data-toggle" => "modal", :type => "button"} More Info
     .col-md-3.text-center
-      %button.btn.btn-default.btn-success{"data-target" => "modalDemo1", "data-toggle" => "modal", :type => "button"} The Service
+      =link_to "The Service", service_path, class: "btn btn-default btn-success"  
+      
 / /container
 #modalDemo1.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
