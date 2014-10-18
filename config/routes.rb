@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'service', to: 'visitors#service'
   get 'about', to: 'visitors#about'
+  get 'demo', to: 'visitors#demo'
   
   get 'qrcode/show'
 

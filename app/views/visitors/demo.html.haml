@@ -1,0 +1,87 @@
+/ Main jumbotron for a primary marketing message or call to action
+.jumbotron.content-header.text-center
+  .container
+    %h1 DEMO
+    %p take a test drive
+    %p
+.container
+  / Example row of columns
+  .row
+    .text-center.col-md-3
+      =image_tag "1.png", class: "img", style: "width: 64"
+      %h2.lead the dokspot code
+      %p.text-justify Each instruction is given a unique dokspot code. This code is shipped with the product sent to the healthcare provider.
+      %p.text-justify
+        In this demonstration we will use the code
+        = succeed "." do
+          %strong DKS16
+      %p
+    .text-center.col-md-3
+      =image_tag "2.png", class: "img", style: "width: 64"
+      %h3.lead view the product
+      %p.text-justify
+        Now that you have a code, head over to
+        %a{:href => "http://www.dokspot.com", :target => "_blank"} dokspot.com
+        and enter the code into the search bar.
+      %p.text-justify If the code exist, a dedicated page will load with information on the product.
+      %p
+    .text-center.col-md-3
+      =image_tag "3.png", class: "img", style: "width: 64"
+      %h3.lead select a language
+      %p.text-justify The page will present all the languages that the document has been made available in as well as any messages.
+      %p.text-justify
+        Select which one you would like to view.
+        %br/
+      %p
+    .text-center.col-md-3
+      =image_tag "4.png", class: "img", style: "width: 64"
+      %h3.lead view the instruction
+      %p.text-justify Congratulation! You are now viewing your first document on the dokspot platform!
+      %p.text-justify Simple enough? We think so. Click below to find out more about the service.
+      %p
+  .row{:style => "margin-top: 50px"}
+    .col-md-3.text-center
+      %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo1", "data-toggle" => "modal", :type => "button"} More Info
+    .col-md-3.text-center
+      %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo2", "data-toggle" => "modal", :type => "button"} More Info
+    .col-md-3.text-center
+      %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo3", "data-toggle" => "modal", :type => "button"} More Info
+    .col-md-3.text-center
+      %button.btn.btn-default.btn-success{"data-target" => "modalDemo1", "data-toggle" => "modal", :type => "button"} The Service
+/ /container
+#modalDemo1.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title the dokspot code
+      .modal-body
+        .row
+          .col-md-6
+            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+          .col-md-6
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+#modalDemo2.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title view the product
+      .modal-body
+        .row
+          .col-md-6
+            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+          .col-md-6
+            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+#modalDemo3.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title select a language
+      .modal-body
+        .row
+          .col-md-6
+            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+          .col-md-6
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
