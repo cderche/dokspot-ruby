@@ -9,7 +9,7 @@ module Uuid
   
     def generate_uuid
       #puts "Generating UUID..."
-      self.uuid = "#{self.company.symbol}#{self.id}"
+      self.uuid = "#{self.company.symbol.upcase}#{self.id}"
       self.save
     end
     

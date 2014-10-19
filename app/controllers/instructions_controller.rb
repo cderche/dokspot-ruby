@@ -33,6 +33,8 @@ class InstructionsController < ApplicationController
   # POST /instructions
   # POST /instructions.json
   def create
+    @languages = Language.all - @product.languages
+    
     #@instruction = Instruction.new(instruction_params)
     @instruction = @product.instructions.build(instruction_params)
     authorize @instruction

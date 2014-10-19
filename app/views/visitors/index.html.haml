@@ -2,10 +2,10 @@
   .row
     .container.pg-empty-placeholder.lg-container.hidden-xs
     .container.pg-empty-placeholder.md-container.visible-xs
-    .container-fluid{:style => "padding-top: 110px; padding-bottom: 100px"}
+    .container-fluid{:style => "padding-top: 110px;"}
       .row
         .col-sm-4.col-sm-offset-4.col-xs-10.col-xs-offset-1
           = simple_form_for :search, url: search_path, method: :post do |f|
             .form-group
-            =f.input :query, input_html: { class: 'form-control input-lg text-center', placeholder: 'Enter Code', autofocus: true }, label: false
+            =f.input :query, input_html: { class: 'form-control input-lg text-center', placeholder: 'dokspot code', autofocus: true }, label: false
     .container.pg-empty-placeholder.lg-container

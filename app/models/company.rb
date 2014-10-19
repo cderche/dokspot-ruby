@@ -22,5 +22,13 @@ class Company < ActiveRecord::Base
   def set_default_published
     self.published ||= true
   end
+  
+  before_save :upcase_symbol
+  
+  private
+    
+    def upcase_symbol
+      self.symbol.upcase!
+    end
 
 end

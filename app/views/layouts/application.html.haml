@@ -8,11 +8,14 @@
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    #wrap
-      %header
-        = render 'layouts/navigation'
-      = render 'layouts/messages'
-      = yield
-      #push
-    = render 'layouts/footer'
+  
+  / Depending on what page you are visiting the platform has different styles the 'state' variable helps define what style should be applied
+  -state = 0
+  -if controller_name == 'visitors'
+    -if action_name == 'index'
+      -state = 1 
+    -else
+      -state = 2
+  -elsif controller_name == 'sessions' or controller_name == 'passwords'
+    -state = 1
+  =render 'layouts/container', state: state
