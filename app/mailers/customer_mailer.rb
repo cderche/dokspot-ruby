@@ -16,4 +16,9 @@ class CustomerMailer < ActionMailer::Base
     mail(to: @order.customer.email, subject: "Order #{@order.token} Cancelled")
   end
   
+  def new_lead(customer)
+    @customer = customer
+    mail(to: "talk@dokspot.com", subject: "New Lead", from: "notification@dokspot.com")
+  end
+  
 end

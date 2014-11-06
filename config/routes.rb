@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   
   post :search, to: "visitors#search"
   
+  resources :customers, only: :create
+  
 end

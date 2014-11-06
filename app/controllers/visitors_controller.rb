@@ -13,6 +13,10 @@ class VisitorsController < ApplicationController
   def service
   end
   
+  def about
+    @customer = Customer.new
+  end
+  
   private
   
   def catch_not_found

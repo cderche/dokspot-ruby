@@ -15,26 +15,29 @@
       =link_to "The Service", service_path, class: 'btn btn-default btn-lg btn-primary'
     .col-md-6.text-center
       %h1.lead Contact Us
-      %form{:role => "form"}
-        .row.text-left
-          .col-md-6
-            .form-group
-              %label.control-label{:for => "name"} Name
-              %input#formInput33.form-control{:placeholder => "e.g. John Doe", :type => "text", autofocus: true}/
-          .col-md-6
-            .form-group
-              %label.control-label{:for => "company"} Company
-              %input#formInput33.form-control{:placeholder => "e.g. Doe Inc", :type => "text"}/
-        .row.text-left
-          .col-md-6
-            .form-group
-              %label.control-label{:for => "telephone"} Telephone
-              %input#formInput33.form-control{:placeholder => "e.g. +41 79 216 38 28", :type => "text"}/
-          .col-md-6
-            .form-group
-              %label.control-label{:for => "email"} Email
-              %input#formInput33.form-control{:placeholder => "e.g. talk@dokspot.com", :type => "text"}/
-        .row
-          .col-md-12
-            %textarea.form-control{:rows => "8"}
-            %button.btn.pull-right.btn-success{:style => "margin-top: 10px", :type => "submit"} Submit
+      
+      
+      = simple_form_for(@customer) do |f|
+        = f.error_notification
+      
+        .form-inputs
+          .row.text-left
+            .col-md-6
+              .form-group
+                = f.input :full_name, input_html: { class: 'form-control', autofocus: true }
+            .col-md-6
+              .form-group
+                = f.input :company, input_html: { class: 'form-control' }
+          .row.text-left
+            .col-md-6
+              .form-group
+                = f.input :telephone, input_html: { class: 'form-control' }
+            .col-md-6
+              .form-group
+                = f.input :email, as: :email, input_html: { class: 'form-control' }
+                
+          .row
+            .col-md-12
+              .form-group
+                = f.input :notes, as: :text, input_html: { class: 'form-control', rows: 8 }
+              %button.btn.pull-right.btn-success{:style => "margin-top: 10px", :type => "submit"} Submit
