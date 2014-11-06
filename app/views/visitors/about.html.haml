@@ -7,7 +7,11 @@
   .row.text-right
     .col-md-6.text-center
       %h1.lead The Company
-      %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+      %p.text-justify dokspot is a digital instruction management platform that innovates the way instructions are delivered to customers. We focus on the medical device industry.
+      %p.text-justify The current model for delivering medical device instructions to customers is outdated and highly inefficient. The cost of instructions can account for up to 5% of total product cost, harms the environment and provides little benefit to the customer.
+      %p.text-justify Our team is a fusion of medical device industry experts and software developers. This enables us to have a deep understanding of our client requirements and provide the innovative solutions and technologies needed to increase our clients efficiency and customer focus in communication of instructions.
+      %p.text-justify dokspot is headquartered and registered in Zürich, Switzerland.
+      %br
       =link_to "The Service", service_path, class: 'btn btn-default btn-lg btn-primary'
     .col-md-6.text-center
       %h1.lead Contact Us
@@ -15,22 +19,22 @@
         .row.text-left
           .col-md-6
             .form-group
-              %label.control-label{:for => "formInput33"} Field label
-              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+              %label.control-label{:for => "name"} Name
+              %input#formInput33.form-control{:placeholder => "e.g. John Doe", :type => "text", autofocus: true}/
           .col-md-6
             .form-group
-              %label.control-label{:for => "formInput33"} Field label
-              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+              %label.control-label{:for => "company"} Company
+              %input#formInput33.form-control{:placeholder => "e.g. Doe Inc", :type => "text"}/
         .row.text-left
           .col-md-6
             .form-group
-              %label.control-label{:for => "formInput33"} Field label
-              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+              %label.control-label{:for => "telephone"} Telephone
+              %input#formInput33.form-control{:placeholder => "e.g. +41 79 216 38 28", :type => "text"}/
           .col-md-6
             .form-group
-              %label.control-label{:for => "formInput33"} Field label
-              %input#formInput33.form-control{:placeholder => "Placeholder text", :type => "text"}/
+              %label.control-label{:for => "email"} Email
+              %input#formInput33.form-control{:placeholder => "e.g. talk@dokspot.com", :type => "text"}/
         .row
           .col-md-12
-            %textarea.form-control{:rows => "3"}
-            %button.btn{:style => "margin-top: 10px", :type => "submit"} Submit
+            %textarea.form-control{:rows => "8"}
+            %button.btn.pull-right.btn-success{:style => "margin-top: 10px", :type => "submit"} Submit

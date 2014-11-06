@@ -8,37 +8,32 @@
   / Example row of columns
   .row
     .text-center.col-md-3
-      =image_tag "1.png", class: "img", style: "width: 64"
+      =image_tag "28.png", class: "img"
       %h2.lead the dokspot code
-      %p.text-justify Each instruction is given a unique dokspot code. This code is shipped with the product sent to the healthcare provider.
+      %p.text-justify Each instruction is given a unique dokspot code, supplied with the product.
       %p.text-justify
-        In this demonstration we will use the code
-        = succeed "." do
-          %strong DKS16
-      %p
+        In this demo we use:
+        %strong DKS16
+      %p.text-justify Or scan this QR code (may also be supplied with the product) with your smartphone and jump to step 3.
+      %hr.visible-xs-block.visible-sm-block
     .text-center.col-md-3
-      =image_tag "2.png", class: "img", style: "width: 64"
+      =image_tag "30.png", class: "img"
       %h3.lead view the product
       %p.text-justify
         Now that you have a code, head over to
+      %p.text-center
         %a{:href => "http://www.dokspot.com", :target => "_blank"} dokspot.com
-        and enter the code into the search bar.
-      %p.text-justify If the code exist, a dedicated page will load with information on the product.
-      %p
+      %p.text-justify and enter the code.
+      %hr.visible-xs-block.visible-sm-block
     .text-center.col-md-3
-      =image_tag "3.png", class: "img", style: "width: 64"
+      =image_tag "23.png", class: "img"
       %h3.lead select a language
-      %p.text-justify The page will present all the languages that the document has been made available in as well as any messages.
-      %p.text-justify
-        Select which one you would like to view.
-        %br/
-      %p
+      %p.text-justify View all languages that the instruction has been made available as well as any important messages related to the product.
     .text-center.col-md-3
-      =image_tag "4.png", class: "img", style: "width: 64"
+      =image_tag "31.png", class: "img"
       %h3.lead view the instruction
       %p.text-justify Congratulation! You are now viewing your first document on the dokspot platform!
       %p.text-justify Simple enough? We think so. Click below to find out more about the service.
-      %p
   .row{:style => "margin-top: 50px; margin-bottom: 50px"}
     .col-md-3.text-center
       %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo1", "data-toggle" => "modal", :type => "button"} More Info
@@ -59,9 +54,10 @@
       .modal-body
         .row
           .col-md-6
-            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+            =image_tag "29.png", class: "img", width: 270
           .col-md-6
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+            %p.text-justify Customers receive a unique dokspot code with each product. For added customer convenience device manufacturers may also choose to supply a QR code. Both codes are automatically generated through the dokspot platform for further use by the device manufacturer.
+            %p.text-justify Device manufacturers can choose from several dokspot templates for communication of the dokspot code, ranging from labels on consumable products, a permanent label on reusable devices or equipment or a product insert supplied with each product.
 #modalDemo2.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content
@@ -71,9 +67,10 @@
       .modal-body
         .row
           .col-md-6
-            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+            =image_tag "32.png", class: "img", width: 270
           .col-md-6
-            %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+            %p.text-justify With dokspot your customers get access to language tailored instructions quickly and securely. Our 2-step process is specifically designed for positive customer experience. If you customers want to read instructions they just enter the dokspot code in the dedicated platform or scan the QR code and select their language. 
+            %p.text-justify dokspot service is accessible 24/7, thus allowing your customers access to instructions anytime and anywhere even without breaking the product seal.
 #modalDemo3.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     .modal-content
@@ -83,6 +80,7 @@
       .modal-body
         .row
           .col-md-6
-            %img{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img6.jpg", :width => "270"}/
+            =image_tag "33.png", class: "img", width: 270
           .col-md-6
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar faucibus neque, nec rhoncus nunc ultrices sit amet. Curabitur ac sagittis neque, vel egestas est. Aenean elementum, erat at aliquet hendrerit, elit nisl posuere tortor, id suscipit diam dui sed nisi. Morbi sollicitudin massa vel tortor consequat, eget semper nisl fringilla. Maecenas at hendrerit odio. Sed in mi eu quam suscipit bibendum quis at orci. Pellentesque fermentum nisl purus, et iaculis lectus pharetra sit amet.
+            %p.text-justify Most instructions have a font size of 6 or smaller which is known to lead to slower reading pace and a reduced overall comprehension of the material. In addition customer receive instructions in many languages they don’t need, which is seen as cumbersome and wasteful.
+            %p.text-justify dokspot improves your customers’ experience by providing language tailored instructions on a dedicated platfrom.

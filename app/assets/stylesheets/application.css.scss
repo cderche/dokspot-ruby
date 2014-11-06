@@ -167,7 +167,7 @@ body {
 
 .container-colored
 {
-    background-color: rgba(0, 113, 188, 0.4);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 .extended-container
@@ -194,4 +194,10 @@ body {
 
 #launch-page {
   background-color: #363b3f; 
+}
+
+.subcontainer
+{
+    background-color: rgba(24, 111, 181, 0.79);
+    color: #fff;
 }

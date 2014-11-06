@@ -1,125 +1,90 @@
 .jumbotron.content-header
   .container.text-center
-    =image_tag "dokspot-circle.png", class: "img"
-    %h1 The Service
+    =image_tag "dokspot-white.png", class: "img", width: "200"
     %p Instructions. Anytime. Anywhere.
     
-.container.extended-container
+.extended-container.container{:style => "padding-top: 70px"}
   .row
     .col-md-12.text-center
-      %h3.lead Lorem ipsum dolor sit amet
-  .row
-    .col-md-4.text-center
-      %img.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-      %h3 Column title
-      %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-    .col-md-4.text-center
-      %img.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-      %h3 Column title
-      %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-    .col-md-4.text-center
-      %img.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-      %h3 Column title
-      %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-  .row
-    .col-md-12.text-center
-      =link_to "Try the Demo", demo_path, class: "btn btn-default btn-lg btn-primary", style: "margin-top: 50px"
-      
+      %h2.text-center{:style => "color: #6fbd43"} dokspot is a digital instruction management platform
+      %h4.lead.text-center{:style => "margin-top:0px"} The regulation compliant platform allows medical device manufacturers to improve their customer focus and increase efficiency while saving costs.
+      %br/
+    
+.container-fluid.subcontainer
+  .container
+    .row{:style => "margin-top: 30px"}
+      .text-center.col-md-6
+        =image_tag "25.png", class: "img", width: "100"
+        %h3{:style => "margin-bottom: 30px"} Efficient
+        %p.lead Save on printing and shipping. Optimize your time to market.
+        %hr.visible-xs-block.visible-sm-block
+      .text-center.col-md-6
+        =image_tag "26.png", class: "img", width: "100"
+        %h3{:style => "margin-bottom: 30px"} Customer Focused
+        %p.lead Improve your customers' experience. Provide quick and secure access to instructions 24/7.
+
 .container-fluid.container-colored.extended-container
   .container
     .row
       .col-md-12.text-center
-        %h3.lead Lorem ipsum dolor sit amet
+        %h2.text-center{:style => "color: #6fbd43"} Features
+        %h3.lead.text-center{:style => "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: rgb(51, 51, 51);"} dokspot comes packed full of features to help device manufacturers improve the way instructions are communicated to their customers.
+        %br/
     .row
       .text-center.col-md-6
-        %h3.lead Column title
-        %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %ul.media-list.text-left
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
+        %ul.media-list
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "15.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading Robust Platform
+              A universal access point specifically built for medical device instructions with a focus on improving effciency and customer service.
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "19.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Simple Access
+              We help your customer find the right information quickly through dokspot code, QR Codes and by providing a globally accessible service.
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "23.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Distinct Languages
+              Language specific instructions allow your customers to no longer be hassled by cumbersome and illegible multilingual documentation.
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "22.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Convenient Order Management
+              Customers can still get a paper copy of instructions through the dokspot order management service.
       .text-center.col-md-6
-        %h3.lead Column title
-        %p.text-justify Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-        %ul.media-list.text-left
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-          %li.media
-            %a.pull-left{:href => "#"}
-              %img.media-object.img-circle{:src => "http://127.0.0.1:40000/file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img2.jpg", :width => "100"}/
-            .media-body
-              %h4.media-heading Media heading
-              %ul
-                %li Lorem ipsum dolor sit amet
-                %li Consectetur adipiscing elit
-                %li Integer molestie lorem at massa
-                %li Integer molestie lorem at massa
-                
+        %ul.media-list
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "17.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Controlled Versioning
+              Upload, release and archive instructions in a simple and controlled process. Make current and former version of instruction available to your customers.
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "20.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Visual Notifications
+              Provide improved customer service by making product alerts visible through the dokspot notification service.
+              %br/
+              %br/
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "18.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Dedicated Call Back
+              The dokspot call back service allows customers to request a call to discuss prodcut specific questions.
+              %br/
+              %br/
+          %li.media.text-left{:style => "margin-top: 30px"}
+            =image_tag "21.png", class: "media-object img pull-left", width: "60"
+            .media-body{:style => "text-align: justify"}
+              %h4.media-heading> Elegantly Compliant
+              dokspot is in compliance with EU regulations and manages to keep a smooth and elegant user experience for you and your customers.
+              
+.container-fluid.subcontainer
+  .row
+    .col-md-12.text-center{:style => "padding: 50px"}
+      =link_to "Try the Demo", demo_path, class: "btn btn-default btn-lg btn-success"
+        
 .container.extended-container
   .row
     .col-md-12.text-center
@@ -128,7 +93,7 @@
     .text-center.col-md-4
       %span.glyphicon.glyphicon-phone-alt{:style => "font-size: 32px;"}
       %br
-      %a.lead{ href: "tel:+12345678987" } +12345678987
+      %a.lead{ href: "tel:+12345678987" } +41 79 216 38 28
     .text-center.col-md-4
       %span.glyphicon.glyphicon-envelope{:style => "font-size: 32px;"}
       %br
