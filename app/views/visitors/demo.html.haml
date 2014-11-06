@@ -34,11 +34,11 @@
       %p.text-justify Congratulation! You are now viewing your first document on the dokspot platform!
       %p.text-justify Simple enough? We think so. Click below to find out more about the service.
   .row{:style => "margin-top: 50px; margin-bottom: 50px"}
-    .col-md-3.text-center.hidden-xs.hidden-sm
+    .col-md-3.text-center.hidden-xs
       %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo1", "data-toggle" => "modal", :type => "button"} More Info
-    .col-md-3.text-center.hidden-xs.hidden-sm
+    .col-md-3.text-center.hidden-xs
       %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo2", "data-toggle" => "modal", :type => "button"} More Info
-    .col-md-3.text-center.hidden-xs.hidden-sm
+    .col-md-3.text-center.hidden-xs
       %button.btn.btn-default.btn-primary{"data-target" => "#modalDemo3", "data-toggle" => "modal", :type => "button"} More Info
     .col-md-3.text-center
       =link_to "The Service", service_path, class: "btn btn-default btn-success"  
