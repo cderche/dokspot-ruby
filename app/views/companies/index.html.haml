@@ -1,25 +1,19 @@
 = render 'breadcrumbs'
+      
+/ NAV TABS
+%ul.nav.nav-tabs{role: 'tablist'}
+  %li.active
+    = link_to "Companies", '#companies', role: 'tab', data: {toggle: 'tab'}
+  %li
+    = link_to "Leads", '#leads', role: 'tab', data: {toggle: 'tab'}
+  %li
+    = link_to "Call Backs", '#callbacks', role: 'tab', data: {toggle: 'tab'}
 
-.page-header
-  %h1
-    = t('keywords.companies')
-
-.text-right
-  = link_to t('new.company'), new_company_path, class: 'btn btn-success btn-sm' if policy(Company).new?
-
-%br
-
-
-%table.table.table-hover
-  %tr
-    %th Name
-    %th Symbol
-    %th Website
-    %th
-
-  - @companies.each do |company|
-    %tr
-      %td= company.name
-      %td= company.symbol
-      %td= link_to company.website, company.website
-      %td= link_to t('keywords.show'), company, class: 'btn btn-primary btn-xs' if policy(company).show?
+/ TAB PANES
+%div.tab-content
+  %div.tab-pane.active#companies
+    = render partial: "companies/all"
+  %div.tab-pane#leads
+    = render partial: "customers/leads"
+  %div.tab-pane#callbacks
+    = render partial: "customers/callbacks"

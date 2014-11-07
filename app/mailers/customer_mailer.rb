@@ -18,7 +18,13 @@ class CustomerMailer < ActionMailer::Base
   
   def new_lead(customer)
     @customer = customer
-    mail(to: "talk@dokspot.com", subject: "New Lead", from: "notification@dokspot.com")
+    mail(to: "talk@dokspot.com", subject: "New Lead", from: "notifications@dokspot.com")
+  end
+  
+  def new_callback(customer, product)
+    @customer = customer
+    @product = product
+    mail(to: "callback@dokspot.com", subject: "Call Back Request", from: "notifications@dokspot.com")
   end
   
 end

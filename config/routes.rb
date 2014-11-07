@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   
   post :search, to: "visitors#search"
   
-  resources :customers, only: :create
+  post "/about"     => "customers#contact"    , :as => :contact
+  post "/callback"  => "customers#callback"   , :as => :callback
+  get "customers/close/:id"  => "customers#close"   , :as => :close
   
 end

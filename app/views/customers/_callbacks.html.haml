@@ -1,0 +1,16 @@
+%table.table.table-hover
+  %tr
+    %th Telephone
+    %th Product
+    %th Created At
+    %th Status
+    %th
+
+  - Customer.callbacks.each do |callback|
+    - product = Product.find_by uuid: callback.notes
+    %tr
+      %td= callback.telephone
+      %td= link_to product.uuid, product
+      %td= callback.created_at
+      %td= callback.status
+      %td= link_to "close", close_path(callback.id), class: "btn btn-primary btn-xs" if callback.status == 'open'

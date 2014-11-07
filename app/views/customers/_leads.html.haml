@@ -1,0 +1,19 @@
+%table.table.table-hover
+  %tr
+    %th Name
+    %th Company
+    %th Email
+    %th Telephone
+    %th Created At
+    %th Status
+    %th
+
+  - Customer.leads.each do |lead|
+    %tr
+      %td= lead.full_name
+      %td= lead.company
+      %td= lead.email
+      %td= lead.telephone
+      %td= lead.created_at
+      %td= lead.status
+      %td= link_to "close", close_path(lead.id), class: "btn btn-primary btn-xs" if lead.status == 'open'

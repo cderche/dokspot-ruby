@@ -7,9 +7,18 @@ class CustomerPolicy
     @customer = customer
   end
   
-  def create?
-    puts 'hello world'
+  def contact?
+    puts 'contact policy review'
     true
+  end
+  
+  def callback?
+    puts 'callback policy review'
+    true
+  end
+  
+  def close?
+    return @current_user.admin?
   end
   
 end

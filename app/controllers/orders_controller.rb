@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order = @instruction.orders.build(order_params)
+    @order.customer.reason = :order
 
     respond_to do |format|
       if @order.save

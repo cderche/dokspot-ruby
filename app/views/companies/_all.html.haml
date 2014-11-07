@@ -1,0 +1,19 @@
+%br
+.text-right
+  = link_to t('new.company'), new_company_path, class: 'btn btn-success btn-sm' if policy(Company).new?
+%br
+  
+
+%table.table.table-hover
+  %tr
+    %th Name
+    %th Symbol
+    %th Website
+    %th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.name
+      %td= company.symbol
+      %td= link_to company.website, company.website
+      %td= link_to t('keywords.show'), company, class: 'btn btn-primary btn-xs' if policy(company).show?

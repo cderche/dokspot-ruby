@@ -39,3 +39,30 @@
       = render partial: "notifications/index",  locals: { product: @product }
     %div.tab-pane#resources
       = render partial: "resources",  locals: { product: @product }
+      
+
+/ Call Back
+- if !user_signed_in?
+  .text-center
+    %button.btn.btn-warning.btn-xs{data: { target: "#modalCallback", toggle: "modal" }, href: "" } Request Call Back
+      
+      
+/ Call Back Modal
+    
+#modalCallback.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-sm
+    .modal-content
+      = simple_form_for(@customer, url: url_for(action: 'callback', controller: 'customers'), method: :post) do |f|
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title.text-center Request a Call Back
+        .modal-body
+          = f.error_notification
+        
+          .form-inputs
+            .form-group
+              = f.input :telephone, input_html: { class: 'form-control' }, placeholder: '+41 79 216 38 28'
+              = f.hidden_field :product_id, value: @product.id
+              
+        .modal-footer
+          %button.btn.pull-right.btn-success{ type: "submit" } Submit

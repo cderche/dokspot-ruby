@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     authorize @product
+    @customer = Customer.new
   end
 
   # GET /products/new
