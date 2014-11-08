@@ -18,17 +18,46 @@
       %tr
         %td= instruction.language.name
         %td= render partial: "support/published", locals: {object: instruction}
-        %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).primary?
-        %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
-        %td= link_to t('keywords.edit'), edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' if policy(instruction).edit?
+        
+        - if policy(instruction).primary?
+          %td
+            =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-file{title: 'Download Instruction'}
+              = t('instructions.primary')
+        
+        - if policy(instruction).show?
+          %td
+            =link_to instruction_path(instruction), class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-repeat{title: 'View History'}
+              = t('instructions.history')
+              
+        - if policy(instruction).edit?
+          %td
+            =link_to edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' do
+              %span.glyphicon.glyphicon-edit{title: 'Edit'}
+              = t('keywords.edit')
+        
         %td= render "instructions/delete", instruction: instruction
-        /%td= link_to t('keywords.delete'), instruction, :method => :delete, :data => { confirm: t('instructions.destroy.warning') }, class: 'btn btn-danger btn-xs' if policy(instruction).destroy?
   - else
     - product.instructions.published.each do |instruction|
       %tr
         %td= instruction.language.name
-        %td= link_to t('instructions.primary'), instruction_primary_path(instruction), class: 'btn btn-success btn-xs' if policy(instruction).show?
-        %td= link_to t('instructions.history'), instruction_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).show?
-        %td= link_to t('keywords.order'), new_instruction_order_path(instruction), class: 'btn btn-primary btn-xs' if policy(instruction).order?
-
+        
+        - if policy(instruction).primary?
+          %td
+            =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
+              %span.glyphicon.glyphicon-file{title: 'Download Instruction'}
+              = t('instructions.primary')
+        
+        - if policy(instruction).show?
+          %td
+            =link_to instruction_path(instruction), class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-repeat{title: 'View History'}
+              = t('instructions.history')
+            
+        - if policy(instruction).order?
+          %td
+            =link_to new_instruction_order_path(instruction), class: 'btn btn-primary btn-xs' do
+              %span.glyphicon.glyphicon-envelope{title: 'Order Print'}
+              = t('keywords.order')
 %br

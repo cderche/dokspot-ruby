@@ -31,7 +31,7 @@ en:
     demote: "Demote"
     qrcode: 'QR Code'
     delete: 'Delete'
-    order: 'Order'
+    order: 'Order Print'
     track: 'Track Order'
     signature: "the dokspot team"
     greetings: "Hello!"
@@ -76,8 +76,8 @@ en:
       success: "Product was successfully destroyed."
       warning: "By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
   instructions:
-    primary: "Instructions"
-    history: "History"
+    primary: "Download"
+    history: "View History"
     create:
       success: "Instruction was successfully created."
     update:
