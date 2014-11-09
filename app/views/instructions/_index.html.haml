@@ -22,7 +22,7 @@
         - if policy(instruction).primary?
           %td
             =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
-              %span.glyphicon.glyphicon-file{title: 'Download Instruction'}
+              %span.glyphicon.glyphicon-file{title: 'Open Instruction'}
               = t('instructions.primary')
         
         - if policy(instruction).show?

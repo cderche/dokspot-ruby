@@ -76,7 +76,7 @@ en:
       success: "Product was successfully destroyed."
       warning: "By agreeing to destroy this product you will destroy all data related to it. The documents associated with this product will no longer be made available to your customers. THIS DECISION IS NON-REVERSIBLE."
   instructions:
-    primary: "Download"
+    primary: "Open"
     history: "View History"
     create:
       success: "Instruction was successfully created."
