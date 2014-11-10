@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
   def show
     authorize @product
     @customer = Customer.new
+    
+    page_title = "dokspot - #{@product.uuid}"
   end
 
   # GET /products/new
