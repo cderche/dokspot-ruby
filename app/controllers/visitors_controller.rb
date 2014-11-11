@@ -4,8 +4,6 @@ class VisitorsController < ApplicationController
   around_filter :catch_not_found
   
   def index
-    page_title = "dokspot"
-    page_description = "dokspot is a digital instruction management platform that innovates the way instructions are delivered to customers."
   end
   
   def search
