@@ -24377,8 +24377,8 @@ button.close {
 
 /* line 88, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .extended-container {
-  padding-top: 30px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* line 94, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
@@ -24387,18 +24387,13 @@ button.close {
 }
 
 /* line 99, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
-.lg-container {
-  height: 200px;
-}
-
-/* line 104, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .md-container {
   height: 100px;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
-/* line 112, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 107, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 html,
 body {
   height: 100%;
@@ -24406,85 +24401,92 @@ body {
 }
 
 /* Wrapper for page content to push down footer */
-/* line 118, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 113, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 #wrap {
   min-height: 100%;
   height: auto !important;
   height: 100%;
+  padding-top: 51px;
 }
 
 /* Set the fixed height of the footer here */
 /* Negative indent footer by it's height */
 @media (max-width: 767px) {
-  /* line 129, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 125, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
     height: 290px;
   }
 
-  /* line 133, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 129, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
     margin: 0 auto -290px;
   }
 }
 @media (min-width: 768px) {
-  /* line 140, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 136, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
     height: 310px;
   }
 
-  /* line 144, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 140, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
     margin: 0 auto -310px;
   }
 }
 @media (min-width: 992px) {
-  /* line 151, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 147, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
     height: 240px;
   }
 
-  /* line 155, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+  /* line 151, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
     margin: 0 auto -240px;
   }
 }
 /* Pinegrow Styles */
-/* line 163, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 159, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .content-header {
   background-color: #0071bc !important;
   color: #fff !important;
 }
 
-/* line 169, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 165, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .container-colored {
-  background-color: rgba(0, 113, 188, 0.4);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
-/* line 174, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 170, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .extended-container {
   padding-top: 30px;
   padding-bottom: 60px;
 }
 
-/* line 180, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 176, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .footer-container {
   background-color: #222;
 }
 
-/* line 185, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 182, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .lg-container {
   height: 250px;
 }
 
-/* line 190, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 187, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .md-container {
   height: 140px;
 }
 
-/* line 194, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 191, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 #launch-page {
   background-color: #363b3f;
+}
+
+/* line 196, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.subcontainer {
+  background-color: rgba(24, 111, 181, 0.79);
+  color: #fff;
 }
