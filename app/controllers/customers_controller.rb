@@ -45,12 +45,13 @@ class CustomersController < ApplicationController
     @customer.address2  = "empty"
     @customer.postcode  = "empty"
     @customer.city      = "empty"
-    @customer.country   = "empty"
+    @customer.country   = customer_params[:country]
     
-    CustomerMailer.new_callback(@customer, @product).deliver
+    puts @customer.country
     
     respond_to do |format|
       if @customer.save
+        CustomerMailer.new_callback(@customer, @product).deliver
         format.html { redirect_to @product }
       else
         format.html { redirect_to @product }
@@ -69,7 +70,7 @@ class CustomersController < ApplicationController
   private 
   
     def customer_params
-      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :product_id)
+      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :country, :product_id)
     end
   
 end
