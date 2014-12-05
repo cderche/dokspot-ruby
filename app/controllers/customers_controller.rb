@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
     @customer.reason = :callback
     @customer.status = :open
     
-    @customer.full_name = "empty"
+    @customer.full_name = customer_params[:full_name]
     @customer.company   = "empty"
     @customer.notes     = @product.uuid
     @customer.email     = "empty"

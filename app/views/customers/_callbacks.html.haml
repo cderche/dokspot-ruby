@@ -1,5 +1,7 @@
 %table.table.table-hover
   %tr
+    %th Name
+    %th Country
     %th Telephone
     %th Product
     %th Created At
@@ -9,6 +11,8 @@
   - Customer.callbacks.each do |callback|
     - product = Product.find_by uuid: callback.notes
     %tr
+      %td= callback.full_name
+      %td= callback.country
       %td= callback.telephone
       %td= link_to product.uuid, product
       %td= callback.created_at

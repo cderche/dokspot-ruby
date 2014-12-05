@@ -65,8 +65,9 @@
         
           .form-inputs
             .form-group
+              = f.input :full_name, input_html: { class: 'form-control' }
               = f.input :country, input_html: { class: 'form-control' }
-              = f.input :telephone, input_html: { class: 'form-control' }, placeholder: '+41 79 216 38 28'
+              = f.input :telephone, input_html: { class: 'form-control' }
               = f.hidden_field :product_id, value: @product.id
               
         .modal-footer
