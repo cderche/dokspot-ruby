@@ -52,9 +52,9 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         CustomerMailer.new_callback(@customer, @product).deliver
-        format.html { redirect_to @product }
+        format.html { redirect_to @product, notice: "Thank you! We will contact you soon!" }
       else
-        format.html { redirect_to @product }
+        format.html { redirect_to @product, error: "Unfortunately your request could not be handled." }
       end
     end
   end
