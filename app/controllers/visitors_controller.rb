@@ -25,7 +25,7 @@ class VisitorsController < ApplicationController
   def catch_not_found
     yield
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "No product was found for that code"
+    flash[:alert] = "No product was found for that code. Please ensure the code in the following format: ABC123"
     redirect_to root_path
   end
 end
