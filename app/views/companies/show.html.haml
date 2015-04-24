@@ -18,10 +18,14 @@
         %h5
           Orders:
           = mail_to @company.order_email, @company.order_email
-    .col-xs-4.text-right
-      .btn-group.btn-group-sm
-        = link_to t('keywords.edit'), edit_company_path(@company), class: 'btn btn-warning' if policy(@company).edit?
-        = link_to t('keywords.delete'), @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }, class: 'btn btn-danger' if policy(@company).destroy?
+    .col-xs-4.text-center
+      .row
+        = image_tag @company.logo.url, class: 'img-responsive' if @company.logo?
+      %br
+      .row
+        .btn-group.btn-group-sm
+          = link_to t('keywords.edit'), edit_company_path(@company), class: 'btn btn-warning' if policy(@company).edit?
+          = link_to t('keywords.delete'), @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }, class: 'btn btn-danger' if policy(@company).destroy?
   
   %br
 

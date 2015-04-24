@@ -17,8 +17,12 @@
           = render partial: "support/published", locals: {object: @product} if user_signed_in?
             
       %h4= @product.company.name if !user_signed_in?
-    .col-xs-4.text-right
-      = render partial: "delete", locals: {product: @product}
+    .col-xs-4.text-center
+      .row
+        = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
+      %br
+      .row
+        = render partial: "delete", locals: {product: @product}
       
 %br
 
@@ -47,8 +51,8 @@
 - if !user_signed_in?
   .text-center
     %button.btn.btn-warning.btn-xs{data: { target: "#modalCallback", toggle: "modal" }, href: "" } 
-      %span.glyphicon.glyphicon-earphone{title: 'Request Call'}
-      Request Call
+      %span.glyphicon.glyphicon-earphone{title: 'Contact Manufacturer'}
+      Contact Manufacturer
       
       
 / Call Back Modal
@@ -59,8 +63,9 @@
       = simple_form_for(@customer, url: url_for(action: 'callback', controller: 'customers'), method: :post) do |f|
         .modal-header
           %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title.text-center Request a Call Back
+          %h4.modal-title.text-center Contact Manufacturer
         .modal-body
+          #callbackErrorMessage
           = f.error_notification
         
           .form-inputs
@@ -71,4 +76,4 @@
               = f.hidden_field :product_id, value: @product.id
               
         .modal-footer
-          %button.btn.pull-right.btn-success{ type: "submit" } Submit
+          %button.btn.pull-right.btn-success#callbackButton{ type: "submit" } Submit

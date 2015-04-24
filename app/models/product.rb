@@ -46,6 +46,7 @@ class Product < ActiveRecord::Base
       #host:               's3-eu-west-1.amazonaws.com',
       #endpoint:           'https://s3-eu-west-1.amazonaws.com',
     }
+
   validates_attachment_content_type :qrcode_png, content_type: "image/png"
   do_not_validate_attachment_file_type :qrcode_svg
   

@@ -31,7 +31,7 @@ en:
     demote: "Demote"
     qrcode: 'QR Code'
     delete: 'Delete'
-    order: 'Order Print'
+    order: 'Request Paper IFU'
     track: 'Track Order'
     signature: "the dokspot team"
     greetings: "Hello!"

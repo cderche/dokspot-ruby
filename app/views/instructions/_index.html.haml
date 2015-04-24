@@ -27,7 +27,7 @@
         
         - if policy(instruction).show?
           %td
-            =link_to instruction_path(instruction), class: 'btn btn-primary btn-xs' do
+            =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
               %span.glyphicon.glyphicon-repeat{title: 'View History'}
               = t('instructions.history')
               
@@ -51,7 +51,7 @@
         
         - if policy(instruction).show?
           %td
-            =link_to instruction_path(instruction), class: 'btn btn-primary btn-xs' do
+            =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
               %span.glyphicon.glyphicon-repeat{title: 'View History'}
               = t('instructions.history')
             

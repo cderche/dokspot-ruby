@@ -24,6 +24,22 @@ class Company < ActiveRecord::Base
   end
   
   before_save :upcase_symbol
+
+  #Paperclip
+  has_attached_file :logo,
+    storage: :fog,
+    fog_directory: ENV['S3_BUCKET'],
+    fog_credentials: {
+      aws_access_key_id:      ENV['S3_KEY'],
+      aws_secret_access_key:  ENV['S3_SECRET'],
+      provider:   'AWS',
+      region:     'eu-west-1',
+      scheme:     'https'
+      #host:               's3-eu-west-1.amazonaws.com',
+      #endpoint:           'https://s3-eu-west-1.amazonaws.com',
+    }
+
+  do_not_validate_attachment_file_type :logo
   
   private
     
