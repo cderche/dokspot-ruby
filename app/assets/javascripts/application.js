@@ -20,10 +20,6 @@ $(function () {
   $("[data-toggle='tooltip']").tooltip();
   $("[data-toggle='popover']").popover();
 
-  //$("#callbackButton").click(function(){
-    //alert("Handler for .click() called.");
-  //});
-
   $('#new_customer').submit(function () {
     //alert("Handler for .submit() called.");
 
