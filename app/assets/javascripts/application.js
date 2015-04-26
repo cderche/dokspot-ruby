@@ -21,6 +21,31 @@ $(function () {
   $("[data-toggle='popover']").popover();
 
   $('#new_customer').submit(function () {
+
+    function validName(value){
+      var regex = new RegExp("[a-zA-Z].+$");
+      return regex.test(value);
+    }
+
+    function validEmail(value){
+      var regex = new RegExp("[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+      return regex.test(value);
+    }
+
+    function validCountry(value){
+      var regex = new RegExp("[a-zA-Z].+$");
+      return regex.test(value);
+    }
+
+    function validTelephone(value){
+      var regex = new RegExp("[0-9]+$");
+      return regex.test(value);
+    }
+
+    function validCompare(value1, value2){
+      return value1 === value2
+    }
+
     //alert("Handler for .submit() called.");
 
     // Get the Login Name value and trim it
@@ -28,14 +53,44 @@ $(function () {
     var country = $.trim($('#customer_country').val());
     var telephone = $.trim($('#customer_telephone').val());
 
+    var errors = "<b>Please review:</b><br><ul>";
+    var error_exists = false;
+
+    var valid_n = validName(name);
+    var valid_c = validCountry(country);
+    var valid_t = validTelephone(telephone);
+
+    if (valid_n == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Name</li>";
+    }
+
+    if (valid_c == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Country</li>";
+    }
+
+    if (valid_t == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Telephone Number</li>";
+    }
+/*
+
     var text = "You forget to enter your: <br><ul>";
     var result = true;
 
     // Check if NAME empty of not
     if (name === '') {
         //alert('Name is empty.');
-        text = text + "<li>Name</li>"
+        text = text + "<li>Name</li>";
         result = false;
+    }else{
+      var regex = new RegExp("[a-zA-Z].+$");
+      if (regex.test(name)) {
+        // Do nothing
+      }else{
+        text
+      }
     }
 
     // Check if COUNTRY empty of not
@@ -51,10 +106,12 @@ $(function () {
         text = text + "<li>Telephone</li>"
         result = false;
     }
+    */
 
-    if (result == false){
+    if (error_exists){
+      errors = errors + "</ul>";
       $( "#callbackErrorMessage" ).empty();
-      $( "#callbackErrorMessage" ).append('<div class="alert alert-danger">'+text+"</div>");
+      $( "#callbackErrorMessage" ).append('<div class="alert alert-danger">'+errors+"</div>");
       //alert(text)
       return false;
     }

@@ -2,9 +2,13 @@
 
 = render 'breadcrumbs'
 
-.jumbotron
-  .row
-    .col-xs-8
+.row
+  .col-xs-10.col-sm-8
+    .jumbotron
+      .btn-group.btn-group-sm
+        = link_to t('keywords.edit'), edit_company_path(@company), class: 'btn btn-warning' if policy(@company).edit?
+        = link_to t('keywords.delete'), @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }, class: 'btn btn-danger' if policy(@company).destroy?
+
       %h1
         = @company.name
         %br
@@ -18,14 +22,8 @@
         %h5
           Orders:
           = mail_to @company.order_email, @company.order_email
-    .col-xs-4.text-center
-      .row
-        = image_tag @company.logo.url, class: 'img-responsive' if @company.logo?
-      %br
-      .row
-        .btn-group.btn-group-sm
-          = link_to t('keywords.edit'), edit_company_path(@company), class: 'btn btn-warning' if policy(@company).edit?
-          = link_to t('keywords.delete'), @company, method: :delete, data: { confirm: I18n.t('companies.destroy.warning') }, class: 'btn btn-danger' if policy(@company).destroy?
+  .col-xs-2.col-sm-4.pull-right
+    = image_tag @company.logo.url, class: 'img-responsive' if @company.logo?
   
   %br
 
