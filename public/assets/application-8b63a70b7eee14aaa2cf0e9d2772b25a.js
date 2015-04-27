@@ -13472,6 +13472,10 @@ return jQuery;
 
 }).call(this);
 (function() {
+
+
+}).call(this);
+(function() {
   $(function() {
     return $(".download").click(function(e) {
       e.preventDefault();
@@ -13576,6 +13580,85 @@ $(document).on('ready page:change', function() {
 $(function () {
   $("[data-toggle='tooltip']").tooltip();
   $("[data-toggle='popover']").popover();
+
+  $('#new_customer').submit(function () {
+
+    function validName(value){
+      var regex = new RegExp("[a-zA-Z].+$");
+      return regex.test(value);
+    }
+
+    function validEmail(value){
+      var regex = new RegExp("[a-zA-Z\_\.]+@[a-zA-Z\_\.]+");
+      return regex.test(value);
+    }
+
+    function validCountry(value){
+      var regex = new RegExp("[a-zA-Z].+$");
+      return regex.test(value);
+    }
+
+    function validTelephone(value){
+      var regex = new RegExp("[0-9]+$");
+      return regex.test(value);
+    }
+
+    function validCompare(value1, value2){
+      return (value1 == value2);
+    }
+
+    //alert("Handler for .submit() called.");
+
+    // Get the Login Name value and trim it
+    var name = $.trim($('#customer_full_name').val());
+    var country = $.trim($('#customer_country').val());
+    var telephone = $.trim($('#customer_telephone').val());
+    var email = $.trim($('#customer_email').val());
+    var email_confirmation = $.trim($('#customer_email_confirmation').val());
+
+    var errors = "<b>Please review:</b><br><ul>";
+    var error_exists = false;
+
+    var valid_n = validName(name);
+    var valid_c = validCountry(country);
+    var valid_t = validTelephone(telephone);
+    var valid_e = validEmail(email);
+    var valid_ec = validCompare(email,email_confirmation);
+
+    if (valid_n == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Name</li>";
+    }
+
+    if (valid_c == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Country</li>";
+    }
+
+    if (valid_t == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Telephone Number</li>";
+    }
+
+    if (valid_e == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Email</li>";
+    }
+
+    if (valid_ec == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Emails do not match</li>";
+    }
+
+    if (error_exists){
+      errors = errors + "</ul>";
+      $( "#callbackErrorMessage" ).empty();
+      $( "#callbackErrorMessage" ).append('<div class="alert alert-danger">'+errors+"</div>");
+      //alert(text)
+      return false;
+    }
+  });
+
 });
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -13585,3 +13668,4 @@ $(function () {
 
   ga('create', 'UA-50717184-1', 'auto');
   ga('send', 'pageview');
+
