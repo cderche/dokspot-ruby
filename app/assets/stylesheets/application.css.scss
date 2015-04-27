@@ -20,12 +20,12 @@
 
 @import "bootstrap";
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600);
 
-$footer-height: 240px;
+$footer-height: 100px;
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 .xs-margin-top
@@ -97,12 +97,19 @@ body {
 
 .footer-container
 {
-    background-color: #222;
+    //background-color: #222;
 }
 
 .md-container
 {
   height: 100px;
+}
+
+#footer
+{
+  //border-top-style: solid;
+  //border-top-width: 1px;
+  //border-top-color: #e7e7e7;
 }
 
 /* Sticky footer styles
@@ -128,33 +135,33 @@ body {
 @media(max-width: 767px){
   #push,
   #footer {
-    height: 290px;
+    height: 166px;
   }
   
   #wrap {
-    margin: 0 auto -290px;
+    margin: 0 auto -166px;
   }
 }
 
 @media(min-width: 768px){
   #push,
   #footer {
-    height: 310px;
+    height: 166px;
   }
   
   #wrap {
-    margin: 0 auto -310px;
+    margin: 0 auto -166px;
   }
 }
 
 @media(min-width:992px){
   #push,
   #footer {
-    height: 240px;
+    height: 160px;
   } 
   
   #wrap {
-    margin: 0 auto -240px;
+    margin: 0 auto -166px;
   }
 }
 
@@ -180,7 +187,7 @@ body {
 .footer-container
 {
   //margin-top: 50px;
-  background-color: #222;
+  //background-color: #222;
 }
 
 .lg-container
@@ -194,7 +201,7 @@ body {
 }
 
 #launch-page {
-  background-color: #363b3f; 
+  //background-color: #363b3f; 
 }
 
 .subcontainer
@@ -211,3 +218,21 @@ body {
   padding: 10px;
 }
 */
+
+.bottom-align-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.search-form-input
+{
+    background-color: white !important;
+    border-color: #66afe9 !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+    height: 82px !important;
+    font-size: 32px !important;
+    font-weight: 200;
+}
