@@ -3,15 +3,19 @@
 
 #footer.container-fluid.footer-container{:style => "padding-top: 20px"}
   .container
-    .row
-      .col-xs-6.col-xs-offset-3
-        =image_tag 'dokspot-footer.png', class: 'img-responsive'
-    .row.lead.text-uppercase{:style => "margin-top: 20px; font-size: 12px; font-weight: 500;"}
-      .col-xs-7.pull-left
+    -#.row
+      -#.col-xs-6.col-xs-offset-3
+        -#=image_tag 'dokspot-footer.png', class: 'img-responsive'
+    .row.text-uppercase{:style => "margin-top: 20px; font-size: 12px; font-weight: 500;"}
+      .col-xs-4.pull-left
+        %ul.list-inline
+          %li
+            =image_tag 'dokspot-mail.png', class: 'img-responsive', style: "max-width: 128px"
+      .col-xs-4.text-center
         %ul.list-inline
           %li
             © 2015 ALL RIGHTS RESERVED.
-      .col-xs-5.pull-right.text-right
+      .col-xs-4.pull-right.text-right
         %ul.list-inline
           %li
             =link_to 'Business', service_path, style: 'color: #777 !important'
