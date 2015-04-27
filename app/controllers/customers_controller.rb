@@ -40,7 +40,8 @@ class CustomersController < ApplicationController
     @customer.full_name = customer_params[:full_name]
     @customer.company   = "empty"
     @customer.notes     = @product.uuid
-    @customer.email     = "empty"
+    @customer.email     = customer_params[:email]
+    @customer.email_confirmation     = customer_params[:email_confirmation]
     @customer.address1  = "empty"
     @customer.address2  = "empty"
     @customer.postcode  = "empty"
@@ -70,7 +71,7 @@ class CustomersController < ApplicationController
   private 
   
     def customer_params
-      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :country, :product_id)
+      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :email_confirmation, :country, :product_id)
     end
   
 end

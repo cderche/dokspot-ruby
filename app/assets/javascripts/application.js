@@ -28,7 +28,7 @@ $(function () {
     }
 
     function validEmail(value){
-      var regex = new RegExp("[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
+      var regex = new RegExp("[a-zA-Z\_\.]+@[a-zA-Z\_\.]+");
       return regex.test(value);
     }
 
@@ -43,7 +43,7 @@ $(function () {
     }
 
     function validCompare(value1, value2){
-      return value1 === value2
+      return (value1 == value2);
     }
 
     //alert("Handler for .submit() called.");
@@ -52,6 +52,8 @@ $(function () {
     var name = $.trim($('#customer_full_name').val());
     var country = $.trim($('#customer_country').val());
     var telephone = $.trim($('#customer_telephone').val());
+    var email = $.trim($('#customer_email').val());
+    var email_confirmation = $.trim($('#customer_email_confirmation').val());
 
     var errors = "<b>Please review:</b><br><ul>";
     var error_exists = false;
@@ -59,6 +61,8 @@ $(function () {
     var valid_n = validName(name);
     var valid_c = validCountry(country);
     var valid_t = validTelephone(telephone);
+    var valid_e = validEmail(email);
+    var valid_ec = validCompare(email,email_confirmation);
 
     if (valid_n == false) {
       error_exists = true;
@@ -74,39 +78,16 @@ $(function () {
       error_exists = true;
       errors = errors + "<li>Your Telephone Number</li>";
     }
-/*
 
-    var text = "You forget to enter your: <br><ul>";
-    var result = true;
-
-    // Check if NAME empty of not
-    if (name === '') {
-        //alert('Name is empty.');
-        text = text + "<li>Name</li>";
-        result = false;
-    }else{
-      var regex = new RegExp("[a-zA-Z].+$");
-      if (regex.test(name)) {
-        // Do nothing
-      }else{
-        text
-      }
+    if (valid_e == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Email</li>";
     }
 
-    // Check if COUNTRY empty of not
-    if (country === '') {
-        //alert('Name is empty.');
-        text = text + "<li>Country</li>"
-        result = false;
+    if (valid_ec == false) {
+      error_exists = true;
+      errors = errors + "<li>Your Emails do not match</li>";
     }
-
-    // Check if TELEPHONE empty of not
-    if (telephone === '') {
-        //alert('Name is empty.');
-        text = text + "<li>Telephone</li>"
-        result = false;
-    }
-    */
 
     if (error_exists){
       errors = errors + "</ul>";

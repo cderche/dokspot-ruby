@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
   validates :country    , presence: true
   validates :telephone  , presence: true
   validates :email      , presence: true
+  validates :email_confirmation, presence: true
   
   scope :leads      , -> { where(reason: :lead) }
   scope :callbacks  , -> { where(reason: :callback) }
