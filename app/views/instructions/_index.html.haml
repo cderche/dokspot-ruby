@@ -41,7 +41,7 @@
   - else
     - product.instructions.published.each do |instruction|
       %tr
-        %td= instruction.language.name
+        %td= instruction.language.local
         
         - if policy(instruction).primary?
           %td
