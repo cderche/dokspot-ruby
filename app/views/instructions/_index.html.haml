@@ -41,7 +41,7 @@
   - else
     - product.instructions.published.each do |instruction|
       %tr
-        %td= instruction.language.local
+        %td= instruction.language.local.capitalize
         
         - if policy(instruction).primary?
           %td
