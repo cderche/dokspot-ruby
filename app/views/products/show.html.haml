@@ -83,8 +83,8 @@
               .row
                 .col-xs-12
                   = f.input :notes, as: :text, input_html: {class: 'form-control'}
+              = f.hidden_field :product, value: @product.id
               /= f.hidden_field :product_id, value: @product.id
-              = f.hidden_field :product_id, value: @product.id
               
         .modal-footer
           %div#spinner-placeholder.pull-left

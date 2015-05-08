@@ -33,7 +33,8 @@ class CustomersController < ApplicationController
     authorize Customer
     puts "Received Authorization"
     
-    @product = Product.find(customer_params[:product_id])
+    #@product = Product.find(customer_params[:product_id])
+    @product = Product.find(customer_params[:product])
     puts "Found Product"
     
     @customer = Customer.new
@@ -82,7 +83,7 @@ class CustomersController < ApplicationController
   private 
   
     def customer_params
-      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :email_confirmation, :country, :product_id, :notes)
+      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :email_confirmation, :country, :product_id, :notes, :product)
     end
   
 end
