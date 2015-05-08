@@ -21,10 +21,22 @@ class CustomerMailer < ActionMailer::Base
     mail(to: "talk@dokspot.com", subject: "New Lead", from: "notifications@dokspot.com")
   end
   
-  def new_callback(customer, product)
+  def new_callback_dokspot(customer)
     @customer = customer
-    @product = product
-    mail(to: "callback@dokspot.com", subject: "Call Back Request", from: "notifications@dokspot.com")
+    #@product = product
+    mail(to: "callback@dokspot.com", subject: "Contact Manufacturer", from: "notifications@dokspot.com")
+  end
+
+  def new_callback_manufacturer(customer)
+    @customer = customer
+    #@product = product
+    mail(to: @customer.product.company.contact, subject: "dokspot: contact manufacturer request", from: "notifications@dokspot.com")
+  end
+
+  def new_callback_customer(customer)
+    @customer = customer
+    #@product = product
+    mail(to: @customer.email, subject: "dokspot: contact manufacturer", from: "notifications@dokspot.com")
   end
   
 end

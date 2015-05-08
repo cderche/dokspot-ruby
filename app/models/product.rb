@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
   has_many    :languages, through: :instructions
   
   has_many    :orders, through: :instructions
+
+  has_one     :customer
   
   def set_default_published
     self.published ||= false

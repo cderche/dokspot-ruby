@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428110759) do
+ActiveRecord::Schema.define(version: 20150508092603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 20150428110759) do
     t.string   "status"
     t.string   "email_confirmation"
     t.string   "telephone_confirmation"
+    t.integer  "product_id"
   end
+
+  add_index "customers", ["product_id"], name: "index_customers_on_product_id", using: :btree
 
   create_table "documents", force: true do |t|
     t.string   "comment"

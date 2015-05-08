@@ -39,7 +39,9 @@ class CustomersController < ApplicationController
     
     @customer.full_name = customer_params[:full_name]
     @customer.company   = "empty"
-    @customer.notes     = @product.uuid
+    @customer.product   = @product
+    #@customer.notes     = @product.uuid
+    @customer.notes     = customer_params[:notes]
     @customer.email     = customer_params[:email]
     @customer.email_confirmation     = customer_params[:email_confirmation]
     @customer.address1  = "empty"
@@ -52,8 +54,10 @@ class CustomersController < ApplicationController
     
     respond_to do |format|
       if @customer.save
-        CustomerMailer.new_callback(@customer, @product).deliver
-        format.html { redirect_to @product, notice: "Thank you! We will contact you soon!" }
+        CustomerMailer.new_callback_dokspot(@customer).deliver
+        CustomerMailer.new_callback_manufacturer(@customer).deliver
+        CustomerMailer.new_callback_customer(@customer).deliver
+        format.html { redirect_to @product, notice: "You will be contacted." }
       else
         format.html { redirect_to @product, error: "Unfortunately your request could not be handled." }
       end
@@ -71,7 +75,7 @@ class CustomersController < ApplicationController
   private 
   
     def customer_params
-      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :email_confirmation, :country, :product_id)
+      params.require(:customer).permit(:full_name, :company, :notes, :telephone, :email, :email_confirmation, :country, :product_id, :notes)
     end
   
 end
