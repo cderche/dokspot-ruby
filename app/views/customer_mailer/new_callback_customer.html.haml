@@ -1,0 +1,47 @@
+!!!
+%html
+	%head
+		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+		/%meta(http-equiv="Content-Typ" content="text/html; charset:=UTF-8")
+		/= stylesheet_link_tag "application.css"
+	%body
+		.container
+			%h3 Contact Manufacturer Request
+
+			%p Your request has been transmitted to the manufacturer, they will contact you soon.
+
+			.row
+				.col-xs-6.text-right
+					%strong Customer
+				.col-xs-6
+					= @customer.full_name
+			.row
+				.col-xs-6.text-right
+					%strong Country
+				.col-xs-6
+					- country = ISO3166::Country[@customer.country]
+					- c_name = country.translations[I18n.locale.to_s] || country.name
+					= c_name
+			.row
+				.col-xs-6.text-right
+					%strong Telephone
+				.col-xs-6
+					= @customer.telephone
+			.row
+				.col-xs-6.text-right
+					%strong Email
+				.col-xs-6
+					= @customer.email
+			.row
+				.col-xs-6.text-right
+					%strong Product ID
+				.col-xs-6
+					= @customer.product.uuid
+			.row
+				.col-xs-6.text-right
+					%strong Notes
+				.col-xs-6
+					= @customer.notes
+			.row
+				.col-xs-12.pull-left
+					the dokspot team

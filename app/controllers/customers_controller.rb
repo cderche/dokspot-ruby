@@ -28,9 +28,13 @@ class CustomersController < ApplicationController
   end
   
   def callback
+    puts "Entered Callback Function"
+    
     authorize Customer
+    puts "Received Authorization"
     
     @product = Product.find(customer_params[:product_id])
+    puts "Found Product"
     
     @customer = Customer.new
     @customer.telephone = customer_params[:telephone]
@@ -50,13 +54,16 @@ class CustomersController < ApplicationController
     @customer.city      = "empty"
     @customer.country   = customer_params[:country]
     
-    puts @customer.country
+    puts "Created Customer"
     
     respond_to do |format|
-      if @customer.save
+      if @customer.save    
         CustomerMailer.new_callback_dokspot(@customer).deliver
+        puts "Sent email 1"
         CustomerMailer.new_callback_manufacturer(@customer).deliver
+        puts "Sent email 2"
         CustomerMailer.new_callback_customer(@customer).deliver
+        puts "Sent email 3"
         format.html { redirect_to @product, notice: "You will be contacted." }
       else
         format.html { redirect_to @product, error: "Unfortunately your request could not be handled." }
