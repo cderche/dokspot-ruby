@@ -24372,7 +24372,7 @@ body {
 
 /* line 83, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .content-header {
-  background-color: #0071bc;
+  background-color: #68C7EC;
   color: #fff;
 }
 
@@ -24416,42 +24416,42 @@ body {
   /* line 138, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
-    height: 166px;
+    height: 76px;
   }
 
   /* line 142, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
-    margin: 0 auto -166px;
+    margin: 0 auto -76px;
   }
 }
 @media (min-width: 768px) {
   /* line 149, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
-    height: 166px;
+    height: 76px;
   }
 
   /* line 153, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
-    margin: 0 auto -166px;
+    margin: 0 auto -76px;
   }
 }
 @media (min-width: 992px) {
   /* line 160, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #push,
   #footer {
-    height: 160px;
+    height: 76px;
   }
 
   /* line 164, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
   #wrap {
-    margin: 0 auto -166px;
+    margin: 0 auto -76px;
   }
 }
 /* Pinegrow Styles */
 /* line 172, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .content-header {
-  background-color: #0071bc !important;
+  background-color: #00A0DC !important;
   color: #fff !important;
 }
 
@@ -24478,7 +24478,7 @@ body {
 
 /* line 209, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .subcontainer {
-  background-color: rgba(24, 111, 181, 0.79);
+  background-color: #00A0DC;
   color: #fff;
 }
 
@@ -24508,4 +24508,12 @@ body {
   height: 82px !important;
   font-size: 32px !important;
   font-weight: 200;
+}
+
+/* line 242, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.vertical-center {
+  min-height: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
 }
