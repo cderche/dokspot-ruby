@@ -10,6 +10,10 @@
 
   - Customer.callbacks.each do |callback|
     - product = Product.find_by uuid: callback.notes
+    - if product.nil?
+      - product = callback.product
+
+    -#- product = Product.find_by uuid: callback.notes
     %tr
       %td= callback.full_name
       %td= callback.country
