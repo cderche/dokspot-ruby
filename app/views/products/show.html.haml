@@ -6,10 +6,12 @@
   = render partial: 'notifications/display', locals: { product: @product }
 
 .row
-  .col-xs-10.col-sm-8
+  .visible-xs-block
+    = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
+  .col-sm-8
     .jumbotron
       = render partial: "delete", locals: {product: @product}
-      %h2
+      %h3
         =@product.name
         %br
         %small
@@ -18,7 +20,8 @@
           = render partial: "support/published", locals: {object: @product} if user_signed_in?
             
       %h4= @product.company.name if !user_signed_in?
-  .col-xs-2.col-sm-4.pull-right
+  -#.col-xs-2.col-sm-4.pull-right
+  .col-sm-4.hidden-xs
     = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
       
 %br
