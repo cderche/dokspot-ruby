@@ -6,7 +6,7 @@
   = render partial: 'notifications/display', locals: { product: @product }
 
 .row
-  .visible-xs-block
+  .visible-xs-block.col-xs-offset-2.col-xs-8
     = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
   .col-sm-8
     .jumbotron
