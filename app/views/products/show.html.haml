@@ -6,8 +6,8 @@
   = render partial: 'notifications/display', locals: { product: @product }
 
 .row
-  .visible-xs-block.col-xs-offset-2.col-xs-8
-    = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
+  .visible-xs-block
+    = image_tag @product.company.logo.url, class: 'img-responsive', style: 'max-width: 128px;' if @product.company.logo?
   .col-sm-8
     .jumbotron
       = render partial: "delete", locals: {product: @product}
