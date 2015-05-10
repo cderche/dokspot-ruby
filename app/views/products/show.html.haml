@@ -7,7 +7,9 @@
 
 .row
   .visible-xs-block
-    = image_tag @product.company.logo.url, class: 'img-responsive', style: 'max-width: 128px;' if @product.company.logo?
+    = image_tag @product.company.logo.url, class: 'img-responsive', style: 'max-width: 256px;' if @product.company.logo?
+    %br
+    %br
   .col-sm-8
     .jumbotron
       = render partial: "delete", locals: {product: @product}
