@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: I18n.t('orders.create.success') }
         format.json { render :show, status: :created, location: @order }
       else
+        puts @order.errors.full_messages
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
