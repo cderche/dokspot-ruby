@@ -1,0 +1,77 @@
+- title "Business"
+.container{style: "margin-top: 50px"}
+	-#.row
+	.lead.text-green{style: "font-size: 48px; border-bottom: thin solid rgb(231, 231, 231);"} BUSINESS
+.container{style: "margin-bottom: 75px;"}
+	.row{style: "margin-top: 50px !important"}
+		= image_tag "dokspot-mail.png", style: "padding: 50px", class: "img-responsive"
+		.lead.text-center{style: "font-size: 32px;"} Take a Step into the Digital World.
+		.lead.text-center{style: "font-size: 18px"} dokspot is a regulation compliant platform that allows medical device manufacturers to provide their instructions digitally rather then in paper form.
+	.row.text-center{style: "margin-top: 50px !important"}
+		.col-sm-4
+			.lead.text-green{style: "font-size: 28px;"} Save Costs
+			.lead.text-center{style: "font-size: 18px"} Save on Printing and Shipping
+		.col-sm-4
+			.lead.text-green{style: "font-size: 28px;"} Increase Efficiency
+			.lead.text-center{style: "font-size: 18px"} Simplify and Optimize Processes
+		.col-sm-4
+			.lead.text-green{style: "font-size: 28px;"} Improve Customer Focus
+			.lead.text-center{style: "font-size: 18px"} Quick and Secure Access to Instructions
+.container-fluid{style: "background-color: rgba(230, 233, 236, 0.3); border-top: thin solid rgba(160, 163, 166, 0.4); border-bottom: thin solid rgba(160, 163, 166, 0.4); padding-bottom: 40px"}
+	.container
+		.row{style: "margin-top: 50px !important"}
+			%h4.lead.text-center Don't Build it Yourself, We Already did the Hard Part.
+		.row.text-center
+			.col-sm-3
+				.feature-box#robust
+					.lead Robust
+					%p Built and tested for high availability to ensure that your instructions are available when they are required.
+			.col-sm-3
+				.feature-box#compliance
+					.lead Compliance
+					%p Compliant with EU Commission Regulation 207/2012 enabling Medical Device Manufacturers to go digital.
+			.col-sm-3
+				.feature-box#controlled
+					.lead Controlled
+					%p Upload, release and archive instructions in a simple and controlled process.
+			.col-sm-3
+				.feature-box#notifications
+					.lead Notifications
+					%p Provide customers with product alerts visible through the dokspot notification service.
+			.col-sm-3
+				.feature-box#contact
+					.lead Contact Point
+					%p Allow customers to contact manufacturers to discuss product specific questions.
+			.col-sm-3
+				.feature-box#orders	
+					.lead Orders
+					%p Customers can order a paper copy of instructions through the order management service.
+			.col-sm-3
+				.feature-box#languages
+					.lead Languages
+					%p Help your customer by making instructions available in their preferred language.
+			.col-sm-3
+				.feature-box#simplicity
+					.lead Simplicity
+					%p Customers find the right information quickly through the use of product codes.
+		.row
+			.col-xs-12.text-center.lead{style: "padding-top: 40px"}
+				=link_to 'Terms and Conditions', policy_path, style: ''
+.container{style: "padding-bottom: 75px; padding-top: 50px"}
+	.row
+		.col-md-12.text-center
+			%h3.lead interested? let's talk!
+	%br
+	.row
+		.text-center.col-md-4
+			%span.glyphicon.glyphicon-phone-alt{:style => "font-size: 32px;"}
+			%br
+			%a.lead{ href: "tel:+12345678987" } +41 79 216 38 28
+		.text-center.col-md-4
+			%span.glyphicon.glyphicon-envelope{:style => "font-size: 32px;"}
+			%br
+			%a.lead{ href: "mailto: talk@dokspot.com"} talk@dokspot.com
+		.text-center.col-md-4
+			%span.glyphicon.glyphicon-pencil{:style => "font-size: 32px;"}
+			%br
+			=link_to "Contact Form", about_path, class: 'lead'

@@ -244,3 +244,55 @@ body {
     display: flex;
     align-items: center;
 }
+
+.right-border-thin
+{
+  border-right: thin solid rgb(231, 231, 231);
+}
+
+.text-green {
+  color: #7CB82F;
+}
+
+.feature-box {
+  height: 180px;
+  width: 200px;
+  border: thin solid rgba(160, 163, 166, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  color: rgba(160, 163, 166, 0.4);
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-box:hover {
+  border: thin solid #7CB82F;
+  color: #7CB82F;
+  background-color: rgba(199, 229, 154, 0.2);
+}
+
+#robust {
+  background-image: asset-data-url("robust.png");
+}
+#compliance {
+  background-image: asset-data-url("compliance.png");
+}
+#controlled {
+  background-image: asset-data-url("controlled.png");
+}
+#notifications {
+  background-image: asset-data-url("notifications.png");
+}
+#contact {
+  background-image: asset-data-url("contact.png");
+}
+#orders {
+  background-image: asset-data-url("orders.png");
+}
+#languages {
+  background-image: asset-data-url("languages.png");
+}
+#simplicity {
+  background-image: asset-data-url("simplicity.png");
+}
