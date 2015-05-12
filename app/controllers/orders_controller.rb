@@ -119,7 +119,7 @@ class OrdersController < ApplicationController
     def set_order
       @order = Order.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = I18n.t("order.not_found", token: params[:id])
+      flash[:error] = I18n.t("orders.not_found", token: params[:id])
       redirect_to root_path
     end
     
