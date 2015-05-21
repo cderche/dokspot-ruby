@@ -59,3 +59,4 @@ gem 'aws-sdk'
 gem 'premailer-rails'
 gem "letter_opener", group: :development
 gem 'country_select'
+gem 'mandrill-api', require: 'mandrill'
