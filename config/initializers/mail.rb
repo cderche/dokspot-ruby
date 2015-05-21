@@ -1,7 +1,7 @@
 #MANDRILL_API_KEY = "bSSnAQgslE2rHwsMO1r-nA"
 MANDRILL_API_KEY = ENV['MANDRILL_API_KEY']
 
-puts "MANDRILL_API_KEY: " + MANDRILL_API_KEY
+#puts "MANDRILL_API_KEY: " + MANDRILL_API_KEY
 
 ActionMailer::Base.smtp_settings = {
     address: "smtp.mandrillapp.com",
