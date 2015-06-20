@@ -20,6 +20,11 @@ class UsersController < ApplicationController
   def update
     authorize @user
     if @user.update_attributes(secure_params)
+
+      require 'mixpanel-ruby'
+      tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+      tracker.people.set(@user.id, @user.attributes)
+
       redirect_to @user.company, notice: t('devise.registrations.updated')
     else
       redirect_to @user.company, :alert => "Unable to update user."
@@ -37,6 +42,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     if @user.update_attributes(role: :manager)
+      require 'mixpanel-ruby'
+      tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+      tracker.people.set(@user.id, @user.attributes)
+
       redirect_to @user.company, notice: t('promotion.success')
     else
       redirect_to @user.company, alert: "Unable to promote this user."
@@ -47,6 +56,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     if @user.update_attributes(role: :operator)
+      require 'mixpanel-ruby'
+      tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+      tracker.people.set(@user.id, @user.attributes)
+      
       redirect_to @user.company, notice: t('demotion.success')
     else
       redirect_to @user.company, alert: "Unable to update user."

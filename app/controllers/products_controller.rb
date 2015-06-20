@@ -13,6 +13,14 @@ class ProductsController < ApplicationController
   def show
     authorize @product
     @customer = Customer.new
+
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+    if user_signed_in?
+      tracker.track(current_user.id, 'Product View', @product.attributes)
+    else
+      tracker.track(0, 'Product View', @product.attributes)
+    end
     
     page_title = "dokspot - #{@product.uuid}"
   end
@@ -39,9 +47,18 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         generate_qrcode
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Product Create', @product.attributes)
+
         format.html { redirect_to @product, notice: I18n.t('products.create.success') }
         format.json { render :show, status: :created, location: @product }
       else
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Product Failed Create', @product.attributes)
+
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -54,9 +71,19 @@ class ProductsController < ApplicationController
     authorize @product
     respond_to do |format|
       if @product.update(product_params)
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Product Update', @product.attributes)
+
         format.html { redirect_to @product, notice: I18n.t('products.update.success') }
         format.json { render :show, status: :ok, location: @product }
       else
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Product Update Failed', @product.attributes)
+
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -68,6 +95,11 @@ class ProductsController < ApplicationController
   def destroy
     authorize @product
     company = @product.company
+
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+    tracker.track(current_user.id, 'Product Delete', @product.attributes)
+
     @product.destroy
     respond_to do |format|
       format.html { redirect_to company, notice: I18n.t('products.destroy.success') }

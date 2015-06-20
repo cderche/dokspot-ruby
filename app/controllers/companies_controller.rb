@@ -34,9 +34,19 @@ class CompaniesController < ApplicationController
     @company.symbol = @company.symbol.upcase
     respond_to do |format|
       if @company.save
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Company Create', @company.attributes)
+
         format.html { redirect_to @company, notice: I18n.t('companies.success') }
         format.json { render :show, status: :created, location: @company }
       else
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Company Create Failed', @company.attributes)
+
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
@@ -49,9 +59,17 @@ class CompaniesController < ApplicationController
     authorize @company
     respond_to do |format|
       if @company.update(company_params)
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Company Update', @company.attributes)
+
         format.html { redirect_to @company, notice: I18n.t('companies.updated') }
         format.json { render :show, status: :ok, location: @company }
       else
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(current_user.id, 'Company Update Failed', @company.attributes)
+
         format.html { render :edit }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
@@ -62,6 +80,11 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1.json
   def destroy
     authorize @company
+
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+    tracker.track(current_user.id, 'Company Delete', @company.attributes)
+
     @company.destroy
     respond_to do |format|
       format.html { redirect_to companies_url, notice: I18n.t('companies.destroy.success') }

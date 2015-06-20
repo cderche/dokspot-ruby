@@ -2,6 +2,8 @@ class VisitorsController < ApplicationController
   skip_before_filter :authenticate_user!
   
   around_filter :catch_not_found
+
+  
   
   def index
   end
@@ -9,6 +11,15 @@ class VisitorsController < ApplicationController
   def search
     query = params[:search][:query]
     @product = Product.friendly.find(query.upcase)
+
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+    if user_signed_in?
+      tracker.track(current_user.id, 'Search', @product.attributes)
+    else
+      tracker.track(0, 'Search', @product.attributes)
+    end
+
     authorize @product
     redirect_to @product
   end

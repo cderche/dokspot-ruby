@@ -77,8 +77,24 @@ class DocumentsController < ApplicationController
   def download
     @document = Document.find(params[:document_id])
     authorize @document
+    #@document.download
     data = open(@document.file.url)
     send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+
+    user_id = 0
+    user_id = current_user.id if user_signed_in?
+
+    tracker.track(user_id, 'Document Open', {
+      product_id: @document.instruction.product.id,
+      product_uuid: @document.instruction.product.uuid,
+      language: @document.instruction.language.name,
+      version: @document.version,
+      url: @document.file.url
+    })
+
   end
 
   private

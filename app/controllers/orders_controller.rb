@@ -49,10 +49,20 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(@order.id, 'Order Create', @order.attributes)
+
         format.html { redirect_to @order, notice: I18n.t('orders.create.success') }
         format.json { render :show, status: :created, location: @order }
       else
         puts @order.errors.full_messages
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(@order.id, 'Order Create Failed', @order.attributes)
+
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -80,10 +90,20 @@ class OrdersController < ApplicationController
     if @order.update(order_params)
       if confirming_order
         confirm_order
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(@order.id, 'Order Update', @order.attributes)
+
         redirect_to @order.instruction.product, notice: message
       elsif order_params[:status] == 'cancelled'
         puts "I am confirming the order cancellation"
         confirm_cancel
+
+        require 'mixpanel-ruby'
+        tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+        tracker.track(@order.id, 'Order Cancel', @order.attributes)
+
         if user_signed_in?
           redirect_to @order, notice: message
         else
@@ -100,6 +120,10 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    require 'mixpanel-ruby'
+    tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+    tracker.track(@order.id, 'Order Delete', @order.attributes)
+    
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
