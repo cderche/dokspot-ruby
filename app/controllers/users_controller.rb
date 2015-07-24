@@ -19,11 +19,18 @@ class UsersController < ApplicationController
 
   def update
     authorize @user
+
+    old_user = @user
+
     if @user.update_attributes(secure_params)
 
       require 'mixpanel-ruby'
       tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
-      tracker.people.set(@user.id, @user.attributes)
+      #tracker.people.set(@user.id, @user.attributes)
+      tracker.track(@user.id, 'Updated User', {
+        'Old Attributes' => old_user.attributes,
+        'New Attributes' => @user.attributes
+      })
 
       redirect_to @user.company, notice: t('devise.registrations.updated')
     else
@@ -44,7 +51,8 @@ class UsersController < ApplicationController
     if @user.update_attributes(role: :manager)
       require 'mixpanel-ruby'
       tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
-      tracker.people.set(@user.id, @user.attributes)
+      #tracker.people.set(@user.id, @user.attributes)
+      tracker.track(@user.id, 'Promoted User')
 
       redirect_to @user.company, notice: t('promotion.success')
     else
@@ -58,7 +66,8 @@ class UsersController < ApplicationController
     if @user.update_attributes(role: :operator)
       require 'mixpanel-ruby'
       tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
-      tracker.people.set(@user.id, @user.attributes)
+      #tracker.people.set(@user.id, @user.attributes)
+      tracker.track(@user.id, 'Demoted User')
       
       redirect_to @user.company, notice: t('demotion.success')
     else

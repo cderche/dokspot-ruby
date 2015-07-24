@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :authenticate_user!
+  before_filter :set_mixpanel_user
   #after_action :verify_authorized
   
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -33,6 +34,14 @@ class ApplicationController < ActionController::Base
     # Override accepted parameters
     devise_parameter_sanitizer.for(:invite) do |u|
       u.permit(:email, :company_id)
+    end
+  end
+
+  def set_mixpanel_user
+    if user_signed_in?
+      require 'mixpanel-ruby'
+      tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
+      tracker.people.set(current_user.id, current_user.attributes)
     end
   end
 
