@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'service', to: 'visitors#service'
   get 'about', to: 'visitors#about'
   get 'demo', to: 'visitors#demo'
-  get 'policy', to: 'visitors#policy'
+  get 'terms', to: 'visitors#terms'
   get 'business', to: 'visitors#business'
   
   get 'qrcode/show'

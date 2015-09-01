@@ -1,44 +1,14 @@
 - title "About"
 
-.jumbotron.content-header
-  .container.text-center
-    =image_tag "dokspot-circle.png", class: "img"
-    %h2.lead about dokspot
+.container-fluid.about-box-1
+  .container
+    .row
+      .col-xs-12
+        %h2.lead.purplecolor ABOUT DOKSPOT
 
-.container.extended-container
-  .row.text-right
-    .col-md-6.text-center
-      %h1.lead The Company
-      %p.text-justify dokspot is a digital instruction management platform that innovates the way instructions are delivered to customers. We focus on the medical device industry.
-      %p.text-justify The current model for delivering medical device instructions to customers is outdated and highly inefficient. The cost of instructions can account for up to 5% of total product cost. Shipping multi-language instructions with each medical device provides little benefit to the customer and harms the environment.
-      %p.text-justify Our team is a fusion of medical device industry experts and software developers. This enables us to have a deep understanding of our client requirements and provide the innovative solutions and technologies needed to increase our clients efficiency and customer focus.
-      %p.text-justify dokspot is headquartered and registered in Zürich, Switzerland.
-      %br
-      =link_to "The Service", service_path, class: 'btn btn-default btn-lg btn-primary'
-    .col-md-6.text-center
-      %h1.lead Contact Us
-      
-      = simple_form_for(@customer, url: url_for(action: 'contact', controller: 'customers'), method: :post) do |f|
-        = f.error_notification
-      
-        .form-inputs
-          .row.text-left
-            .col-md-6
-              .form-group
-                = f.input :full_name, input_html: { class: 'form-control', autofocus: true }
-            .col-md-6
-              .form-group
-                = f.input :company, input_html: { class: 'form-control' }
-          .row.text-left
-            .col-md-6
-              .form-group
-                = f.input :telephone, input_html: { class: 'form-control' }
-            .col-md-6
-              .form-group
-                = f.input :email, as: :email, input_html: { class: 'form-control' }
-                
-          .row
-            .col-md-12
-              .form-group
-                = f.input :notes, as: :text, input_html: { class: 'form-control', rows: 6 }
-              %button.btn.pull-right.btn-success{:style => "margin-top: 10px", :type => "submit"} Submit
+.container
+  .row
+    .col-sm-9
+      = render 'about'
+    .col-sm-3
+      = render 'visitor_nav'
