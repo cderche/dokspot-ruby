@@ -1,21 +1,16 @@
 %br
-%ul.list-unstyled.visitor-nav.lead
-	%li ABOUT
-	%li
-		= link_to 'About', about_path
-	%li
-		= link_to 'Business', business_path
-	%br
+%ul.list-unstyled.visitor-nav
+	%li.h3 ABOUT
+	%li.h4= link_to 'About', about_path
+	%li.h4= link_to 'Business', business_path
 
-	%li LEGAL
-	%li
-		= link_to 'Terms of Service', terms_path
-	%li
-		%a Privacy Policy
-	%br
+	%li.h3 COMMITMENTS
+	%li.h4= link_to 'Our Promise', terms_path 
+	%li.h4= link_to 'Terms of Service', terms_path
+	%li.h4= link_to 'Privacy Policy', terms_path
 
-	%li CONTACT
-	%li
+	%li.h3 CONTACT
+	%li.h4
 		%a{ href: "mailto: talk@dokspot.com"} talk@dokspot.com
-	%li
+	%li.h4
 		%a{ href: "tel:+12345678987" } +41 79 216 38 28
