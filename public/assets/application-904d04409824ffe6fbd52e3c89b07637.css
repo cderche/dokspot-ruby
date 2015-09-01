@@ -24596,26 +24596,28 @@ body {
 }
 
 /* line 307, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
-.business-box-1 {
-  background-color: #7C5BBB;
-  color: white;
-  min-height: 200px;
-  text-align: center;
-  font-size: 28px;
-}
-
-/* line 315, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
-.business-box-3 {
-  background-color: #f8f8f8;
-}
-
-/* line 319, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .box {
-  padding: 80px 0px 80px 0px;
+  padding: 40px 0px 40px 0px;
+  border-top: thin solid #d9d9d9;
+}
+
+/* line 312, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.purplecolor {
+  color: #7C5BBB !important;
+}
+
+/* line 316, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.about-box-1 {
   border-bottom: thin solid #d9d9d9;
 }
 
-/* line 324, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
-.greenicon {
-  color: #7C5BBB !important;
+/* line 320, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.visitor-nav {
+  border-left: thin solid #d9d9d9;
+  padding-left: 24px !important;
+}
+
+/* line 325, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+.box-top {
+  padding: 80px 0px 80px 0px;
 }
