@@ -24599,23 +24599,21 @@ body {
 .business-box-1 {
   background-color: #7C5BBB;
   color: white;
-  min-height: 300px;
-  text-align: center;
-  font-size: 28px;
+  min-height: 200px;
 }
 
-/* line 315, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 313, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .business-box-3 {
   background-color: #f8f8f8;
 }
 
-/* line 319, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 317, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .box {
   padding: 80px 0px 80px 0px;
   border-bottom: thin solid #d9d9d9;
 }
 
-/* line 324, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
+/* line 322, /Users/Cyrille/workspace/dokspot-eu/app/assets/stylesheets/application.css.scss */
 .greenicon {
   color: #7C5BBB !important;
 }
