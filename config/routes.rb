@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'demo', to: 'visitors#demo'
   get 'terms', to: 'visitors#terms'
   get 'business', to: 'visitors#business'
+  get 'promise', to: 'visitors#promise'
+  get 'privacy', to: 'visitors#privacy'
   
   get 'qrcode/show'
 

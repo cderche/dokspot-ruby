@@ -30,6 +30,12 @@ class VisitorsController < ApplicationController
   def about
     @customer = Customer.new
   end
+
+  def promise
+  end
+
+  def privacy
+  end
   
   private
   

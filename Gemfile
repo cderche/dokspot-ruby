@@ -61,3 +61,6 @@ gem "letter_opener", group: :development
 gem 'country_select'
 gem 'mandrill-api', require: 'mandrill'
 gem 'mixpanel-ruby'
+group :development, :test do
+    gem 'railroady'
+end
