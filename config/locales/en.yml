@@ -38,12 +38,15 @@ en:
     status: "Update Order Status"
     cancel: "Cancel"
     back: "Back"
+    instructions: "Instructions"
+    sugicalguides: "Surgical Guide"
   new:
     company: "New Company"
     product: "New Product"
     instruction: "New Instruction"
     document: "Add Version"
     notification: "New Notification"
+    guide: "New Guide"
   edit:
     company: "Edit Company"
     product: "Edit Product"

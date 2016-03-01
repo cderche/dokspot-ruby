@@ -32,6 +32,8 @@
 %ul.nav.nav-tabs{role: 'tablist'}
   %li.active
     = link_to t('keywords.instructions'), '#instructions', role: 'tab', data: {toggle: 'tab'}
+  %li
+    = link_to t('keywords.sugicalguides'), '#surgicals', role: 'tab', data: {toggle: 'tab'}
   - if user_signed_in?
     %li
       = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}
@@ -42,6 +44,8 @@
 %div.tab-content
   %div.tab-pane.active#instructions
     = render partial: "instructions/index",  locals: { product: @product } if policy(Instruction.new(product: @product)).index?
+  %div.tab-pane#surgicals
+    = render partial: "instructions/surgicals",  locals: { product: @product } if policy(Instruction.new(product: @product)).index?
   - if user_signed_in?
     %div.tab-pane#notifications
       = render partial: "notifications/index",  locals: { product: @product }

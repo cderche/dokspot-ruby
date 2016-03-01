@@ -133,7 +133,7 @@ class InstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_params
-      params.require(:instruction).permit(:product_id, :language_id, :published, documents_attributes: [:version, :file, :primary])
+      params.require(:instruction).permit(:product_id, :language_id, :published, :category, documents_attributes: [:version, :file, :primary])
     end
     
     def set_product

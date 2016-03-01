@@ -33,7 +33,13 @@ class AddLocalNamesToLanguages < ActiveRecord::Migration
 
   	languages.each do |l|
   		tmp = Language.find_by(name: l[:name])
-  		tmp.update(local: l[:local])
+      if tmp
+        tmp.update(local: l[:local])
+        puts "updated"
+      else
+        Language.create(l)
+        puts "created"
+      end
   	end
 
   end

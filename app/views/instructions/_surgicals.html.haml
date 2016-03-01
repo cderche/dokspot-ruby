@@ -1,6 +1,6 @@
 %br
 .text-right
-  = link_to t('new.instruction'), new_product_instruction_path(product), class: 'btn btn-success btn-sm' if policy(Instruction.new(product: product)).new?
+  = link_to t('new.guide'), new_product_instruction_path(product), class: 'btn btn-success btn-sm' if policy(Instruction.new(product: product)).new?
 %br
 
 %table.table.table-hover
@@ -14,7 +14,7 @@
     %th
 
   - if user_signed_in?
-    - product.instructions.where(category: 1).each do |instruction|
+    - product.instructions.where(category: 2).each do |instruction|
       %tr
         %td= instruction.language.name
         %td= render partial: "support/published", locals: {object: instruction}
@@ -39,7 +39,7 @@
         
         %td= render "instructions/delete", instruction: instruction
   - else
-    - product.instructions.published.where(category: 1).each do |instruction|
+    - product.instructions.published.where(category: 2).each do |instruction|
       %tr
         %td= instruction.language.local.capitalize
         

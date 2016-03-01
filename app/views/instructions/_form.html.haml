@@ -1,26 +1,30 @@
 = simple_form_for [@product, @instruction] do |f|
-  = f.error_notification
+	= f.error_notification
 
-  .form-inputs  
+	.form-inputs  
 
-    .form-group
-      = f.association :language, collection: @languages, input_html: { autofocus: true, class: 'form-control' }, include_blank: false
+		.form-group
+			-# Moving back to all langs due to categories update. need fix in future. @languages
+			= f.association :language, collection: Language.all, input_html: { autofocus: true, class: 'form-control' }, include_blank: false
+			
+		.form-group  
+			= f.input :category, collection: Instruction.categories.map {|k, v| [k, k]}, prompt: 'Select Category', input_html: { class: 'form-control'}
       
-    - if action_name == 'new' or action_name == 'create'
-      = f.simple_fields_for :documents do |d|
-        .form-group
-          = d.input :version, input_html: { class: 'form-control', placeholder: 'e.g. 1.0' }
-        %br
-        .form-group
-          = d.input :file, as: :file
-        %br
-        .form-group
-          = d.input :primary, as: :hidden, input_html: { value: true }
+		- if action_name == 'new' or action_name == 'create'
+			= f.simple_fields_for :documents do |d|
+				.form-group
+					= d.input :version, input_html: { class: 'form-control', placeholder: 'e.g. 1.0' }
+				%br
+				.form-group
+					= d.input :file, as: :file
+				%br
+				.form-group
+					= d.input :primary, as: :hidden, input_html: { value: true }
 
-    .form-group
-      = f.check_box :published
-      = f.label :published
+		.form-group
+			= f.check_box :published
+			= f.label :published
 
-  .form-actions
-    .text-center
-      = f.button :submit, class: 'btn-success'
+	.form-actions
+		.text-center
+			= f.button :submit, class: 'btn-success'

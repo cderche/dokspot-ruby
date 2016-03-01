@@ -3,12 +3,14 @@
 = render 'breadcrumbs'
 
 .jumbotron
-  %h2
-    Instruction History
-    %br
-    %small
-      = @instruction.product.name
-      = "-"
-      = @instruction.language.name
+	%h2
+		Document History
+		%br
+		%small= @instruction.category.upcase
+		%br
+		%small
+			= @instruction.product.name
+			= "-"
+			= @instruction.language.name
 
 = render partial: "documents/index", locals: { instruction: @instruction } if policy(Document.new(instruction: @instruction)).index?

@@ -11,7 +11,7 @@ class UserMailer < Devise::Mailer
 		puts "Sending " + template_name + " to " + record.email
 
 		template_content = []
-    	message = {
+  	message = {
 			to: [{email: record.email }],
 			merge_vars: [
 				{ 
