@@ -8,8 +8,9 @@ class Instruction < ActiveRecord::Base
 	
 	# update for surgical guide, must make db changes.
 	enum category: {
-		ifu:				1,
-		surgical:		2
+		ifu:				    1,
+		surgical:       2,
+    sterilization:  3
 	}
   
   validates :language,     presence: true

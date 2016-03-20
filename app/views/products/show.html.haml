@@ -30,10 +30,9 @@
 
 / NAV TABS
 %ul.nav.nav-tabs{role: 'tablist'}
-  %li.active
-    = link_to t('keywords.instructions'), '#instructions', role: 'tab', data: {toggle: 'tab'}
-  %li
-    = link_to t('keywords.sugicalguides'), '#surgicals', role: 'tab', data: {toggle: 'tab'}
+  - Instruction.categories.each_with_index do |val, index|
+    %li{class: ("active" if index == 0)}
+      =link_to t("#{val[0]}"), "##{val[0]}", role: 'tab', data: { toggle: 'tab' }
   - if user_signed_in?
     %li
       = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}
@@ -42,17 +41,15 @@
     
 / TAB PANES
 %div.tab-content
-  %div.tab-pane.active#instructions
-    = render partial: "instructions/index",  locals: { product: @product } if policy(Instruction.new(product: @product)).index?
-  %div.tab-pane#surgicals
-    = render partial: "instructions/surgicals",  locals: { product: @product } if policy(Instruction.new(product: @product)).index?
+  - Instruction.categories.each_with_index do |val, index|
+    %div.tab-pane(id="#{val[0]}"){class: ("active" if index == 0)}
+      = render partial: "instructions/index", locals: { product: @product, category: val } if policy(Instruction.new(product: @product)).index?
   - if user_signed_in?
     %div.tab-pane#notifications
       = render partial: "notifications/index",  locals: { product: @product }
     %div.tab-pane#resources
       = render partial: "resources",  locals: { product: @product }
       
-
 / Call Back
 - if !user_signed_in?
   .text-center

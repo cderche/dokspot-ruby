@@ -14,7 +14,7 @@
     %th
 
   - if user_signed_in?
-    - product.instructions.where(category: 1).each do |instruction|
+    - product.instructions.where(category: category).each do |instruction|
       %tr
         %td= instruction.language.name
         %td= render partial: "support/published", locals: {object: instruction}
@@ -39,7 +39,7 @@
         
         %td= render "instructions/delete", instruction: instruction
   - else
-    - product.instructions.published.where(category: 1).each do |instruction|
+    - product.instructions.published.where(category: category).each do |instruction|
       %tr
         %td= instruction.language.local.capitalize
         
