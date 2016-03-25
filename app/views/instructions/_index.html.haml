@@ -50,14 +50,20 @@
               = t('instructions.primary')
         
         - if policy(instruction).show?
-          %td
-            =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
-              %span.glyphicon.glyphicon-repeat{title: 'View History'}
-              = t('instructions.history')
+          - if category != ['ifu', 1]
+            %td
+          - else
+            %td
+              =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
+                %span.glyphicon.glyphicon-repeat{title: 'View History'}
+                = t('instructions.history')
             
         - if policy(instruction).order?
-          %td
-            =link_to new_instruction_order_path(instruction), class: 'btn btn-primary btn-xs' do
-              %span.glyphicon.glyphicon-envelope{title: 'Order Print'}
-              = t('keywords.order')
+          - if category != ['ifu', 1]
+            %td
+          - else
+            %td
+              =link_to new_instruction_order_path(instruction), class: 'btn btn-primary btn-xs' do
+                %span.glyphicon.glyphicon-envelope{title: 'Order Print'}
+                = t('keywords.order')
 %br
