@@ -28,11 +28,17 @@
       
 %br
 
+.text-right
+  = link_to t('new.instruction'), new_product_instruction_path(@product), class: 'btn btn-success btn-sm' if policy(Instruction.new(product: @product)).new?
+
+%br
+
 / NAV TABS
 %ul.nav.nav-tabs{role: 'tablist'}
   - Instruction.categories.each_with_index do |val, index|
-    %li{class: ("active" if index == 0)}
-      =link_to t("#{val[0]}"), "##{val[0]}", role: 'tab', data: { toggle: 'tab' }
+    - if @product.instructions.where(category: val).count > 0
+      %li{class: ("active" if index == 0)}
+        =link_to t("#{val[0]}"), "##{val[0]}", role: 'tab', data: { toggle: 'tab' }
   - if user_signed_in?
     %li
       = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}

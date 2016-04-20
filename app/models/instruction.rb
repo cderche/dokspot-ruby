@@ -10,7 +10,8 @@ class Instruction < ActiveRecord::Base
 	enum category: {
 		ifu:				    1,
 		surgical:       2,
-    sterilization:  3
+    sterilization:  3,
+    instruments:    4 
 	}
   
   validates :language,     presence: true

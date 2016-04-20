@@ -1,7 +1,4 @@
 %br
-.text-right
-  = link_to t('new.instruction'), new_product_instruction_path(product), class: 'btn btn-success btn-sm' if policy(Instruction.new(product: product)).new?
-%br
 
 %table.table.table-hover
   %tr
