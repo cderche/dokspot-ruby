@@ -22,7 +22,8 @@
 en:
   ifu: "Instructions"
   surgical: "Surgical Guides"
-  sterilization: "Sterilization Guides"
+  sterilization: "Instrument Processing"
+  videos: "Videos"
   keywords:
     new:        "New"
     edit:       "Edit"
