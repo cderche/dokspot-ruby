@@ -5,8 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-#puts 'CREATED ADMIN USER: ' << user.email
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
+# puts 'CREATED ADMIN PASSWORD: ' << user.email
+
+User.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |u|
+	u.password							= ENV['ADMIN_PASSWORD']
+	u.password_confirmation	= ENV['ADMIN_PASSWORD']
+	u.confirm!
+	u.admin!
+end
+
 
 languages = Language.create([
 	{ name:	'English - Europe'	,	local:	'English - Europe'	},
