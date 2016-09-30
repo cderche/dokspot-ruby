@@ -53,7 +53,8 @@ group :test do
   gem 'cucumber-rails'
 end
 gem 'friendly_id'
-gem 'rqrcode-rails3'
+# gem 'rqrcode-rails3'
+gem 'rqrcode', '>= 0.5.5'
 gem 'paperclip'
 gem 'mini_magick'
 gem 'aws-sdk'

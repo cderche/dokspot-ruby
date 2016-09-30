@@ -9,32 +9,29 @@
 #puts 'CREATED ADMIN USER: ' << user.email
 
 languages = Language.create([
-	{ name: 'Bulgarian' },
-	{ name: 'Croatian' },
-	{ name: 'Czech' },
-	{ name: 'Danish' },
-	{ name: 'Dutch' },
-	{ name: 'English' },
-	{ name: 'Estonian' },
-	{ name: 'Finnish' },
-	{ name: 'French' },
-	{ name: 'German' },
-	{ name: 'Greek' },
-	{ name: 'Hungarian' },
-	{ name: 'Irish' },
-	{ name: 'Italian' },
-	{ name: 'Latvian' },
-	{ name: 'Lithuanian' },
-	{ name: 'Maltese' },
-	{ name: 'Polish' },
-	{ name: 'Portuguese' },
-	{ name: 'Romanian' },
-	{ name: 'Slovak' },
-	{ name: 'Slovene' },
-	{ name: 'Spanish' },
-	{ name: 'Swedish' },
-	{ name: 'Chinese (Mandarin)' },
-	{ name: 'Japanese' },
-	{ name: 'Korean' },
-	{ name: 'Russian' }
+	{ name:	'English - Europe'	,	local:	'English - Europe'	},
+	{ name: 'English - USA'			,	local:	'English - USA'			},
+	{ name: 'French'						,	local:	'Français'					},
+	{ name: 'German'						,	local:	'Deutsch'						},
+	{ name: 'Russian'						,	local:	'Русский'						}
+])
+
+companies = Company.create([
+	{
+		name:					'dokspot GmbH'								,
+		symbol:				'DKS'													,
+		website:			'https://www.dokspot.com'			,
+		contact:			'cyrille.derche@dokspot.com'	,
+		order_email:	'cyrille.derche@dokspot.com'
+	}
+])
+
+users =	User.create([
+	{
+		email:									'cyrille.derche@dokspot.com'	,
+		company:								Company.first()								,
+		password:								'password'										,
+		password_confirmation:	'password'										,
+		role:										:admin
+	}
 ])
