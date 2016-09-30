@@ -6,4 +6,4 @@ development:
 
 test:
   adapter: postgresql
-  database: dokspot-test
+  database: travis_ci_test
