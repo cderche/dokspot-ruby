@@ -4,6 +4,9 @@ development:
   database: dokspot_development
   pool: 5
 
-test:
+test: &test
   adapter: postgresql
   database: travis_ci_test
+
+cucumber:
+  <<: *test

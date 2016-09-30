@@ -4,7 +4,7 @@ def create_document
 
   doc ||= {
     instruction: @instruction,
-    primary: true,
+    # primary: true,
     file: File.new(src),
     primary: true
   }
@@ -14,7 +14,7 @@ end
 def document_valid document
   expect(page).to have_content document.version
     expect(page).to have_link I18n.t('documents.download'), href: document_download_path(document)
-    
+
     if @user.nil?
       expect(page).to_not have_link I18n.t('delete.document'), href: document_path(document)
     elsif @user.manager? or @user.operator?
@@ -32,7 +32,7 @@ def document_valid document
 
 Given(/^there is a set of documents for the instruction$/) do
   src = File.join(Rails.root.join('spec', 'support', 'example.pdf'))
-  
+
   (1..5).each do |i|
     tmp ||= {
       instruction: @instruction,
@@ -41,7 +41,7 @@ Given(/^there is a set of documents for the instruction$/) do
       primary: false
     }
     tmp = tmp.merge(primary: true) if tmp[:version] == 5
-    
+
     FactoryGirl.create(:document, tmp)
   end
 end

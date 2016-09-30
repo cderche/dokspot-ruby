@@ -40,7 +40,7 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  # gem 'thin'
+  gem 'thin'
 end
 group :production do
   gem 'puma'
@@ -54,6 +54,7 @@ group :test do
   gem 'selenium-webdriver'
   # gem 'cucumber-rails'
   gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 gem 'friendly_id'
 # gem 'rqrcode-rails3'
