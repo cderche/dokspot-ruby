@@ -50,7 +50,8 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'cucumber-rails'
+  # gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
 end
 gem 'friendly_id'
 # gem 'rqrcode-rails3'
