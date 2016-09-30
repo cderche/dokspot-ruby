@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: dokspot_development
+  pool: 5
+
+test:
+  adapter: postgresql
+  database: travis_ci_test
