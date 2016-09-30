@@ -418,6 +418,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails_12factor
   rails_layout
+  rake (= 10.3.2)
   rb-fchange
   rb-fsevent
   rb-inotify
