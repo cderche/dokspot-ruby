@@ -1,5 +1,5 @@
 language: ruby
 rvm:
-  - 2.1.2-p95
+  - 2.1.2
 services:
   - postgresql
