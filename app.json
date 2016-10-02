@@ -58,12 +58,14 @@
     }
   },
   "addons": [{
-    "plan": "heroku-postgresql",
-    "as":   "DATABASE_URL"
+    "plan": "heroku-postgresql"
   }],
   "buildpacks": [
     {
       "url": "heroku/ruby"
     }
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:create db:seed"
+  },
 }
