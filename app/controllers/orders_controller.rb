@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_instruction, only: [:new, :create, :index]
-  
+
   skip_before_filter :authenticate_user!, except: :index
 
   # GET /orders
@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     confirming_order = order_params[:reviewed]
-    
+
     message = I18n.t('orders.update.success')
     if confirming_order
       message = I18n.t('orders.reviewed.success')
@@ -81,12 +81,12 @@ class OrdersController < ApplicationController
       # send_user_email_modified_order
       # send_order_manager_email_modified_order
     end
-    
+
     puts "STATUS: #{order_params[:status]}"
     if order_params[:status] == 'cancelled'
       message = t('orders.cancelled')
     end
-    
+
     if @order.update(order_params)
       if confirming_order
         confirm_order
@@ -123,14 +123,14 @@ class OrdersController < ApplicationController
     require 'mixpanel-ruby'
     tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
     tracker.track(@order.id, 'Order Delete', @order.attributes)
-    
+
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-  
+
   def confirm
     @order = Order.friendly.find(params[:order_id])
     @order.reviewed = true
@@ -146,7 +146,7 @@ class OrdersController < ApplicationController
       flash[:error] = I18n.t("orders.not_found", token: params[:id])
       redirect_to root_path
     end
-    
+
     def set_instruction
       @instruction = Instruction.find(params[:instruction_id])
     end
@@ -155,23 +155,28 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:instruction_id, :reviewed, :code, :status, :track, customer_attributes: [:full_name, :company, :address1, :address2, :postcode, :city, :country, :notes, :telephone, :email])
     end
-    
+
     def confirm_order
-      Thread.new do
-        puts "I'm in a thread!"
-        @order.code = SecureRandom.hex(2)
-        @order.save
-        CustomerMailer.new_order(@order).deliver
-        CompanyMailer.new_order(@order).deliver
-        puts "I'm leaving the thread!"
-      end
+      puts "Confirming order..."
+      OrderMailer.company_confirmation(@order).deliver
+      OrderMailer.customer_confirmation(@order).deliver
+      # Thread.new do
+      #   puts "I'm in a thread!"
+      #   @order.code = SecureRandom.hex(2)
+      #   @order.save
+      #   # CustomerMailer.new_order(@order).deliver
+      #   # CompanyMailer.new_order(@order).deliver
+      #   OrderMailer.company_confirmation(@order)
+      #   puts "I'm leaving the thread!"
+      # end
     end
-    
+
     def confirm_cancel
       Thread.new do
         puts "I'm sending an email to cancel the order"
-        CustomerMailer.cancelled_order(@order).deliver
-        CompanyMailer.cancelled_order(@order).deliver
+        # CustomerMailer.cancelled_order(@order).deliver
+        OrderMailer.customer_cancel(@order).deliver
+        OrderMailer.company_cancel(@order).deliver
         puts "I have finised sending the order cancellation emails!"
       end
     end

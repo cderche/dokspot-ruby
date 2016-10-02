@@ -15,37 +15,37 @@
       %tr
         %td= instruction.language.name
         %td= render partial: "support/published", locals: {object: instruction}
-        
+
         - if policy(instruction).primary?
           %td
             =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
               %span.glyphicon.glyphicon-file{title: 'Open Instruction'}
               = t('instructions.primary')
-        
+
         - if policy(instruction).show?
           %td
             =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
               %span.glyphicon.glyphicon-repeat{title: 'View History'}
               = t('instructions.history')
-              
+
         - if policy(instruction).edit?
           %td
             =link_to edit_instruction_path(instruction), class: 'btn btn-warning btn-xs' do
               %span.glyphicon.glyphicon-edit{title: 'Edit'}
               = t('keywords.edit')
-        
+
         %td= render "instructions/delete", instruction: instruction
   - else
     - product.instructions.published.where(category: category).each do |instruction|
       %tr
-        %td= instruction.language.local.capitalize
-        
+        %td= instruction.language.local
+
         - if policy(instruction).primary?
           %td
             =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
               %span.glyphicon.glyphicon-file{title: 'Download Instruction'}
               = t('instructions.primary')
-        
+
         - if policy(instruction).show?
           - if category != ['ifu', 1]
             %td
@@ -54,7 +54,7 @@
               =link_to instruction_path(instruction), class: 'btn btn-default btn-xs' do
                 %span.glyphicon.glyphicon-repeat{title: 'View History'}
                 = t('instructions.history')
-            
+
         - if policy(instruction).order?
           - if category != ['ifu', 1]
             %td

@@ -1,8 +1,9 @@
 language: ruby
 rvm:
-  - 2.1.2
+  - 2.2.5
 services:
   - postgresql
 before_script:
-  - RAILS_ENV=test rake db:create
-  - RAILS_ENV=test rake db:migrate
+  - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - bundle exec cucumber

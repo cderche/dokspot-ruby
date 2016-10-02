@@ -23,3 +23,26 @@ Rails.application.configure do
   }
 end
 =end
+
+# Rails.application.configure do
+#   config.paperclip_defaults = {
+#     storage: :fog,
+#     fog_credentials: {
+#       aws_access_key_id:      ENV['S3_KEY']     ,
+#       aws_secret_access_key:  ENV['S3_SECRET']  ,
+#       provider:               'AWS'             ,
+#
+#     }
+#     #   # aws_access_key_id:      ENV['S3_KEY'],
+#     #   # aws_secret_access_key:  ENV['S3_SECRET'],
+#     #   # provider: 'AWS',
+#     #   # region:             'eu-west-1',
+#     #   # scheme:             'https'
+#     #   # #host:               's3-eu-west-1.amazonaws.com',
+#   }
+# end
+#
+# Paperclip::Attachment.default_options[:storage] = :fog
+# Paperclip::Attachment.default_options[:fog_credentials] = { provider: "Local", local_root: "#{Rails.root}/public"}
+# Paperclip::Attachment.default_options[:fog_directory] = ""
+# Paperclip::Attachment.default_options[:fog_host] = "http://localhost:3000"

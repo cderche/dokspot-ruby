@@ -3,9 +3,9 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_company, only: [:new, :create]
-  
+
   skip_before_filter :authenticate_user!, only: :show
-  
+
   after_action :verify_authorized
 
   # GET /products/1
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     else
       tracker.track(0, 'Product View', @product.attributes)
     end
-    
+
     page_title = "dokspot - #{@product.uuid}"
   end
 
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
     authorize @product
     # set the company before saving the product
     set_company
-    
+
     respond_to do |format|
       if @product.save
         generate_qrcode
@@ -106,7 +106,7 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def download_qrcode
     @product = Product.friendly.find(params[:product_id])
     authorize @product
@@ -124,21 +124,27 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :uuid, :published, :company_id, :user_id)
     end
-    
+
     def set_company
       @company = Company.friendly.find(params[:company_id])
     end
-    
+
     def generate_qrcode
+      # require 'rqrcode'
       puts "Generating QRCode..."
       url = "#{root_url}#{@product.uuid}"
       #puts "URL is #{url}"
-      
-      size = RQRCode.minimum_qr_size_from_string(url)
-      qrcode = RQRCode::QRCode.new(url, size: size, level: :h)
-      
+
+      # size = RQRCode.minimum_qr_size_from_string(url)
+      # qrcode = RQRCode::QRCode.new(url, size: size, level: :h)
+      qrcode = RQRCode::QRCode.new(url)
+      # qrcode = RQRCode::QRCode.new("http://github.com/")
+      # puts qrcode
+      # png = qrcode.as_png
+
       # SVG
-      svg = RQRCode::Renderers::SVG::render(qrcode)
+      # svg = RQRCode::Renderers::SVG::render(qrcode)
+      svg = qrcode.as_svg
       file = Tempfile.new(['file','.svg'])
       #puts "TempFile Path: #{file.path}"
       file.write(svg.to_s)
