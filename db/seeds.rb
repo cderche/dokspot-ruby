@@ -9,15 +9,7 @@
 # puts 'CREATED ADMIN USER: ' << user.email
 # puts 'CREATED ADMIN PASSWORD: ' << user.email
 
-User.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |u|
-	u.password							= ENV['ADMIN_PASSWORD']
-	u.password_confirmation	= ENV['ADMIN_PASSWORD']
-	u.confirmed_at					= Time.now
-	u.role									= :admin
-end
-
-# User.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'], confirm: true, role: :admin)
-
+User.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'], confirmed_at: Time.now, role: :admin)
 
 languages = Language.create([
 	{ name:	'English - Europe'	,	local:	'English - Europe'	},
