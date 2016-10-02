@@ -66,6 +66,6 @@
     }
   ],
   "scripts": {
-    "postdeploy": "bundle exec rake db:create db:seed"
+    "postdeploy": "bundle exec rake db:migrate db:seed"
   }
 }
