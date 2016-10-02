@@ -24,25 +24,15 @@ languages = Language.create([
 	{ name: 'English - USA'			,	local:	'English - USA'			},
 	{ name: 'French'						,	local:	'Français'					},
 	{ name: 'German'						,	local:	'Deutsch'						},
-	{ name: 'Russian'						,	local:	'Русский'						}
+	{ name: 'Russian'						,	local:	'Русский'						},
 ])
 
 companies = Company.create([
 	{
-		name:					'dokspot GmbH'								,
-		symbol:				'DKS'													,
-		website:			'https://www.dokspot.com'			,
-		contact:			'cyrille.derche@dokspot.com'	,
-		order_email:	'cyrille.derche@dokspot.com'
-	}
-])
-
-users =	User.create([
-	{
-		email:									'cyrille.derche@dokspot.com'	,
-		company:								Company.first()								,
-		password:								'password'										,
-		password_confirmation:	'password'										,
-		role:										:admin
+		name:					'dokspot GmbH'						,
+		symbol:				'DKS'											,
+		website:			'https://www.dokspot.com'	,
+		contact:			ENV['ADMIN_EMAIL']				,
+		order_email:	ENV['ADMIN_EMAIL']				,
 	}
 ])
