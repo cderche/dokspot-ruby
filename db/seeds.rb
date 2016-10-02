@@ -12,9 +12,11 @@
 User.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |u|
 	u.password							= ENV['ADMIN_PASSWORD']
 	u.password_confirmation	= ENV['ADMIN_PASSWORD']
-	u.confirm!
-	u.admin!
+	u.confirmed_at					= Time.now
+	u.role									= :admin
 end
+
+# User.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'], confirm: true, role: :admin)
 
 
 languages = Language.create([
