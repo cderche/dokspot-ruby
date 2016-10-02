@@ -12,9 +12,6 @@
     "ADMIN_PASSWORD": {
       "required": true
     },
-    "DATABASE_URL": {
-      "required": true
-    },
     "DOMAIN_NAME": {
       "required": true
     },
@@ -60,9 +57,10 @@
       "quantity": 1
     }
   },
-  "addons": [
-    "heroku-postgresql"
-  ],
+  "addons": [{
+    "plan": "heroku-postgresql",
+    "as":   "DATABASE_URL"
+  }],
   "buildpacks": [
     {
       "url": "heroku/ruby"

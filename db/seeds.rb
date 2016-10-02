@@ -5,36 +5,34 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#user = CreateAdminService.new.call
-#puts 'CREATED ADMIN USER: ' << user.email
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
+# puts 'CREATED ADMIN PASSWORD: ' << user.email
+
+User.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |u|
+	u.password							= ENV['ADMIN_PASSWORD']
+	u.password_confirmation	= ENV['ADMIN_PASSWORD']
+	u.confirmed_at					= Time.now
+	u.role									= :admin
+end
+
+# User.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'], password_confirmation: ENV['ADMIN_PASSWORD'], confirm: true, role: :admin)
+
 
 languages = Language.create([
-	{ name: 'Bulgarian' },
-	{ name: 'Croatian' },
-	{ name: 'Czech' },
-	{ name: 'Danish' },
-	{ name: 'Dutch' },
-	{ name: 'English' },
-	{ name: 'Estonian' },
-	{ name: 'Finnish' },
-	{ name: 'French' },
-	{ name: 'German' },
-	{ name: 'Greek' },
-	{ name: 'Hungarian' },
-	{ name: 'Irish' },
-	{ name: 'Italian' },
-	{ name: 'Latvian' },
-	{ name: 'Lithuanian' },
-	{ name: 'Maltese' },
-	{ name: 'Polish' },
-	{ name: 'Portuguese' },
-	{ name: 'Romanian' },
-	{ name: 'Slovak' },
-	{ name: 'Slovene' },
-	{ name: 'Spanish' },
-	{ name: 'Swedish' },
-	{ name: 'Chinese (Mandarin)' },
-	{ name: 'Japanese' },
-	{ name: 'Korean' },
-	{ name: 'Russian' }
+	{ name:	'English - Europe'	,	local:	'English - Europe'	},
+	{ name: 'English - USA'			,	local:	'English - USA'			},
+	{ name: 'French'						,	local:	'Français'					},
+	{ name: 'German'						,	local:	'Deutsch'						},
+	{ name: 'Russian'						,	local:	'Русский'						},
+])
+
+companies = Company.create([
+	{
+		name:					'dokspot GmbH'						,
+		symbol:				'DKS'											,
+		website:			'https://www.dokspot.com'	,
+		contact:			ENV['ADMIN_EMAIL']				,
+		order_email:	ENV['ADMIN_EMAIL']				,
+	}
 ])

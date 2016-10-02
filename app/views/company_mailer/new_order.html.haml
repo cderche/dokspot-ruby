@@ -5,31 +5,31 @@
     /%meta(http-equiv="Content-Typ" content="text/html; charset:=UTF-8")
     /= stylesheet_link_tag "application.css"
   %body
-    
+
     .container-fluid
-    
+
       .page-header.text-center
         %h3 New Order!
-        
+
       .lead
         .row
-          .col-xs-12 
+          .col-xs-12
             %p= I18n.t("keywords.greetings")
-            
+
             %br
-        
+
             %p.text-center= I18n.t("emails.new_order.company.message").html_safe
-        
+
         .row.xs-padding-bottom
           .col-xs-12.text-center
             = link_to I18n.t("keywords.status"), order_url(@order), class: 'btn btn-success btn-lg'
-            
+
             %br
-            
+
             %p.text-center= I18n.t("emails.new_order.company.alternative").html_safe
 
         %br
-        
+
         .row
           .col-xs-12.text-center
             %h3.xs-margin-top

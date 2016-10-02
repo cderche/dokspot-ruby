@@ -19,9 +19,10 @@ module Myapp
         request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
-    
+
     #config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     #config.serve_static_assets = true
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

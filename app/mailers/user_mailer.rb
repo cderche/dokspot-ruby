@@ -4,7 +4,7 @@ class UserMailer < Devise::Mailer
 	#default template_path: 'devise/mailer/user_mailer'
 
 	def mandrill_client
-		@mandrill_client ||= Mandrill::API.new MANDRILL_API_KEY
+		@mandrill_client ||= Mandrill::API.new ENV['MANDRILL_API_KEY']
 	end
 
 	def send_email(template_name, record, args)
@@ -15,7 +15,7 @@ class UserMailer < Devise::Mailer
   		subaccount: "dokspot",
 			to: [{email: record.email }],
 			merge_vars: [
-				{ 
+				{
 					rcpt: record.email,
 					vars: args
 				}
@@ -51,7 +51,7 @@ class UserMailer < Devise::Mailer
 			name: "RESET_LINK",
 			content: edit_password_url(record, reset_password_token: token)
 		}]
-  	
+
   	template_name = "dokspot-account-reset"
   	send_email template_name, record, args
   end

@@ -77,4 +77,9 @@ pickle-email-*.html
 .env
 .powenv
 
+<<<<<<< HEAD
+=======
+config/env.rb
+
+>>>>>>> origin/master
 config/initializers/app_env.rb

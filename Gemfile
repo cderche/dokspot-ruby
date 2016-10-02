@@ -1,7 +1,9 @@
-ruby '2.1.2'
+# ruby '2.1.2'
+ruby '2.2.5'
 
 source 'https://rubygems.org'
-gem 'rails',  '4.1.4'
+# gem 'rails',  '4.1.4'
+gem 'rails', '4.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -14,7 +16,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise_invitable'
 gem 'haml-rails'
-gem 'pg', '0.18.4'
+gem 'pg'
 gem 'pundit'
 gem 'sendgrid'
 gem 'simple_form'
@@ -50,10 +52,13 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'cucumber-rails'
+  # gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
 gem 'friendly_id'
-gem 'rqrcode-rails3'
+# gem 'rqrcode-rails3'
+gem 'rqrcode', '>= 0.5.5'
 gem 'paperclip'
 gem 'mini_magick'
 gem 'aws-sdk'
@@ -62,6 +67,7 @@ gem "letter_opener", group: :development
 gem 'country_select'
 gem 'mandrill-api', require: 'mandrill'
 gem 'mixpanel-ruby'
-group :development, :test do
-    gem 'railroady'
-end
+
+# group :development, :test do
+#     gem 'railroady'
+# end
