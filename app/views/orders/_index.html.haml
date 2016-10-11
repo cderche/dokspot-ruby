@@ -5,6 +5,7 @@
     %th Order
     %th Status
     %th Created at
+    %th Customer
     %th
     %th
 
@@ -25,7 +26,7 @@
           %td.text-warning= order.created_at.to_formatted_s(:long)
         - else
           %td.text-primary= order.created_at.to_formatted_s(:long)
-        
+
       - elsif order.status == 'new_order'
         %td.text-primary= order.status
         - if order.created_at < 7.days.ago
@@ -34,6 +35,7 @@
           %td.text-warning= order.created_at.to_formatted_s(:long)
         - else
           %td.text-primary= order.created_at.to_formatted_s(:long)
-        
+
+      %td= order.customer.full_name
       %td= link_to 'Show', order, class: 'btn btn-primary btn-xs'
       %td= link_to 'Edit', edit_order_path(order), class: 'btn btn-warning btn-xs'
