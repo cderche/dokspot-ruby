@@ -34,7 +34,7 @@ class InstructionsController < ApplicationController
   # POST /instructions.json
   def create
     @languages = Language.all - @product.languages
-    
+
     #@instruction = Instruction.new(instruction_params)
     @instruction = @product.instructions.build(instruction_params)
     authorize @instruction
@@ -101,14 +101,18 @@ class InstructionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def primary
     @instruction = Instruction.find(params[:instruction_id])
     @document = @instruction.primary
     authorize @document
+
+    puts @document.file
     #@document.download
     data = open(@document.file.url)
-    send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+    # send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+    # send_data(data, filename: @document.fileName, type: 'application/pdf', disposition: :inline)
+    send_data data.read, filename: @document.fileName, type: 'application/pdf'
 
     require 'mixpanel-ruby'
     tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
@@ -135,7 +139,7 @@ class InstructionsController < ApplicationController
     def instruction_params
       params.require(:instruction).permit(:product_id, :language_id, :published, :category, documents_attributes: [:version, :file, :primary])
     end
-    
+
     def set_product
       @product = Product.friendly.find(params[:product_id])
     end
