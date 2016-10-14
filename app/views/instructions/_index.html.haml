@@ -18,7 +18,7 @@
 
         - if policy(instruction).primary?
           %td
-            =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
+            =link_to instruction_primary_path(instruction), { class: 'btn btn-success btn-xs', target: '_blank' } do
               %span.glyphicon.glyphicon-file{title: 'Open Instruction'}
               = t('instructions.primary')
 
@@ -42,7 +42,7 @@
 
         - if policy(instruction).primary?
           %td
-            =link_to instruction_primary_path(instruction), class: 'btn btn-success btn-xs' do
+            =link_to instruction_primary_path(instruction), { class: 'btn btn-success btn-xs', target: '_blank' } do
               %span.glyphicon.glyphicon-file{title: 'Download Instruction'}
               = t('instructions.primary')
 
