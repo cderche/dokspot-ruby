@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: dokspot_development
+  database: dokspot_development_old
   pool: 5
 
 test: &test

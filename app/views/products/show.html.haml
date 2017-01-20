@@ -20,12 +20,12 @@
           = @product.uuid
           %br
           = render partial: "support/published", locals: {object: @product} if user_signed_in?
-            
+
       %h4= @product.company.name if !user_signed_in?
   -#.col-xs-2.col-sm-4.pull-right
   .col-sm-4.hidden-xs
     = image_tag @product.company.logo.url, class: 'img-responsive' if @product.company.logo?
-      
+
 %br
 
 .text-right
@@ -44,7 +44,7 @@
       = link_to t('keywords.notifications'), '#notifications', role: 'tab', data: {toggle: 'tab'}
     %li
       = link_to t('keywords.resources'), '#resources', role: 'tab', data: {toggle: 'tab'}
-    
+
 / TAB PANES
 %div.tab-content
   - Instruction.categories.each_with_index do |val, index|
@@ -55,17 +55,19 @@
       = render partial: "notifications/index",  locals: { product: @product }
     %div.tab-pane#resources
       = render partial: "resources",  locals: { product: @product }
-      
+
 / Call Back
 - if !user_signed_in?
   .text-center
-    %button.btn.btn-warning.btn-xs{data: { target: "#modalCallback", toggle: "modal" }, href: "" } 
+    %button.btn.btn-warning.btn-xs{data: { target: "#modalCallback", toggle: "modal" }, href: "" }
       %span.glyphicon.glyphicon-earphone{title: 'Contact Manufacturer'}
       Contact Manufacturer
-      
-      
+    %br
+    %br
+    %a{href: "https://get.adobe.com/reader/", style: 'font-size: 11px;' } Download Adobe Acrobat Reader
+
 / Call Back Modal
-    
+
 #modalCallback.modal.fade.pg-show-modal{"aria-hidden" => "true", :role => "dialog", :tabindex => "-1"}
   .modal-dialog.modal-md
     .modal-content
@@ -76,7 +78,7 @@
         .modal-body
           #callbackErrorMessage
           = f.error_notification
-        
+
           .form-inputs
             .form-group
               .row
@@ -97,7 +99,7 @@
                   = f.input :notes, as: :text, input_html: {class: 'form-control'}
               = f.hidden_field :product, value: @product.id
               /= f.hidden_field :product_id, value: @product.id
-              
+
         .modal-footer
           %div#spinner-placeholder.pull-left
           %button.btn.pull-right.btn-success#callbackButton{ type: "submit" } Submit
