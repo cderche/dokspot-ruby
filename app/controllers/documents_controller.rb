@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
   before_action :set_instruction, except: [:show, :edit, :update, :destroy, :download, :make_primary] #only: [:new, :create, :index]
 
   skip_before_filter :authenticate_user!, only: :download
-  
+
   # GET /documents
   # GET /documents.json
   def index
@@ -61,7 +61,7 @@ class DocumentsController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
@@ -73,13 +73,13 @@ class DocumentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def download
     @document = Document.find(params[:document_id])
     authorize @document
     #@document.download
-    data = open(@document.file.url)
-    send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
+    # data = open(@document.file.url)
+    # send_data data.read, filename: @document.fileName, type: 'application/pdf', disposition: :attachment, stream: true, buffer_size: 4096
 
     require 'mixpanel-ruby'
     tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_PROJECT_TOKEN'])
@@ -95,6 +95,9 @@ class DocumentsController < ApplicationController
       url: @document.file.url
     })
 
+    data = open(@document.file.url)
+    send_data data.read, filename: @document.fileName, type: 'application/pdf'
+
   end
 
   private
@@ -107,11 +110,11 @@ class DocumentsController < ApplicationController
     def document_params
       params.require(:document).permit(:comment, :file, :version, :primary)
     end
-    
+
     def set_instruction
       @instruction = Instruction.find(params[:instruction_id])
     end
-    
+
     def disable_primary
       instruction = @document.instruction
       instruction.documents.each do |document|
